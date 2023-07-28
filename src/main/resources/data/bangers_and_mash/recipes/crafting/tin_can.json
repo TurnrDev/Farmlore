@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "T T",
+    " T "
+  ],
+  "key": {
+    "T": [
+      {
+        "item": "bangers_and_mash:tinplate"
+      },
+      {
+        "tag": "forge:plates/tin"
+      }
+    ]
+  },
+  "result": {
+    "item": "bangers_and_mash:tin_can",
+    "count": 2
+  }
+}

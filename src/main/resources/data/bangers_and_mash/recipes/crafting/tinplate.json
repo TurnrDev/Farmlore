@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "T",
+    "S",
+    "S"
+  ],
+  "key": {
+    "T": {
+        "tag": "forge:plates/tin"
+      },
+    "S": {
+      "tag": "forge:plates/steel"
+    }
+  },
+  "result": {
+    "item": "bangers_and_mash:tinplate",
+    "count": 3
+  }
+}
