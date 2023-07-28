@@ -13,6 +13,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> CANNED_BAKED_BEANS = ITEMS.register("canned_baked_beans", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD)));
 
+    public static final RegistryObject<Item> TIN_CAN = ITEMS.register("tin_can", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<Item> TINPLATE = ITEMS.register("tinplate", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
