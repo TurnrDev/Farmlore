@@ -38,26 +38,60 @@ public class ModItems {
           .rarity(Rarity.EPIC)));
 
   /* Cooked Sausages */
+
+  /**
+   * This is a hefty, chunky sausage that's easily identified, as it comes in a continuous spiral that is usually bought by length, not by weight. Spiced with pepper, this a flavorsome sausage, and an excellent all-around choice.
+   */
   public static final RegistryObject<Item> COOKED_CUMBERLAND_SAUSAGE = ModItems.registerFood(
       "cooked_cumberland_sausage", ModFoods.COOKED_CUMBERLAND_SAUSAGE);
+  /**
+   * As the name implies, it is made with Gloucester Old Spot Pork, nicely flavored with sage.
+   */
   public static final RegistryObject<Item> COOKED_GLOUCESTER_SAUSAGE = ModItems.registerFood(
       "cooked_gloucester_sausage", ModFoods.COOKED_GLOUCESTER_SAUSAGE);
+  /**
+   * It's all herby and meaty, often heady with sage and sometimes a little thyme.
+   */
   public static final RegistryObject<Item> COOKED_LINCOLNSHIRE_SAUSAGE = ModItems.registerFood(
       "cooked_lincolnshire_sausage", ModFoods.COOKED_LINCOLNSHIRE_SAUSAGE);
+  /**
+   * This herby sausage contains cloves, ginger, nutmeg, mace, and white pepper.
+   */
   public static final RegistryObject<Item> COOKED_MANCHESTER_SAUSAGE = ModItems.registerFood(
       "cooked_manchester_sausage", ModFoods.COOKED_MANCHESTER_SAUSAGE);
+  /**
+   * Expect mace, sage, and ginger in this traditional London butcher's sausage.
+   */
   public static final RegistryObject<Item> COOKED_MARLEBONE_SAUSAGE = ModItems.registerFood(
       "cooked_marlebone_sausage", ModFoods.COOKED_MARLEBONE_SAUSAGE);
+  /**
+   * Savory with sage, a touch of marjoram, lemon, pork, and veal, this is a nicely refined sausage.
+   */
   public static final RegistryObject<Item> COOKED_OXFORD_SAUSAGE = ModItems.registerFood(
       "cooked_oxford_sausage", ModFoods.COOKED_OXFORD_SAUSAGE);
+  /**
+   * The apple in this pork sausage opens itself up to using cider in the mix, thus creating a lovely moist sausage much loved in the West Country.
+   */
   public static final RegistryObject<Item> COOKED_PORK_APPLE_SAUSAGE = ModItems.registerFood(
       "cooked_pork_apple_sausage", ModFoods.COOKED_PORK_APPLE_SAUSAGE);
+  /**
+   * Also known as Lorne, it's made from a mixture of pork and beef. Conveniently, this sausage sits very well in a sandwich and is often found on the breakfast plate.
+   */
   public static final RegistryObject<Item> COOKED_SQUARE_SAUSAGE = ModItems.registerFood(
       "cooked_square_sausage", ModFoods.COOKED_SQUARE_SAUSAGE);
+  /**
+   * This coarse sausage is similar to Lincolnshire.
+   */
   public static final RegistryObject<Item> COOKED_SUFFOLK_SAUSAGE = ModItems.registerFood(
       "cooked_suffolk_sausage", ModFoods.COOKED_SUFFOLK_SAUSAGE);
+  /**
+   * with its distinctive red color and light tomato flavor, it's always a favorite with children.
+   */
   public static final RegistryObject<Item> COOKED_TOMATO_SAUSAGE = ModItems.registerFood(
       "cooked_tomato_sausage", ModFoods.COOKED_TOMATO_SAUSAGE);
+  /**
+   * Expect a sausage spiced with cayenne, a pinch of nutmeg, white pepper, and mace.
+   */
   public static final RegistryObject<Item> COOKED_YORKSHIRE_SAUSAGE = ModItems.registerFood(
       "cooked_yorkshire_sausage", ModFoods.COOKED_YORKSHIRE_SAUSAGE);
 
@@ -85,10 +119,10 @@ public class ModItems {
   public static final RegistryObject<Item> YORKSHIRE_SAUSAGE = ModItems.registerFood(
       "yorkshire_sausage", ModFoods.YORKSHIRE_SAUSAGE);
 
-  public static final List<RegistryObject<Item>> RAW_SAUSAGES = Arrays.asList(
-      CUMBERLAND_SAUSAGE, GLOUCESTER_SAUSAGE, LINCOLNSHIRE_SAUSAGE, MANCHESTER_SAUSAGE,
-      MARLEBONE_SAUSAGE, OXFORD_SAUSAGE, PORK_APPLE_SAUSAGE, SQUARE_SAUSAGE, SUFFOLK_SAUSAGE,
-      TOMATO_SAUSAGE, YORKSHIRE_SAUSAGE);
+  public static final List<RegistryObject<Item>> RAW_SAUSAGES = Arrays.asList(CUMBERLAND_SAUSAGE,
+      GLOUCESTER_SAUSAGE, LINCOLNSHIRE_SAUSAGE, MANCHESTER_SAUSAGE, MARLEBONE_SAUSAGE,
+      OXFORD_SAUSAGE, PORK_APPLE_SAUSAGE, SQUARE_SAUSAGE, SUFFOLK_SAUSAGE, TOMATO_SAUSAGE,
+      YORKSHIRE_SAUSAGE);
 
   public static void register(IEventBus eventBus) {
     ITEMS.register(eventBus);
