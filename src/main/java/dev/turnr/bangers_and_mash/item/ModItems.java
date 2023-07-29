@@ -16,20 +16,26 @@ public class ModItems {
   public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
       BangersAndMash.MOD_ID);
 
-  public static final RegistryObject<Item> CANNED_BAKED_BEANS = ModItems.registerFood(
-      "canned_baked_beans", new FoodProperties.Builder().nutrition(6).saturationMod(0.6F).build());
-
+  /* Items */
   public static final RegistryObject<Item> TIN_CAN = ITEMS.register("tin_can",
       () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
   public static final RegistryObject<Item> TINPLATE = ITEMS.register("tinplate",
       () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
+
+  /* Food */
+  public static final RegistryObject<Item> CANNED_BAKED_BEANS = ModItems.registerFood(
+      "canned_baked_beans", new FoodProperties.Builder().nutrition(6).saturationMod(0.6F).build());
+
+  /**
+   * The sosig is a god tier sausage. Do not mock its artwork.
+   */
   public static final RegistryObject<Item> SOSIG = ITEMS.register("sosig", () -> new Item(
       new Item.Properties().food(Foods.ENCHANTED_GOLDEN_APPLE).tab(CreativeModeTab.TAB_FOOD)
           .rarity(Rarity.EPIC)));
 
-  // Cooked Sausages
+  /* Cooked Sausages */
   public static final RegistryObject<Item> COOKED_CUMBERLAND_SAUSAGE = ModItems.registerFood(
       "cooked_cumberland_sausage", ModFoods.COOKED_CUMBERLAND_SAUSAGE);
   public static final RegistryObject<Item> COOKED_GLOUCESTER_SAUSAGE = ModItems.registerFood(
@@ -53,7 +59,7 @@ public class ModItems {
   public static final RegistryObject<Item> COOKED_YORKSHIRE_SAUSAGE = ModItems.registerFood(
       "cooked_yorkshire_sausage", ModFoods.COOKED_YORKSHIRE_SAUSAGE);
 
-  // Raw Sausages
+  /* Raw Sausages */
   public static final RegistryObject<Item> CUMBERLAND_SAUSAGE = ModItems.registerFood(
       "cumberland_sausage", ModFoods.CUMBERLAND_SAUSAGE);
   public static final RegistryObject<Item> GLOUCESTER_SAUSAGE = ModItems.registerFood(
