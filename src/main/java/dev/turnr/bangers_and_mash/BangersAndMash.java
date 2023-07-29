@@ -12,21 +12,22 @@ import org.slf4j.Logger;
 
 @Mod(BangersAndMash.MOD_ID)
 public class BangersAndMash {
-    public static final String MOD_ID = "bangers_and_mash";
-    private static final Logger LOGGER = LogUtils.getLogger();
 
-    public BangersAndMash() {
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        ModItems.register(eventBus);
-        eventBus.addListener(this::setup);
+  public static final String MOD_ID = "bangers_and_mash";
+  private static final Logger LOGGER = LogUtils.getLogger();
 
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
-    }
+  public BangersAndMash() {
+    IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    ModItems.register(eventBus);
+    eventBus.addListener(this::setup);
 
-    private void setup(final FMLCommonSetupEvent event) {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-    }
+    // Register ourselves for server and other game events we are interested in
+    MinecraftForge.EVENT_BUS.register(this);
+  }
+
+  private void setup(final FMLCommonSetupEvent event) {
+    // some preinit code
+    LOGGER.info("HELLO FROM PREINIT");
+    LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+  }
 }
