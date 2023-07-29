@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "bangers_and_mash:cooked_cumberland_sausage",
+    "bangers_and_mash:cooked_gloucester_sausage",
+    "bangers_and_mash:cooked_lincolnshire_sausage",
+    "bangers_and_mash:cooked_manchester_sausage",
+    "bangers_and_mash:cooked_marlebone_sausage",
+    "bangers_and_mash:cooked_oxford_sausage",
+    "bangers_and_mash:cooked_pork_apple_sausage",
+    "bangers_and_mash:cooked_square_sausage",
+    "bangers_and_mash:cooked_suffolk_sausage",
+    "bangers_and_mash:cooked_tomato_sausage",
+    "bangers_and_mash:cooked_yorkshire_sausage"
+  ]
+}

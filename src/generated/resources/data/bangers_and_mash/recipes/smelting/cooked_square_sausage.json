@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "bangers_and_mash:square_sausage"
+  },
+  "result": "bangers_and_mash:cooked_square_sausage",
+  "experience": 0.0,
+  "cookingtime": 200
+}

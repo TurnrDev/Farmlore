@@ -1,6 +1,8 @@
 package dev.turnr.bangers_and_mash.item;
 
 import dev.turnr.bangers_and_mash.BangersAndMash;
+import java.util.Arrays;
+import java.util.List;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.CreativeModeTab;
@@ -82,6 +84,11 @@ public class ModItems {
       ModFoods.TOMATO_SAUSAGE);
   public static final RegistryObject<Item> YORKSHIRE_SAUSAGE = ModItems.registerFood(
       "yorkshire_sausage", ModFoods.YORKSHIRE_SAUSAGE);
+
+  public static final List<RegistryObject<Item>> RAW_SAUSAGES = Arrays.asList(
+      CUMBERLAND_SAUSAGE, GLOUCESTER_SAUSAGE, LINCOLNSHIRE_SAUSAGE, MANCHESTER_SAUSAGE,
+      MARLEBONE_SAUSAGE, OXFORD_SAUSAGE, PORK_APPLE_SAUSAGE, SQUARE_SAUSAGE, SUFFOLK_SAUSAGE,
+      TOMATO_SAUSAGE, YORKSHIRE_SAUSAGE);
 
   public static void register(IEventBus eventBus) {
     ITEMS.register(eventBus);

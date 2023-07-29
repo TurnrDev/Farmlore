@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "bangers_and_mash:tomato_sausage"
+  },
+  "result": "bangers_and_mash:cooked_tomato_sausage",
+  "experience": 0.0,
+  "cookingtime": 200
+}
