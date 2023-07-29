@@ -16,7 +16,7 @@ public class DataGenerators {
 
   @SubscribeEvent
   public static void gatherData(GatherDataEvent event) {
-    LOGGER.info("HELLO from gatherData in DataGenerators");
+    LOGGER.debug("HELLO from gatherData in DataGenerators");
     DataGenerator generator = event.getGenerator();
     ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 

@@ -24,7 +24,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
   public ModRecipeProvider(DataGenerator pGenerator) {
     super(pGenerator);
-    LOGGER.info("HELLO from ModRecipeProvider constructor");
   }
 
   @Nullable
@@ -64,17 +63,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
   }
 
   private void buildSausageRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
-    LOGGER.info("HELLO from buildSausageRecipes in ModRecipeProvider");
+    LOGGER.debug("HELLO from buildSausageRecipes in ModRecipeProvider");
 
     // Loop through all the items in the raw sausage tag
     for (RegistryObject<Item> pRawSausage : RAW_SAUSAGES) {
       Item rawSausage = pRawSausage.get();
       Item cookedSausage = getCookedSausage(rawSausage);
       if (cookedSausage == null) {
-        LOGGER.info("No cooked sausage found for {}", rawSausage.getRegistryName());
+        LOGGER.debug("No cooked sausage found for {}", rawSausage.getRegistryName());
         continue;
       }
-      LOGGER.info("Adding sausage recipes for {}", rawSausage.getRegistryName());
+      LOGGER.debug("Adding sausage recipes for {}", rawSausage.getRegistryName());
       addCampfireRecipe(pFinishedRecipeConsumer, rawSausage, cookedSausage, 0.0F, 600);
       addSmokingRecipe(pFinishedRecipeConsumer, rawSausage, cookedSausage, 0.0F, 200);
       addSmeltingRecipe(pFinishedRecipeConsumer, rawSausage, cookedSausage, 0.0F, 200);
@@ -84,7 +83,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
   @Override
   protected void buildCraftingRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
-    LOGGER.error("HELLO from buildCraftingRecipes in ModRecipeProvider");
+    LOGGER.debug("HELLO from buildCraftingRecipes in ModRecipeProvider");
     buildSausageRecipes(pFinishedRecipeConsumer);
   }
 }
