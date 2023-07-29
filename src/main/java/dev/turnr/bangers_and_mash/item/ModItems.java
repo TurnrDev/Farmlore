@@ -4,6 +4,7 @@ import dev.turnr.bangers_and_mash.BangersAndMash;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -18,7 +19,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> TINPLATE = ITEMS.register("tinplate", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final RegistryObject<Item> SOSIG = ITEMS.register("sosig", () -> new Item(new Item.Properties().food(Foods.ENCHANTED_GOLDEN_APPLE).tab(CreativeModeTab.TAB_FOOD)));
+    public static final RegistryObject<Item> SOSIG = ITEMS.register("sosig", () -> new Item(new Item.Properties().food(Foods.ENCHANTED_GOLDEN_APPLE).tab(CreativeModeTab.TAB_FOOD).rarity(Rarity.EPIC)));
 
     // Cooked Sausages
     public static final RegistryObject<Item> COOKED_CUMBERLAND_SAUSAGE = ITEMS.register("cooked_cumberland_sausage", () -> new Item(new Item.Properties().food(ModFoods.COOKED_CUMBERLAND_SAUSAGE).tab(CreativeModeTab.TAB_FOOD)));
