@@ -1,3 +1,29 @@
+Artwork:
+
+Some of this artwork was produced using OpenAI's DALL-E. Now, I'm not a fan of AI
+generated artwork for paid projects, but I think it's a great tool for free projects
+that might not have the resources to create their own artwork, or pay for a real artist.
+I do not promote the use of AI generated artwork in situations where an artist could be
+paid for their work. However, this project is intended for my to play around with Forge
+Modding, and as an educational tool for myself, therefore, I wanted to keep the cost down
+to a minimum. I do not intend to make any money off of this project, and I do not intend
+to use this project to promote any other projects that I may be working on. Therefore,
+I believe that the use of AI generated artwork is acceptable in this situation.
+
+I would love to replace the artwork with a real artist's work one day. If this project
+ever gets to the stage where I think it's more than an educational tool for myself. I
+will be sure to replace the artwork with real artwork, and I will be sure to pay the
+artist for their work. I will also be sure to remove any AI generated artwork from the
+project at that time. Thank you for your understanding.
+
+For the sake of transparency, I will be sure to include a list of all the AI generated
+artwork that I use in this project;
+
+ - cooked_cumberland_sausage.png
+ - cumberland_sausage.png
+
+=========================================================================
+
 Minecraft Forge: Credits/Thank You
 
 Forge is a set of tools and modifications to the Minecraft base game code to assist 
@@ -34,32 +60,4 @@ pull requests, and just helping out the community in general. Thank you.
 --LexManos
 
 =========================================================================
-
-This is Forge Mod Loader.
-
-You can find the source code at all times at https://github.com/MinecraftForge/MinecraftForge/tree/1.12.x/src/main/java/net/minecraftforge/fml
-
-This minecraft mod is a clean open source implementation of a mod loader for minecraft servers
-and minecraft clients.
-
-The code is authored by cpw.
-
-It began by partially implementing an API defined by the client side ModLoader, authored by Risugami.
-http://www.minecraftforum.net/topic/75440-
-This support has been dropped as of Minecraft release 1.7, as Risugami no longer maintains ModLoader.
-
-It also contains suggestions and hints and generous helpings of code from LexManos, author of MinecraftForge.
-http://www.minecraftforge.net/
-
-Additionally, it contains an implementation of topological sort based on that 
-published at http://keithschwarz.com/interesting/code/?dir=topological-sort
-
-It also contains code from the Maven project for performing versioned dependency
-resolution. http://maven.apache.org/
-
-It also contains a partial repackaging of the javaxdelta library from http://sourceforge.net/projects/javaxdelta/
-with credit to it's authors.
-
-Forge Mod Loader downloads components from the Minecraft Coder Pack
-(http://mcp.ocean-labs.de/index.php/Main_Page) with kind permission from the MCP team.
 
