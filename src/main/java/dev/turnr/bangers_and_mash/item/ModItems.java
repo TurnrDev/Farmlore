@@ -30,21 +30,47 @@ public class ModItems {
   public static final RegistryObject<Item> CANNED_BAKED_BEANS = ModItems.registerFood(
       "canned_baked_beans", new FoodProperties.Builder().nutrition(6).saturationMod(0.6F).build());
 
+  /* Potatoes */
+
   /**
-   * Boiled Potatoes
-   * Can be made by putting a potato in a bubble stream, or by putting a potato in a cauldron of water and heating it with a fire underneath.
+   * Potato Quarters are an intermediate step in the process of making many potato dishes. They are
+   * made by cutting a potato into quarters. This can be achieved by using any blade or axe on a
+   * potato, or by using the Stone-cutter, or the Create Mod's Mechanical Saw.
+   */
+  public static final RegistryObject<Item> POTATO_QUARTERS = ModItems.registerFood(
+      "potato_quarters", ModFoods.POTATO_QUARTERS);
+
+
+  /**
+   * Boiled Potatoes Can be made by putting a potato in a bubble stream, or by putting a potato in a
+   * cauldron of water and heating it with a fire underneath.
    * TODO: Add game mechanic for heating water in a cauldron
    * TODO: Add game mechanic for bubble streams
    */
   public static final RegistryObject<Item> BOILED_POTATOES = ModItems.registerFood(
-      "boiled_potatoes", new FoodProperties.Builder().nutrition(4).saturationMod(0.6F).build());
+      "boiled_potatoes", ModFoods.BOILED_POTATOES);
 
   /**
-   * Mashed Potatoes, known in the UK as just "mash", is a dish prepared by mashing boiled potatoes. Milk and butter are frequently used in preparation and it is frequently whipped at the end.
-   * The ideal recipe for this boiled potatoes, butter and milk. The butter and milk are added to the potatoes after they have been boiled and drained.
+   * Mashed Potatoes, known in the UK as just "mash", is a dish prepared by mashing boiled potatoes.
+   * Milk and butter are frequently used in preparation, and it is frequently whipped at the end.
+   * The ideal recipe for this boiled potatoes, butter and milk. The butter and milk are added to
+   * the potatoes after they have been boiled and drained.
    */
   public static final RegistryObject<Item> MASHED_POTATOES = ModItems.registerFood(
-      "mashed_potatoes", new FoodProperties.Builder().nutrition(6).saturationMod(0.6F).build());
+      "mashed_potato", ModFoods.MASHED_POTATOES);
+
+  /**
+   * Cheesy Mash is a variant of mashed potatoes, with cheese added to the mix.
+   */
+  public static final RegistryObject<Item> CHEESY_MASH = ModItems.registerFood("cheesy_mash",
+      ModFoods.CHEESY_MASH);
+
+  /**
+   * Chips, known in the US as "French Fries", are a dish prepared by cutting potatoes into strips
+   * or wedges, then deep-frying them.
+   */
+  public static final RegistryObject<Item> CHIPS = ModItems.registerFood("chips",
+      ModFoods.CHIPS);
 
   /**
    * The sosig is a god tier sausage. Do not mock its artwork.
@@ -56,7 +82,9 @@ public class ModItems {
   /* Cooked Sausages */
 
   /**
-   * This is a hefty, chunky sausage that's easily identified, as it comes in a continuous spiral that is usually bought by length, not by weight. Spiced with pepper, this a flavorsome sausage, and an excellent all-around choice.
+   * This is a hefty, chunky sausage that's easily identified, as it comes in a continuous spiral
+   * that is usually bought by length, not by weight. Spiced with pepper, this a flavorsome sausage,
+   * and an excellent all-around choice.
    */
   public static final RegistryObject<Item> COOKED_CUMBERLAND_SAUSAGE = ModItems.registerFood(
       "cooked_cumberland_sausage", ModFoods.COOKED_CUMBERLAND_SAUSAGE);
@@ -81,17 +109,20 @@ public class ModItems {
   public static final RegistryObject<Item> COOKED_MARLEBONE_SAUSAGE = ModItems.registerFood(
       "cooked_marlebone_sausage", ModFoods.COOKED_MARLEBONE_SAUSAGE);
   /**
-   * Savory with sage, a touch of marjoram, lemon, pork, and veal, this is a nicely refined sausage.
+   * Savory with sage, a touch of marjoram, lemon, pork, and veal, this is a nicely refined
+   * sausage.
    */
   public static final RegistryObject<Item> COOKED_OXFORD_SAUSAGE = ModItems.registerFood(
       "cooked_oxford_sausage", ModFoods.COOKED_OXFORD_SAUSAGE);
   /**
-   * The apple in this pork sausage opens itself up to using cider in the mix, thus creating a lovely moist sausage much loved in the West Country.
+   * The apple in this pork sausage opens itself up to using cider in the mix, thus creating a
+   * lovely moist sausage much loved in the West Country.
    */
   public static final RegistryObject<Item> COOKED_PORK_APPLE_SAUSAGE = ModItems.registerFood(
       "cooked_pork_apple_sausage", ModFoods.COOKED_PORK_APPLE_SAUSAGE);
   /**
-   * Also known as Lorne, it's made from a mixture of pork and beef. Conveniently, this sausage sits very well in a sandwich and is often found on the breakfast plate.
+   * Also known as Lorne, it's made from a mixture of pork and beef. Conveniently, this sausage sits
+   * very well in a sandwich and is often found on the breakfast plate.
    */
   public static final RegistryObject<Item> COOKED_SQUARE_SAUSAGE = ModItems.registerFood(
       "cooked_square_sausage", ModFoods.COOKED_SQUARE_SAUSAGE);

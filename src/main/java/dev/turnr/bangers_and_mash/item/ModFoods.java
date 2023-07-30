@@ -4,6 +4,16 @@ import net.minecraft.world.food.FoodProperties;
 
 public class ModFoods {
 
+  public static final FoodProperties POTATO_QUARTERS = (new FoodProperties.Builder()).nutrition(1)
+      .saturationMod(0.075F).build();
+  public static final FoodProperties BOILED_POTATOES = (new FoodProperties.Builder()).nutrition(4)
+      .saturationMod(0.6F).build();
+  public static final FoodProperties MASHED_POTATOES = (new FoodProperties.Builder()).nutrition(6)
+      .saturationMod(0.6F).build();
+  public static final FoodProperties CHEESY_MASH = (new FoodProperties.Builder()).nutrition(7)
+      .saturationMod(0.6F).build();
+  public static final FoodProperties CHIPS = (new FoodProperties.Builder()).nutrition(6)
+      .saturationMod(0.6F).build();
   public static final FoodProperties COOKED_CUMBERLAND_SAUSAGE = (new FoodProperties.Builder()).nutrition(
       8).saturationMod(0.8F).meat().build();
   public static final FoodProperties COOKED_GLOUCESTER_SAUSAGE = (new FoodProperties.Builder()).nutrition(
