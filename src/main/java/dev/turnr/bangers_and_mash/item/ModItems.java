@@ -31,6 +31,22 @@ public class ModItems {
       "canned_baked_beans", new FoodProperties.Builder().nutrition(6).saturationMod(0.6F).build());
 
   /**
+   * Boiled Potatoes
+   * Can be made by putting a potato in a bubble stream, or by putting a potato in a cauldron of water and heating it with a fire underneath.
+   * TODO: Add game mechanic for heating water in a cauldron
+   * TODO: Add game mechanic for bubble streams
+   */
+  public static final RegistryObject<Item> BOILED_POTATOES = ModItems.registerFood(
+      "boiled_potatoes", new FoodProperties.Builder().nutrition(4).saturationMod(0.6F).build());
+
+  /**
+   * Mashed Potatoes, known in the UK as just "mash", is a dish prepared by mashing boiled potatoes. Milk and butter are frequently used in preparation and it is frequently whipped at the end.
+   * The ideal recipe for this boiled potatoes, butter and milk. The butter and milk are added to the potatoes after they have been boiled and drained.
+   */
+  public static final RegistryObject<Item> MASHED_POTATOES = ModItems.registerFood(
+      "mashed_potatoes", new FoodProperties.Builder().nutrition(6).saturationMod(0.6F).build());
+
+  /**
    * The sosig is a god tier sausage. Do not mock its artwork.
    */
   public static final RegistryObject<Item> SOSIG = ITEMS.register("sosig", () -> new Item(
