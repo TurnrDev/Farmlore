@@ -19,8 +19,7 @@ project at that time. Thank you for your understanding.
 For the sake of transparency, I will be sure to include a list of all the AI generated
 artwork that I use in this project;
 
- - cooked_cumberland_sausage.png
- - cumberland_sausage.png
+ - all the cooked and uncooked sausage textures, except sosig.png
 
 =========================================================================
 
