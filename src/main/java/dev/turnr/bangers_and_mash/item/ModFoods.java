@@ -22,7 +22,7 @@ public class ModFoods {
       8).saturationMod(0.8F).meat().build();
   public static final FoodProperties COOKED_MANCHESTER_SAUSAGE = (new FoodProperties.Builder()).nutrition(
       8).saturationMod(0.8F).meat().build();
-  public static final FoodProperties COOKED_MARLEBONE_SAUSAGE = (new FoodProperties.Builder()).nutrition(
+  public static final FoodProperties COOKED_MARYLEBONE_SAUSAGE = (new FoodProperties.Builder()).nutrition(
       8).saturationMod(0.8F).meat().build();
   public static final FoodProperties COOKED_OXFORD_SAUSAGE = (new FoodProperties.Builder()).nutrition(
       8).saturationMod(0.8F).meat().build();
@@ -44,7 +44,7 @@ public class ModFoods {
       3).saturationMod(0.3F).meat().build();
   public static final FoodProperties MANCHESTER_SAUSAGE = (new FoodProperties.Builder()).nutrition(
       3).saturationMod(0.3F).meat().build();
-  public static final FoodProperties MARLEBONE_SAUSAGE = (new FoodProperties.Builder()).nutrition(3)
+  public static final FoodProperties MARYLEBONE_SAUSAGE = (new FoodProperties.Builder()).nutrition(3)
       .saturationMod(0.3F).meat().build();
   public static final FoodProperties OXFORD_SAUSAGE = (new FoodProperties.Builder()).nutrition(3)
       .saturationMod(0.3F).meat().build();

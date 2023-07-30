@@ -106,8 +106,8 @@ public class ModItems {
   /**
    * Expect mace, sage, and ginger in this traditional London butcher's sausage.
    */
-  public static final RegistryObject<Item> COOKED_MARLEBONE_SAUSAGE = ModItems.registerFood(
-      "cooked_marlebone_sausage", ModFoods.COOKED_MARLEBONE_SAUSAGE);
+  public static final RegistryObject<Item> COOKED_MARYLEBONE_SAUSAGE = ModItems.registerFood(
+      "cooked_marylebone_sausage", ModFoods.COOKED_MARYLEBONE_SAUSAGE);
   /**
    * Savory with sage, a touch of marjoram, lemon, pork, and veal, this is a nicely refined
    * sausage.
@@ -151,8 +151,8 @@ public class ModItems {
       "lincolnshire_sausage", ModFoods.LINCOLNSHIRE_SAUSAGE);
   public static final RegistryObject<Item> MANCHESTER_SAUSAGE = ModItems.registerFood(
       "manchester_sausage", ModFoods.MANCHESTER_SAUSAGE);
-  public static final RegistryObject<Item> MARLEBONE_SAUSAGE = ModItems.registerFood(
-      "marlebone_sausage", ModFoods.MARLEBONE_SAUSAGE);
+  public static final RegistryObject<Item> MARYLEBONE_SAUSAGE = ModItems.registerFood(
+      "marylebone_sausage", ModFoods.MARYLEBONE_SAUSAGE);
   public static final RegistryObject<Item> OXFORD_SAUSAGE = ModItems.registerFood("oxford_sausage",
       ModFoods.OXFORD_SAUSAGE);
   public static final RegistryObject<Item> PORK_APPLE_SAUSAGE = ModItems.registerFood(
@@ -167,7 +167,7 @@ public class ModItems {
       "yorkshire_sausage", ModFoods.YORKSHIRE_SAUSAGE);
 
   public static final List<RegistryObject<Item>> RAW_SAUSAGES = Arrays.asList(CUMBERLAND_SAUSAGE,
-      GLOUCESTER_SAUSAGE, LINCOLNSHIRE_SAUSAGE, MANCHESTER_SAUSAGE, MARLEBONE_SAUSAGE,
+      GLOUCESTER_SAUSAGE, LINCOLNSHIRE_SAUSAGE, MANCHESTER_SAUSAGE, MARYLEBONE_SAUSAGE,
       OXFORD_SAUSAGE, PORK_APPLE_SAUSAGE, SQUARE_SAUSAGE, SUFFOLK_SAUSAGE, TOMATO_SAUSAGE,
       YORKSHIRE_SAUSAGE);
 
