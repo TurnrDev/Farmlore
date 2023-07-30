@@ -4,7 +4,7 @@ import net.minecraft.world.food.FoodProperties;
 
 public class ModFoods {
 
-  public static final FoodProperties POTATO_QUARTERS = (new FoodProperties.Builder()).nutrition(1)
+  public static final FoodProperties POTATO_QUARTER = (new FoodProperties.Builder()).nutrition(1)
       .saturationMod(0.075F).build();
   public static final FoodProperties BOILED_POTATOES = (new FoodProperties.Builder()).nutrition(4)
       .saturationMod(0.6F).build();

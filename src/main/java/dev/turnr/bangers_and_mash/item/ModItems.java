@@ -37,8 +37,8 @@ public class ModItems {
    * made by cutting a potato into quarters. This can be achieved by using any blade or axe on a
    * potato, or by using the Stone-cutter, or the Create Mod's Mechanical Saw.
    */
-  public static final RegistryObject<Item> POTATO_QUARTERS = ModItems.registerFood(
-      "potato_quarters", ModFoods.POTATO_QUARTERS);
+  public static final RegistryObject<Item> POTATO_QUARTER = ModItems.registerFood(
+      "potato_quarter", ModFoods.POTATO_QUARTER);
 
 
   /**
