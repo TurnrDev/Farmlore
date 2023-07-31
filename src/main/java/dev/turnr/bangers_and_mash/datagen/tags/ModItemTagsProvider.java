@@ -9,6 +9,7 @@ import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
@@ -42,6 +43,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         new ResourceLocation("pamhc2foodextended", "sausageitem"));
 
     this.tag(ModTags.Items.FORGE_SAUSAGES).addTags(ModTags.Items.FORGE_SAUSAGES_RAW, ModTags.Items.FORGE_SAUSAGES_COOKED);
+
+    this.tag(ModTags.Items.CONTAINERS).add(ModItems.METAL_CAN.get()).add(Items.BUCKET);
 
 
   }

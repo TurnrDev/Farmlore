@@ -26,6 +26,8 @@ public class ModTags {
     public static final TagKey<Item> FORGE_SAUSAGES_RAW = forgeTag("sausages/raw");
     public static final TagKey<Item> FORGE_SAUSAGES_COOKED = forgeTag("sausages/cooked");
 
+    public static final TagKey<Item> CONTAINERS = tag("containers");
+
     private static TagKey<Item> tag(String name) {
       return ItemTags.create(BangersAndMash.getId(name));
     }
