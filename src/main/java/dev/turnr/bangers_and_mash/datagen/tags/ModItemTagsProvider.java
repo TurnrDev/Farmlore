@@ -1,9 +1,8 @@
 package dev.turnr.bangers_and_mash.datagen.tags;
 
 import static dev.turnr.bangers_and_mash.BangersAndMash.MOD_ID;
-import static dev.turnr.bangers_and_mash.ModTags.Items.SAUSAGES;
 
-import dev.turnr.bangers_and_mash.ModTags.Items.Sausages;
+import dev.turnr.bangers_and_mash.ModTags;
 import dev.turnr.bangers_and_mash.item.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
@@ -27,13 +26,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
    */
   @Override
   protected void addTags() {
-    TagAppender<Item> rawSausagesTagProvider = this.tag(Sausages.RAW);
+    TagAppender<Item> rawSausagesTagProvider = this.tag(ModTags.Items.FORGE_SAUSAGES_RAW);
 
     for (RegistryObject<Item> item : ModItems.RAW_SAUSAGES) {
       rawSausagesTagProvider.add(item.get());
     }
 
-    TagAppender<Item> cookedSausagesTagProvider = this.tag(Sausages.COOKED);
+    TagAppender<Item> cookedSausagesTagProvider = this.tag(ModTags.Items.FORGE_SAUSAGES_COOKED);
 
     for (RegistryObject<Item> item : ModItems.COOKED_SAUSAGES) {
       cookedSausagesTagProvider.add(item.get());
@@ -42,7 +41,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     cookedSausagesTagProvider.addOptional(
         new ResourceLocation("pamhc2foodextended", "sausageitem"));
 
-    this.tag(SAUSAGES).addTags(Sausages.RAW, Sausages.COOKED);
+    this.tag(ModTags.Items.FORGE_SAUSAGES).addTags(ModTags.Items.FORGE_SAUSAGES_RAW, ModTags.Items.FORGE_SAUSAGES_COOKED);
 
 
   }
