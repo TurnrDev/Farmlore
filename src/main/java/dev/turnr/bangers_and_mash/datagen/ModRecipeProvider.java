@@ -20,7 +20,6 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Ingredient.ItemValue;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -103,25 +102,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(BangersAndMash.MOD_ID, "stonecutting/potato_quarter_x4"));
 
-    // Tinplate or forge:plates/tin -> Tin Can
-    ShapedRecipeBuilder.shaped(ModItems.TIN_CAN.get(), 2).pattern("T T").pattern(" T ")
-        .define('T', Ingredient.fromValues(Stream.of(
-            new ItemValue(ModItems.TINPLATE.get().getDefaultInstance()),
-            new Ingredient.TagValue(ItemTags.create(new ResourceLocation("forge", "plates/tin"))))))
-        .unlockedBy("has_item", has(ModItems.TINPLATE.get()))
+    // forge:plates/tin / steel / aluminum -> Tin Can
+    ShapedRecipeBuilder.shaped(ModItems.METAL_CAN.get(), 2).pattern("# #").pattern(" # ")
+        .define('#', Ingredient.fromValues(Stream.of(
+            new Ingredient.TagValue(ItemTags.create(new ResourceLocation("forge", "plates/tin"))),
+            new Ingredient.TagValue(ItemTags.create(new ResourceLocation("forge", "plates/steel"))),
+            new Ingredient.TagValue(
+                ItemTags.create(new ResourceLocation("forge", "plates/aluminum"))))))
+        .unlockedBy("has_plates", has(ItemTags.create(new ResourceLocation("forge", "plates"))))
         .save(pFinishedRecipeConsumer,
-            new ResourceLocation(BangersAndMash.MOD_ID, "crafting/tin_can_x2"));
-
-    // Tin + Steel Plates -> Tinplate
-    ShapedRecipeBuilder.shaped(ModItems.TINPLATE.get(), 3).pattern("T").pattern("S").pattern("S")
-        .define('T', Ingredient.of(ItemTags.create(new ResourceLocation("forge", "plates/tin"))))
-        .define('S', Ingredient.of(ItemTags.create(new ResourceLocation("forge", "plates/steel"))))
-        .unlockedBy("has_tin", has(ItemTags.create(new ResourceLocation("forge", "plates/tin")))
-        )
-        .unlockedBy("has_steel",
-            has(ItemTags.create(new ResourceLocation("forge", "plates/steel"))))
-        .save(pFinishedRecipeConsumer,
-            new ResourceLocation(BangersAndMash.MOD_ID, "crafting/tinplate_x2"));
+            new ResourceLocation(BangersAndMash.MOD_ID, "crafting/metal_can_x2"));
 
 
   }

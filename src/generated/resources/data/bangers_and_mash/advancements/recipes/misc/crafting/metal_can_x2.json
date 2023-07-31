@@ -2,26 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "bangers_and_mash:crafting/tinplate_x2"
+      "bangers_and_mash:crafting/metal_can_x2"
     ]
   },
   "criteria": {
-    "has_tin": {
+    "has_plates": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "forge:plates/tin"
-          }
-        ]
-      }
-    },
-    "has_steel": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "tag": "forge:plates/steel"
+            "tag": "forge:plates"
           }
         ]
       }
@@ -29,14 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "bangers_and_mash:crafting/tinplate_x2"
+        "recipe": "bangers_and_mash:crafting/metal_can_x2"
       }
     }
   },
   "requirements": [
     [
-      "has_tin",
-      "has_steel",
+      "has_plates",
       "has_the_recipe"
     ]
   ]

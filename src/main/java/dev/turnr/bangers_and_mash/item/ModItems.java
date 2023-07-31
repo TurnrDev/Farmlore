@@ -19,10 +19,7 @@ public class ModItems {
       BangersAndMash.MOD_ID);
 
   /* Items */
-  public static final RegistryObject<Item> TIN_CAN = ITEMS.register("tin_can",
-      () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
-
-  public static final RegistryObject<Item> TINPLATE = ITEMS.register("tinplate",
+  public static final RegistryObject<Item> METAL_CAN = ITEMS.register("metal_can",
       () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 
