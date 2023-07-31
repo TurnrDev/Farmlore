@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:potato"
+  },
+  "result": "bangers_and_mash:potato_quarter",
+  "count": 4
+}
