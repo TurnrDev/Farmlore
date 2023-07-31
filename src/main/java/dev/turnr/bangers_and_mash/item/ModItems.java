@@ -142,6 +142,14 @@ public class ModItems {
   public static final RegistryObject<Item> COOKED_YORKSHIRE_SAUSAGE = ModItems.registerFood(
       "cooked_yorkshire_sausage", ModFoods.COOKED_YORKSHIRE_SAUSAGE);
 
+  public static final List<RegistryObject<Item>> COOKED_SAUSAGES = Arrays.asList(
+      COOKED_CUMBERLAND_SAUSAGE,
+      COOKED_GLOUCESTER_SAUSAGE, COOKED_LINCOLNSHIRE_SAUSAGE, COOKED_MANCHESTER_SAUSAGE,
+      COOKED_MARYLEBONE_SAUSAGE,
+      COOKED_OXFORD_SAUSAGE, COOKED_PORK_APPLE_SAUSAGE, COOKED_SQUARE_SAUSAGE,
+      COOKED_SUFFOLK_SAUSAGE, COOKED_TOMATO_SAUSAGE,
+      COOKED_YORKSHIRE_SAUSAGE);
+
   /* Raw Sausages */
   public static final RegistryObject<Item> CUMBERLAND_SAUSAGE = ModItems.registerFood(
       "cumberland_sausage", ModFoods.CUMBERLAND_SAUSAGE);

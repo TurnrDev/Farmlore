@@ -2,6 +2,8 @@ package dev.turnr.bangers_and_mash.datagen;
 
 import com.mojang.logging.LogUtils;
 import dev.turnr.bangers_and_mash.BangersAndMash;
+import dev.turnr.bangers_and_mash.datagen.tags.ModBlockTagsProvider;
+import dev.turnr.bangers_and_mash.datagen.tags.ModItemTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,5 +25,10 @@ public class DataGenerators {
     generator.addProvider(new ModRecipeProvider(generator));
 //    generator.addProvider(new ModLootTableProvider(generator));
     generator.addProvider(new ModItemModelProvider(generator, existingFileHelper));
+    ModBlockTagsProvider modBlockTagsProvider = new ModBlockTagsProvider(generator,
+        existingFileHelper);
+    generator.addProvider(modBlockTagsProvider);
+    generator.addProvider(
+        new ModItemTagsProvider(generator, modBlockTagsProvider, existingFileHelper));
   }
 }
