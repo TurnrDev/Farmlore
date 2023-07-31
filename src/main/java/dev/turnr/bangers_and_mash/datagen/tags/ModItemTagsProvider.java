@@ -42,9 +42,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     cookedSausagesTagProvider.addOptional(
         new ResourceLocation("pamhc2foodextended", "sausageitem"));
 
-    this.tag(ModTags.Items.FORGE_SAUSAGES).addTags(ModTags.Items.FORGE_SAUSAGES_RAW, ModTags.Items.FORGE_SAUSAGES_COOKED);
+    this.tag(ModTags.Items.FORGE_SAUSAGES)
+        .addTags(ModTags.Items.FORGE_SAUSAGES_RAW, ModTags.Items.FORGE_SAUSAGES_COOKED);
 
-    this.tag(ModTags.Items.CONTAINERS).add(ModItems.METAL_CAN.get()).add(Items.BUCKET);
+    this.tag(ModTags.Items.CONTAINERS).add(ModItems.METAL_CAN.get()).add(Items.BUCKET).addOptional(
+        new ResourceLocation("tconstruct", "copper_can"));
 
 
   }

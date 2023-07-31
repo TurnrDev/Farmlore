@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     "bangers_and_mash:metal_can",
-    "minecraft:bucket"
+    "minecraft:bucket",
+    {
+      "id": "tconstruct:copper_can",
+      "required": false
+    }
   ]
 }
