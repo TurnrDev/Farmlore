@@ -103,7 +103,6 @@ c0a5160e4a830bb1c77f311821938951406cc7a5 data/bangers_and_mash/recipes/smoking/c
 1b6ce60384052e9364df0ac9a9fed92cb9fb0056 data/bangers_and_mash/recipes/smoking/cooked_tomato_sausage.json
 fce8f4d0605103440c2585e33f5f31a6278c1874 data/bangers_and_mash/recipes/smoking/cooked_yorkshire_sausage.json
 d63162280f6c8f6e0108b1f11470f254080ed24c data/bangers_and_mash/recipes/stonecutting/potato_quarter_x4.json
-fd1a4b86a284747b71bf2bb09e8593892615782a data/forge/tags/items/food.json
-d57de426b3f10dc8ea0fcc9ea1cd6d5134b0646c data/forge/tags/items/food/sausages.json
-42d676bbd625d50110f0718df3435f97193bdd4e data/forge/tags/items/food/sausages/cooked.json
-a30d74be8f401d2ddc2c86b16251447768352a9f data/forge/tags/items/food/sausages/raw.json
+9e0397521d9f3d768aa891d4b0cddef131f1f7cb data/forge/tags/items/sausages.json
+dbc29b5bfbc9942d02abecfe5f68ece01ca8af5e data/forge/tags/items/sausages/cooked.json
+a30d74be8f401d2ddc2c86b16251447768352a9f data/forge/tags/items/sausages/raw.json

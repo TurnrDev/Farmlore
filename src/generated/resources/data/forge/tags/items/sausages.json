@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:sausages/raw",
+    "#forge:sausages/cooked"
+  ]
+}

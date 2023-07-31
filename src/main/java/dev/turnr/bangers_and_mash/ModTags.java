@@ -22,6 +22,8 @@ public class ModTags {
 
   public static class Items {
 
+    public static final TagKey<Item> SAUSAGES = forgeTag("sausages");
+
     private static TagKey<Item> tag(String name) {
       return ItemTags.create(BangersAndMash.getId(name));
     }
@@ -30,19 +32,12 @@ public class ModTags {
       return ItemTags.create(new ResourceLocation("forge", name));
     }
 
-    public static class Food {
+    public static class Sausages {
 
-      public static class Sausages {
-
-        public static final TagKey<Item> RAW = forgeTag("food/sausages/raw");
-        public static final TagKey<Item> COOKED = forgeTag("food/sausages/cooked");
-      }
-
-      public static final TagKey<Item> SAUSAGES = forgeTag("food/sausages");
-
+      public static final TagKey<Item> RAW = forgeTag("sausages/raw");
+      public static final TagKey<Item> COOKED = forgeTag("sausages/cooked");
     }
 
-    public static final TagKey<Item> FOOD = forgeTag("food");
   }
 
 

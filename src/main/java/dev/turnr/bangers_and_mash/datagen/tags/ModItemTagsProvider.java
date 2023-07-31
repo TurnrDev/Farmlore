@@ -1,14 +1,14 @@
 package dev.turnr.bangers_and_mash.datagen.tags;
 
 import static dev.turnr.bangers_and_mash.BangersAndMash.MOD_ID;
-import static dev.turnr.bangers_and_mash.ModTags.Items.FOOD;
-import static dev.turnr.bangers_and_mash.ModTags.Items.Food.SAUSAGES;
+import static dev.turnr.bangers_and_mash.ModTags.Items.SAUSAGES;
 
-import dev.turnr.bangers_and_mash.ModTags.Items.Food.Sausages;
+import dev.turnr.bangers_and_mash.ModTags.Items.Sausages;
 import dev.turnr.bangers_and_mash.item.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -39,8 +39,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
       cookedSausagesTagProvider.add(item.get());
     }
 
+    cookedSausagesTagProvider.addOptional(
+        new ResourceLocation("pamhc2foodextended", "sausageitem"));
+
     this.tag(SAUSAGES).addTags(Sausages.RAW, Sausages.COOKED);
-    this.tag(FOOD).addTag(SAUSAGES);
 
 
   }
