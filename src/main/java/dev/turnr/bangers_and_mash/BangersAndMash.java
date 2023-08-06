@@ -1,6 +1,8 @@
 package dev.turnr.bangers_and_mash;
 
 import com.mojang.logging.LogUtils;
+import dev.turnr.bangers_and_mash.blocks.BlockRegistry;
+import dev.turnr.bangers_and_mash.blocks.GenericBlocks;
 import dev.turnr.bangers_and_mash.items.Food;
 import dev.turnr.bangers_and_mash.items.GenericItems;
 import dev.turnr.bangers_and_mash.items.Ingredients;
@@ -25,7 +27,11 @@ public class BangersAndMash {
     Food.Items.register();
     Ingredients.register();
     GenericItems.register();
+    GenericBlocks.register();
+
     ItemRegistry.register(eventBus);
+    BlockRegistry.register(eventBus);
+
     eventBus.addListener(this::setup);
 
     // Register ourselves for server and other game events we are interested in
