@@ -1,7 +1,10 @@
 package dev.turnr.bangers_and_mash;
 
 import com.mojang.logging.LogUtils;
-import dev.turnr.bangers_and_mash.item.ModItems;
+import dev.turnr.bangers_and_mash.items.Food;
+import dev.turnr.bangers_and_mash.items.GenericItems;
+import dev.turnr.bangers_and_mash.items.Ingredients;
+import dev.turnr.bangers_and_mash.items.ItemRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -18,7 +21,11 @@ public class BangersAndMash {
 
   public BangersAndMash() {
     IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-    ModItems.register(eventBus);
+
+    Food.Items.register();
+    Ingredients.register();
+    GenericItems.register();
+    ItemRegistry.register(eventBus);
     eventBus.addListener(this::setup);
 
     // Register ourselves for server and other game events we are interested in

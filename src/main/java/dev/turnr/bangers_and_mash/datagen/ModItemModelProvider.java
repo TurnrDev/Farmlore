@@ -2,7 +2,7 @@ package dev.turnr.bangers_and_mash.datagen;
 
 import com.mojang.logging.LogUtils;
 import dev.turnr.bangers_and_mash.BangersAndMash;
-import dev.turnr.bangers_and_mash.item.ModItems;
+import dev.turnr.bangers_and_mash.items.ItemRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
@@ -23,9 +23,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
   @Override
   protected void registerModels() {
-    for (Item item : ModItems.ITEMS.getEntries().stream().map(RegistryObject::get)
-        .toArray(Item[]::new)) {
-
+    for (Item item : ItemRegistry.getItems().map(RegistryObject::get).toArray(Item[]::new)) {
       basicItem(item);
     }
   }

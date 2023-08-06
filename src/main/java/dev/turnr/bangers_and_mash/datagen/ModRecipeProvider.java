@@ -1,10 +1,9 @@
 package dev.turnr.bangers_and_mash.datagen;
 
-import static dev.turnr.bangers_and_mash.item.ModItems.RAW_SAUSAGES;
-
 import com.mojang.logging.LogUtils;
 import dev.turnr.bangers_and_mash.BangersAndMash;
-import dev.turnr.bangers_and_mash.item.ModItems;
+import dev.turnr.bangers_and_mash.items.GenericItems;
+import dev.turnr.bangers_and_mash.items.Food;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
@@ -73,7 +72,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     LOGGER.debug("HELLO from buildSausageRecipes in ModRecipeProvider");
 
     // Loop through all the items in the raw sausage tag
-    for (RegistryObject<Item> pRawSausage : RAW_SAUSAGES) {
+    for (RegistryObject<Item> pRawSausage : Food.Tags.RAW_SAUSAGES) {
       Item rawSausage = pRawSausage.get();
       Item cookedSausage = getCookedSausage(rawSausage);
       if (cookedSausage == null) {
@@ -91,19 +90,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     LOGGER.debug("HELLO from buildMiscRecipes in ModRecipeProvider");
 
     // Potatoes -> Potato Quarters
-    ShapelessRecipeBuilder.shapeless(ModItems.POTATO_QUARTER.get(), 4)
+    ShapelessRecipeBuilder.shapeless(Food.Items.POTATO_QUARTER.get(), 4)
         .requires(Items.POTATO)
         .unlockedBy("has_item", has(Items.POTATO))
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(BangersAndMash.MOD_ID, "crafting/potato_quarter_x4"));
-    SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.POTATO), ModItems.POTATO_QUARTER.get(),
+    SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.POTATO), Food.Items.POTATO_QUARTER.get(),
             4)
         .unlockedBy("has_item", has(Items.POTATO))
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(BangersAndMash.MOD_ID, "stonecutting/potato_quarter_x4"));
 
     // forge:plates/tin / steel / aluminum -> Tin Can
-    ShapedRecipeBuilder.shaped(ModItems.METAL_CAN.get(), 2).pattern("# #").pattern(" # ")
+    ShapedRecipeBuilder.shaped(GenericItems.METAL_CAN.get(), 2).pattern("# #").pattern(" # ")
         .define('#', Ingredient.fromValues(Stream.of(
             new Ingredient.TagValue(ItemTags.create(new ResourceLocation("forge", "plates/tin"))),
             new Ingredient.TagValue(ItemTags.create(new ResourceLocation("forge", "plates/steel"))),

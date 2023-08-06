@@ -3,7 +3,8 @@ package dev.turnr.bangers_and_mash.datagen.tags;
 import static dev.turnr.bangers_and_mash.BangersAndMash.MOD_ID;
 
 import dev.turnr.bangers_and_mash.ModTags;
-import dev.turnr.bangers_and_mash.item.ModItems;
+import dev.turnr.bangers_and_mash.items.GenericItems;
+import dev.turnr.bangers_and_mash.items.Food;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -29,13 +30,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
   protected void addTags() {
     TagAppender<Item> rawSausagesTagProvider = this.tag(ModTags.Items.FORGE_SAUSAGES_RAW);
 
-    for (RegistryObject<Item> item : ModItems.RAW_SAUSAGES) {
+    for (RegistryObject<Item> item : Food.Tags.RAW_SAUSAGES) {
       rawSausagesTagProvider.add(item.get());
     }
 
     TagAppender<Item> cookedSausagesTagProvider = this.tag(ModTags.Items.FORGE_SAUSAGES_COOKED);
 
-    for (RegistryObject<Item> item : ModItems.COOKED_SAUSAGES) {
+    for (RegistryObject<Item> item : Food.Tags.COOKED_SAUSAGES) {
       cookedSausagesTagProvider.add(item.get());
     }
 
@@ -45,7 +46,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     this.tag(ModTags.Items.FORGE_SAUSAGES)
         .addTags(ModTags.Items.FORGE_SAUSAGES_RAW, ModTags.Items.FORGE_SAUSAGES_COOKED);
 
-    this.tag(ModTags.Items.CONTAINERS).add(ModItems.METAL_CAN.get()).add(Items.BUCKET).addOptional(
+    this.tag(ModTags.Items.CONTAINERS).add(GenericItems.METAL_CAN.get()).add(Items.BUCKET).addOptional(
         new ResourceLocation("tconstruct", "copper_can"));
 
 
