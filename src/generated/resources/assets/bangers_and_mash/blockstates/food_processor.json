@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=north": {
       "model": "bangers_and_mash:block/food_processor"
+    },
+    "facing=south": {
+      "model": "bangers_and_mash:block/food_processor",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bangers_and_mash:block/food_processor",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "bangers_and_mash:block/food_processor",
+      "y": 90
     }
   }
 }

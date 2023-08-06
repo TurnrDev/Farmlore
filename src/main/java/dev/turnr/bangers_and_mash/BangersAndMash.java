@@ -7,6 +7,8 @@ import dev.turnr.bangers_and_mash.items.Food;
 import dev.turnr.bangers_and_mash.items.GenericItems;
 import dev.turnr.bangers_and_mash.items.Ingredients;
 import dev.turnr.bangers_and_mash.items.ItemRegistry;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -33,6 +35,7 @@ public class BangersAndMash {
     BlockRegistry.register(eventBus);
 
     eventBus.addListener(this::setup);
+    eventBus.addListener(this::clientSetup);
 
     // Register ourselves for server and other game events we are interested in
     MinecraftForge.EVENT_BUS.register(this);
@@ -40,6 +43,13 @@ public class BangersAndMash {
 
   public static ResourceLocation getId(String path) {
     return new ResourceLocation(MOD_ID, path);
+  }
+
+  private void clientSetup(final FMLCommonSetupEvent event) {
+    // do something that can only be done on the client
+    LOGGER.debug("HELLO FROM CLIENT SETUP");
+    ItemBlockRenderTypes.setRenderLayer(GenericBlocks.FOOD_PROCESSOR.get(),
+        RenderType.translucent());
   }
 
   private void setup(final FMLCommonSetupEvent event) {

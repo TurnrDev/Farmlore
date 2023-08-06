@@ -1,12 +1,14 @@
 package dev.turnr.bangers_and_mash.blocks;
 
 import dev.turnr.bangers_and_mash.BangersAndMash;
+import dev.turnr.bangers_and_mash.blocks.custom.FoodProcessor;
 import dev.turnr.bangers_and_mash.items.ItemRegistry;
 import java.util.function.Supplier;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.DeferredRegister;
@@ -30,8 +32,8 @@ public class GenericBlocks {
    * this. For now, it's just this.
    */
   public static final RegistryObject<Block> FOOD_PROCESSOR = registerBlock("food_processor",
-      () -> new Block(
-          BlockBehaviour.Properties.of(Material.METAL)), CreativeModeTab.TAB_MISC);
+      () -> new FoodProcessor(
+          BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()), CreativeModeTab.TAB_MISC);
 
 
   private static <T extends Block> RegistryObject<T> registerBlock(String name,
