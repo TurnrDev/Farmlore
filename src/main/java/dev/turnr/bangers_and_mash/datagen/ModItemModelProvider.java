@@ -6,6 +6,7 @@ import dev.turnr.bangers_and_mash.items.ItemRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -24,7 +25,11 @@ public class ModItemModelProvider extends ItemModelProvider {
   @Override
   protected void registerModels() {
     for (Item item : ItemRegistry.getItems().map(RegistryObject::get).toArray(Item[]::new)) {
-      basicItem(item);
+      if (item instanceof BlockItem) {
+        blockItem((BlockItem) item);
+      } else {
+        basicItem(item);
+      }
     }
   }
 
@@ -42,6 +47,11 @@ public class ModItemModelProvider extends ItemModelProvider {
     return withExistingParent(item.getRegistryName().getPath(),
         new ResourceLocation("item/generated")).texture("layer0", textureOrRicky(
         new ResourceLocation(BangersAndMash.MOD_ID, "item/" + item.getRegistryName().getPath())));
+  }
+
+  public ItemModelBuilder blockItem(BlockItem item) {
+    return withExistingParent(item.getRegistryName().getPath(),
+        new ResourceLocation(modid, "block/" + item.getRegistryName().getPath()));
   }
 
   public ItemModelBuilder handheldItem(Item item) {
