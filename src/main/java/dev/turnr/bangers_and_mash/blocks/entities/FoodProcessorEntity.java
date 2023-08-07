@@ -1,6 +1,7 @@
 package dev.turnr.bangers_and_mash.blocks.entities;
 
 import dev.turnr.bangers_and_mash.items.Food;
+import dev.turnr.bangers_and_mash.items.GenericItems;
 import dev.turnr.bangers_and_mash.screen.FoodProcessorMenu;
 import java.util.Random;
 import javax.annotation.Nonnull;
@@ -73,7 +74,7 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
     boolean hasItemInFirstSlot =
         entity.inventory.getStackInSlot(INPUT_SLOTS_ID_RANGE.getMinimum()).getItem() == Items.PORKCHOP;
     boolean hasItemInSecondSlot =
-        entity.inventory.getStackInSlot(ATTACHMENT_SLOT_ID).getItem() == Items.IRON_SWORD;
+        entity.inventory.getStackInSlot(ATTACHMENT_SLOT_ID).getItem() == GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get();
 
     return hasItemInFirstSlot && hasItemInSecondSlot;
   }
