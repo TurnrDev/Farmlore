@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "bangers_and_mash:food_processor_attachment_steel_blade",
+    "bangers_and_mash:food_processor_attachment_dough_hook",
+    "bangers_and_mash:food_processor_attachment_dough_blade",
+    "bangers_and_mash:food_processor_attachment_shredding_disc",
+    "bangers_and_mash:food_processor_attachment_juicer",
+    "bangers_and_mash:food_processor_attachment_mill",
+    "#bangers_and_mash:food_processor/attachments/whisk"
+  ]
+}

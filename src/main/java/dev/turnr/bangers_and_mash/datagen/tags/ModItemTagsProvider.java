@@ -54,6 +54,15 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_WHISK.get()).addOptional(
             new ResourceLocation("create", "whisk"));
 
+    this.tag(ModTags.Items.FOOD_PROCESSOR_ATTACHMENTS)
+        .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
+        .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_DOUGH_HOOK.get())
+        .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_DOUGH_BLADE.get())
+        .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_SHREDDING_DISC.get())
+        .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_JUICER.get())
+        .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_MILL.get())
+        .addTag(ModTags.Items.FOOD_PROCESSOR_ATTACHMENT_WHISK);
+
 
   }
 

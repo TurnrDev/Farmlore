@@ -28,7 +28,8 @@ public class ModTags {
 
     public static final TagKey<Item> CONTAINERS = tag("containers");
 
-    public static final TagKey<Item> FOOD_PROCESSOR_ATTACHMENT_WHISK = tag("food_processor/attachment/whisk");
+    public static final TagKey<Item> FOOD_PROCESSOR_ATTACHMENT_WHISK = tag("food_processor/attachments/whisk");
+    public static final TagKey<Item> FOOD_PROCESSOR_ATTACHMENTS = tag("food_processor/attachments");
 
     private static TagKey<Item> tag(String name) {
       return ItemTags.create(BangersAndMash.getId(name));
