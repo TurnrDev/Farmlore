@@ -3,10 +3,14 @@ package dev.turnr.bangers_and_mash;
 import com.mojang.logging.LogUtils;
 import dev.turnr.bangers_and_mash.blocks.BlockRegistry;
 import dev.turnr.bangers_and_mash.blocks.GenericBlocks;
+import dev.turnr.bangers_and_mash.blocks.entities.GenericBlockEntities;
 import dev.turnr.bangers_and_mash.items.Food;
 import dev.turnr.bangers_and_mash.items.GenericItems;
 import dev.turnr.bangers_and_mash.items.Ingredients;
 import dev.turnr.bangers_and_mash.items.ItemRegistry;
+import dev.turnr.bangers_and_mash.screen.AllMenuTypes;
+import dev.turnr.bangers_and_mash.screen.FoodProcessorScreen;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
@@ -34,6 +38,9 @@ public class BangersAndMash {
     ItemRegistry.register(eventBus);
     BlockRegistry.register(eventBus);
 
+    GenericBlockEntities.register(eventBus);
+    AllMenuTypes.register(eventBus);
+
     eventBus.addListener(this::setup);
     eventBus.addListener(this::clientSetup);
 
@@ -50,6 +57,9 @@ public class BangersAndMash {
     LOGGER.debug("HELLO FROM CLIENT SETUP");
     ItemBlockRenderTypes.setRenderLayer(GenericBlocks.FOOD_PROCESSOR.get(),
         RenderType.translucent());
+
+    MenuScreens.register(AllMenuTypes.FOOD_PROCESSOR_MENU.get(),
+        FoodProcessorScreen::new);
   }
 
   private void setup(final FMLCommonSetupEvent event) {
