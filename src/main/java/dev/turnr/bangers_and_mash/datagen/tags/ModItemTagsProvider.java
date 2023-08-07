@@ -3,8 +3,8 @@ package dev.turnr.bangers_and_mash.datagen.tags;
 import static dev.turnr.bangers_and_mash.BangersAndMash.MOD_ID;
 
 import dev.turnr.bangers_and_mash.ModTags;
-import dev.turnr.bangers_and_mash.items.GenericItems;
 import dev.turnr.bangers_and_mash.items.Food;
+import dev.turnr.bangers_and_mash.items.GenericItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -44,10 +44,15 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         new ResourceLocation("pamhc2foodextended", "sausageitem"));
 
     this.tag(ModTags.Items.FORGE_SAUSAGES)
-        .addTags(ModTags.Items.FORGE_SAUSAGES_RAW, ModTags.Items.FORGE_SAUSAGES_COOKED);
+        .addTag(ModTags.Items.FORGE_SAUSAGES_RAW).addTag(ModTags.Items.FORGE_SAUSAGES_COOKED);
 
-    this.tag(ModTags.Items.CONTAINERS).add(GenericItems.METAL_CAN.get()).add(Items.BUCKET).addOptional(
-        new ResourceLocation("tconstruct", "copper_can"));
+    this.tag(ModTags.Items.CONTAINERS).add(GenericItems.METAL_CAN.get()).add(Items.BUCKET)
+        .addOptional(
+            new ResourceLocation("tconstruct", "copper_can"));
+
+    this.tag(ModTags.Items.FOOD_PROCESSOR_ATTACHMENT_WHISK)
+        .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_WHISK.get()).addOptional(
+            new ResourceLocation("create", "whisk"));
 
 
   }

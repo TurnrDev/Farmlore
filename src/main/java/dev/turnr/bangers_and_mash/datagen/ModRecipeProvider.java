@@ -16,6 +16,7 @@ import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.Tag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -112,6 +113,76 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(BangersAndMash.MOD_ID, "crafting/metal_can_x2"));
 
+    ShapedRecipeBuilder.shaped(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get(), 1)
+        .pattern(" n ")
+        .pattern("nin")
+        .pattern(" n ")
+        .define('i', Ingredient.of(Items.IRON_INGOT))
+        .define('n', Ingredient.of(Items.IRON_NUGGET))
+        .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+        .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "crafting/food_processor_attachment_steel_blade"));
+
+    ShapedRecipeBuilder.shaped(GenericItems.FOOD_PROCESSOR_ATTACHMENT_DOUGH_HOOK.get(), 1)
+        .pattern(" n ")
+        .pattern("n n")
+        .pattern("  n")
+        .define('n', Ingredient.of(Items.IRON_NUGGET))
+        .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "crafting/food_processor_attachment_dough_hook"));
+
+    ShapedRecipeBuilder.shaped(GenericItems.FOOD_PROCESSOR_ATTACHMENT_DOUGH_BLADE.get(), 1)
+        .pattern("n")
+        .pattern("i")
+        .pattern("n")
+        .define('i', Ingredient.of(Items.IRON_INGOT))
+        .define('n', Ingredient.of(Items.IRON_NUGGET))
+        .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+        .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "crafting/food_processor_attachment_dough_blade"));
+
+    ShapedRecipeBuilder.shaped(GenericItems.FOOD_PROCESSOR_ATTACHMENT_SHREDDING_DISC.get(), 1)
+        .pattern("s")
+        .pattern("n")
+        .define('n', Ingredient.of(Items.IRON_NUGGET))
+        .define('s', ItemTags.create(new ResourceLocation("forge", "plates/iron")))
+        .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
+        .unlockedBy("has_iron_plate", has(ItemTags.create(new ResourceLocation("forge", "plates/iron"))))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "crafting/food_processor_attachment_shredding_disc"));
+
+    ShapedRecipeBuilder.shaped(GenericItems.FOOD_PROCESSOR_ATTACHMENT_JUICER.get(), 1)
+        .pattern("n")
+        .pattern("s")
+        .define('n', Ingredient.of(Items.IRON_NUGGET))
+        .define('s', ItemTags.create(new ResourceLocation("forge", "plates/iron")))
+        .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
+        .unlockedBy("has_iron_plate", has(ItemTags.create(new ResourceLocation("forge", "plates/iron"))))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "crafting/food_processor_attachment_juicer"));
+
+    ShapedRecipeBuilder.shaped(GenericItems.FOOD_PROCESSOR_ATTACHMENT_MILL.get(), 1)
+        .pattern(" n ")
+        .pattern("n n")
+        .pattern(" n ")
+        .define('n', Ingredient.of(Items.IRON_NUGGET))
+        .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "crafting/food_processor_attachment_mill"));
+
+    ShapedRecipeBuilder.shaped(GenericItems.FOOD_PROCESSOR_ATTACHMENT_WHISK.get(), 1)
+        .pattern(" n ")
+        .pattern("sns")
+        .pattern("sss")
+        .define('n', Ingredient.of(Items.IRON_NUGGET))
+        .define('s', ItemTags.create(new ResourceLocation("forge", "plates/iron")))
+        .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
+        .unlockedBy("has_iron_plate", has(ItemTags.create(new ResourceLocation("forge", "plates/iron"))))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "crafting/food_processor_attachment_whisk"));
 
   }
 
