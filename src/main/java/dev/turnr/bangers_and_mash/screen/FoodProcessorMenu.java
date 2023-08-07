@@ -42,12 +42,12 @@ public class FoodProcessorMenu extends AbstractContainerMenu {
     addPlayerHotbar(inv);
 
     this.entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-      this.addSlot(new SlotItemHandler(handler, FoodProcessorEntity.TOOL_SLOT, 17, 37));
-      this.addSlot(new ResultSlot(handler, FoodProcessorEntity.OUTPUT_SLOT, 144, 36));
+      this.addSlot(new SlotItemHandler(handler, FoodProcessorEntity.ATTACHMENT_SLOT_ID, 17, 37));
+      this.addSlot(new ResultSlot(handler, FoodProcessorEntity.OUTPUT_SLOT_ID, 144, 36));
 
       // Loop over the range FoodProcessorEntity.INPUT_SLOTS, adding new slots in a 3x3 grid pattern
 
-      int slotIndex = FoodProcessorEntity.INPUT_SLOTS.getMinimum();
+      int slotIndex = FoodProcessorEntity.INPUT_SLOTS_ID_RANGE.getMinimum();
       for (int row = 0; row < 3; ++row) {
         for (int col = 0; col < 3; ++col) {
           int x = 53 + col * 18;

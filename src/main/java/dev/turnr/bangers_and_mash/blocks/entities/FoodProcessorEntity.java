@@ -32,9 +32,9 @@ import org.jetbrains.annotations.Nullable;
 
 public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
 
-  public static final int TOOL_SLOT = 0;
-  public static final Range<Integer> INPUT_SLOTS = Range.between(1, 9);
-  public static final int OUTPUT_SLOT = 10;
+  public static final int ATTACHMENT_SLOT_ID = 0;
+  public static final Range<Integer> INPUT_SLOTS_ID_RANGE = Range.between(1, 9);
+  public static final int OUTPUT_SLOT_ID = 10;
 
   public final int getInventorySize() {
     return this.inventory.getSlots();
@@ -62,25 +62,25 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
   }
 
   private static void craftItem(FoodProcessorEntity entity) {
-    entity.inventory.getStackInSlot(TOOL_SLOT).hurt(1, new Random(), null);
-    entity.inventory.extractItem(INPUT_SLOTS.getMinimum(), 1, false);
+    entity.inventory.getStackInSlot(ATTACHMENT_SLOT_ID).hurt(1, new Random(), null);
+    entity.inventory.extractItem(INPUT_SLOTS_ID_RANGE.getMinimum(), 1, false);
 
-    entity.inventory.setStackInSlot(OUTPUT_SLOT, new ItemStack(Food.Items.SOSIG.get(),
-        entity.inventory.getStackInSlot(OUTPUT_SLOT).getCount() + 1));
+    entity.inventory.setStackInSlot(OUTPUT_SLOT_ID, new ItemStack(Food.Items.SOSIG.get(),
+        entity.inventory.getStackInSlot(OUTPUT_SLOT_ID).getCount() + 1));
   }
 
   private static boolean hasRecipe(FoodProcessorEntity entity) {
     boolean hasItemInFirstSlot =
-        entity.inventory.getStackInSlot(INPUT_SLOTS.getMinimum()).getItem() == Items.PORKCHOP;
+        entity.inventory.getStackInSlot(INPUT_SLOTS_ID_RANGE.getMinimum()).getItem() == Items.PORKCHOP;
     boolean hasItemInSecondSlot =
-        entity.inventory.getStackInSlot(TOOL_SLOT).getItem() == Items.IRON_SWORD;
+        entity.inventory.getStackInSlot(ATTACHMENT_SLOT_ID).getItem() == Items.IRON_SWORD;
 
     return hasItemInFirstSlot && hasItemInSecondSlot;
   }
 
   private static boolean hasNotReachedStackLimit(FoodProcessorEntity entity) {
-    return entity.inventory.getStackInSlot(OUTPUT_SLOT).getCount()
-        < entity.inventory.getStackInSlot(OUTPUT_SLOT)
+    return entity.inventory.getStackInSlot(OUTPUT_SLOT_ID).getCount()
+        < entity.inventory.getStackInSlot(OUTPUT_SLOT_ID)
         .getMaxStackSize();
   }
 
