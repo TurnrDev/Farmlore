@@ -1,7 +1,7 @@
 package dev.turnr.bangers_and_mash.recipe;
 
 import dev.turnr.bangers_and_mash.BangersAndMash;
-import dev.turnr.bangers_and_mash.recipe.food_processor.GeneralFoodProcessorRecipe;
+import dev.turnr.bangers_and_mash.recipe.food_processor.FoodProcessorRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -12,8 +12,8 @@ public class Recipes {
   public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister
       .create(ForgeRegistries.RECIPE_SERIALIZERS, BangersAndMash.MOD_ID);
 
-  public static final RegistryObject<RecipeSerializer<GeneralFoodProcessorRecipe>> FOOD_PROCESSOR = SERIALIZERS
-      .register("food_processor", () -> GeneralFoodProcessorRecipe.Serializer.INSTANCE);
+  public static final RegistryObject<RecipeSerializer<FoodProcessorRecipe>> FOOD_PROCESSOR = SERIALIZERS
+      .register("food_processor", () -> FoodProcessorRecipe.Serializer.INSTANCE);
 
   public static void register(IEventBus eventBus) {
     SERIALIZERS.register(eventBus);

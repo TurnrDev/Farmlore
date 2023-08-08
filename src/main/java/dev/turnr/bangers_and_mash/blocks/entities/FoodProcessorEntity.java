@@ -1,7 +1,7 @@
 package dev.turnr.bangers_and_mash.blocks.entities;
 
 import dev.turnr.bangers_and_mash.ModTags;
-import dev.turnr.bangers_and_mash.recipe.food_processor.GeneralFoodProcessorRecipe;
+import dev.turnr.bangers_and_mash.recipe.food_processor.FoodProcessorRecipe;
 import dev.turnr.bangers_and_mash.screen.FoodProcessorMenu;
 import java.util.Optional;
 import java.util.Random;
@@ -101,8 +101,8 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
       inventory.setItem(i, entity.inventory.getStackInSlot(i));
     }
 
-    Optional<GeneralFoodProcessorRecipe> match = level.getRecipeManager()
-        .getRecipeFor(GeneralFoodProcessorRecipe.Type.INSTANCE, inventory, level);
+    Optional<FoodProcessorRecipe> match = level.getRecipeManager()
+        .getRecipeFor(FoodProcessorRecipe.Type.INSTANCE, inventory, level);
 
     return match.isPresent() && canInsertAmountIntoOutputSlot(inventory)
         && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem())
@@ -121,8 +121,8 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
       inventory.setItem(i, entity.inventory.getStackInSlot(i));
     }
 
-    Optional<GeneralFoodProcessorRecipe> match = level.getRecipeManager()
-        .getRecipeFor(GeneralFoodProcessorRecipe.Type.INSTANCE, inventory, level);
+    Optional<FoodProcessorRecipe> match = level.getRecipeManager()
+        .getRecipeFor(FoodProcessorRecipe.Type.INSTANCE, inventory, level);
 
     if (match.isPresent()) {
       entity.inventory.getStackInSlot(FoodProcessorEntity.ATTACHMENT_SLOT_ID)

@@ -3,7 +3,6 @@ package dev.turnr.bangers_and_mash.recipe.food_processor;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import dev.turnr.bangers_and_mash.BangersAndMash;
-import dev.turnr.bangers_and_mash.blocks.custom.FoodProcessor;
 import dev.turnr.bangers_and_mash.blocks.entities.FoodProcessorEntity;
 import dev.turnr.bangers_and_mash.items.GenericItems;
 import javax.annotation.Nullable;
@@ -20,15 +19,17 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
 
-public class GeneralFoodProcessorRecipe implements Recipe<SimpleContainer> {
+public class FoodProcessorRecipe implements Recipe<SimpleContainer> {
   private final ResourceLocation id;
   private final ItemStack output;
   private final NonNullList<Ingredient> ingredients;
+  private final Ingredient attachment;
 
-  public GeneralFoodProcessorRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> ingredients) {
+  public FoodProcessorRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> ingredients, Ingredient attachment) {
     this.id = id;
     this.output = output;
     this.ingredients = ingredients;
+    this.attachment = attachment;
   }
 
 
@@ -40,9 +41,7 @@ public class GeneralFoodProcessorRecipe implements Recipe<SimpleContainer> {
    */
   @Override
   public boolean matches(SimpleContainer pContainer, Level pLevel) {
-    boolean hasCorrectAttachment = Ingredient.of(
-            GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
-        .test(pContainer.getItem(FoodProcessorEntity.ATTACHMENT_SLOT_ID));
+    boolean hasCorrectAttachment = this.attachment.test(pContainer.getItem(FoodProcessorEntity.ATTACHMENT_SLOT_ID));
 
     if (!hasCorrectAttachment) {
       return false;
@@ -104,7 +103,7 @@ public class GeneralFoodProcessorRecipe implements Recipe<SimpleContainer> {
     return Type.INSTANCE;
   }
 
-  public static class Type implements RecipeType<GeneralFoodProcessorRecipe> {
+  public static class Type implements RecipeType<FoodProcessorRecipe> {
     private Type() {
     }
 
@@ -112,13 +111,15 @@ public class GeneralFoodProcessorRecipe implements Recipe<SimpleContainer> {
     public static final String ID = new ResourceLocation(BangersAndMash.MOD_ID, "food_processor").toString();
   }
 
-  public static class Serializer implements RecipeSerializer<GeneralFoodProcessorRecipe> {
+  public static class Serializer implements RecipeSerializer<FoodProcessorRecipe> {
     public static final Serializer INSTANCE = new Serializer();
     public static final ResourceLocation ID = new ResourceLocation(BangersAndMash.MOD_ID, "food_processor");
 
     @Override
-    public GeneralFoodProcessorRecipe fromJson(ResourceLocation pId, JsonObject pJson) {
+    public FoodProcessorRecipe fromJson(ResourceLocation pId, JsonObject pJson) {
       ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pJson, "output"));
+
+      Ingredient attachment = Ingredient.fromJson(GsonHelper.getAsJsonObject(pJson, "attachment"));
 
       JsonArray ingredientsJson = GsonHelper.getAsJsonArray(pJson, "ingredients");
       NonNullList<Ingredient> ingredients = NonNullList.withSize(ingredientsJson.size(), Ingredient.EMPTY);
@@ -127,11 +128,12 @@ public class GeneralFoodProcessorRecipe implements Recipe<SimpleContainer> {
         ingredients.set(i, Ingredient.fromJson(ingredientsJson.get(i)));
       }
 
-      return new GeneralFoodProcessorRecipe(pId, output, ingredients);
+      return new FoodProcessorRecipe(pId, output, ingredients, attachment);
     }
 
     @Override
-    public GeneralFoodProcessorRecipe fromNetwork(ResourceLocation pId, FriendlyByteBuf buf) {
+    public FoodProcessorRecipe fromNetwork(ResourceLocation pId, FriendlyByteBuf buf) {
+      Ingredient attachment = Ingredient.fromNetwork(buf);
       NonNullList<Ingredient> ingredients = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
 
       for (int i = 0; i < ingredients.size(); i++) {
@@ -139,11 +141,12 @@ public class GeneralFoodProcessorRecipe implements Recipe<SimpleContainer> {
       }
 
       ItemStack output = buf.readItem();
-      return new GeneralFoodProcessorRecipe(pId, output, ingredients);
+      return new FoodProcessorRecipe(pId, output, ingredients, attachment);
     }
 
     @Override
-    public void toNetwork(FriendlyByteBuf buf, GeneralFoodProcessorRecipe recipe) {
+    public void toNetwork(FriendlyByteBuf buf, FoodProcessorRecipe recipe) {
+      buf.writeItem(recipe.attachment.getItems()[0]);
       buf.writeInt(recipe.ingredients.size());
 
       for (Ingredient ingredient : recipe.ingredients) {

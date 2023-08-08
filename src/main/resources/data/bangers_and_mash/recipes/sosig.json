@@ -1,7 +1,12 @@
 {
   "type": "bangers_and_mash:food_processor",
+  "attachment": {
+    "item": "bangers_and_mash:food_processor_attachment_steel_blade"
+  },
   "ingredients": [
-    {"item": "minecraft:porkchop"}
+    {
+      "item": "minecraft:porkchop"
+    }
   ],
   "output": {
     "item": "bangers_and_mash:sosig"
