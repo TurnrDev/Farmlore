@@ -30,10 +30,16 @@ public class Ingredients {
   public static final RegistryObject<Item> THYME = ITEMS.register("thyme",
       () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD)));
 
-  public static final RegistryObject<Item> RAW_MINCED_PORK = ITEMS.register("minced_pork",
+  public static final RegistryObject<Item> MINCED_PORK = ITEMS.register("minced_pork",
       () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD)));
 
-  public static final RegistryObject<Item> RAW_MINCED_BEEF = ITEMS.register("minced_beef",
+  public static final RegistryObject<Item> MINCED_BEEF = ITEMS.register("minced_beef",
+      () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD)));
+
+  public static final RegistryObject<Item> COOKED_MINCED_PORK = ITEMS.register("cooked_minced_pork",
+      () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD)));
+
+  public static final RegistryObject<Item> COOKED_MINCED_BEEF = ITEMS.register("cooked_minced_beef",
       () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD)));
 
   public static void register() {

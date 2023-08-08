@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "bangers_and_mash:minced_beef"
+  },
+  "result": "bangers_and_mash:cooked_minced_beef",
+  "experience": 0.0,
+  "cookingtime": 200
+}

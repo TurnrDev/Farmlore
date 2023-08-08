@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bangers_and_mash:smelting/cooked_minced_pork"
+    ]
+  },
+  "criteria": {
+    "has_minced_pork": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bangers_and_mash:minced_pork"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bangers_and_mash:smelting/cooked_minced_pork"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_minced_pork",
+      "has_the_recipe"
+    ]
+  ]
+}

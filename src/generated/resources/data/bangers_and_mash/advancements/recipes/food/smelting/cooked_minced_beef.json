@@ -2,29 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "bangers_and_mash:food_processor/sosig"
+      "bangers_and_mash:smelting/cooked_minced_beef"
     ]
   },
   "criteria": {
-    "has_porkchop": {
+    "has_minced_beef": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:porkchop"
-            ]
-          }
-        ]
-      }
-    },
-    "has_dragon_egg": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:dragon_egg"
+              "bangers_and_mash:minced_beef"
             ]
           }
         ]
@@ -33,14 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "bangers_and_mash:food_processor/sosig"
+        "recipe": "bangers_and_mash:smelting/cooked_minced_beef"
       }
     }
   },
   "requirements": [
     [
-      "has_porkchop",
-      "has_dragon_egg",
+      "has_minced_beef",
       "has_the_recipe"
     ]
   ]
