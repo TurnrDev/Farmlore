@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bangers_and_mash:food_processor/minced_beef"
+    ]
+  },
+  "criteria": {
+    "has_beef": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:beef"
+            ]
+          }
+        ]
+      }
+    },
+    "has_food_processor_attachment_steel_blade": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bangers_and_mash:food_processor_attachment_steel_blade"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bangers_and_mash:food_processor/minced_beef"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_beef",
+      "has_food_processor_attachment_steel_blade",
+      "has_the_recipe"
+    ]
+  ]
+}

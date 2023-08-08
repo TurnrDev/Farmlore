@@ -1,0 +1,14 @@
+{
+  "type": "bangers_and_mash:food_processor",
+  "attachment": {
+    "item": "bangers_and_mash:food_processor_attachment_steel_blade"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:beef"
+    }
+  ],
+  "output": {
+    "item": "bangers_and_mash:minced_beef"
+  }
+}

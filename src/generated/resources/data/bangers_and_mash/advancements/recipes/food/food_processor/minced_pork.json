@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bangers_and_mash:food_processor/minced_pork"
+    ]
+  },
+  "criteria": {
+    "has_porkchop": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:porkchop"
+            ]
+          }
+        ]
+      }
+    },
+    "has_food_processor_attachment_steel_blade": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bangers_and_mash:food_processor_attachment_steel_blade"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bangers_and_mash:food_processor/minced_pork"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_porkchop",
+      "has_food_processor_attachment_steel_blade",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -4,6 +4,8 @@ import com.mojang.logging.LogUtils;
 import dev.turnr.bangers_and_mash.BangersAndMash;
 import dev.turnr.bangers_and_mash.items.GenericItems;
 import dev.turnr.bangers_and_mash.items.Food;
+import dev.turnr.bangers_and_mash.items.Ingredients;
+import dev.turnr.bangers_and_mash.recipe.food_processor.FoodProcessorRecipe;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
@@ -183,6 +185,32 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         .unlockedBy("has_iron_plate", has(ItemTags.create(new ResourceLocation("forge", "plates/iron"))))
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(BangersAndMash.MOD_ID, "crafting/food_processor_attachment_whisk"));
+
+    FoodProcessorRecipeBuilder.foodProcessor(Ingredients.RAW_MINCED_PORK.get(), 1)
+        .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
+        .requires(Items.PORKCHOP, 1)
+        .unlockedBy("has_porkchop", has(Items.PORKCHOP))
+        .unlockedBy("has_food_processor_attachment_steel_blade",
+            has(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "food_processor/minced_pork"));
+
+    FoodProcessorRecipeBuilder.foodProcessor(Ingredients.RAW_MINCED_BEEF.get(), 1)
+        .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
+        .requires(Items.BEEF, 1)
+        .unlockedBy("has_beef", has(Items.BEEF))
+        .unlockedBy("has_food_processor_attachment_steel_blade",
+            has(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "food_processor/minced_beef"));
+
+    FoodProcessorRecipeBuilder.foodProcessor(Food.Items.SOSIG.get(), 1)
+        .setAttachment(Items.DRAGON_EGG)
+        .requires(Items.PORKCHOP, 1)
+        .unlockedBy("has_porkchop", has(Items.PORKCHOP))
+        .unlockedBy("has_dragon_egg", has(Items.DRAGON_EGG))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "food_processor/sosig"));
 
   }
 

@@ -1,0 +1,14 @@
+{
+  "type": "bangers_and_mash:food_processor",
+  "attachment": {
+    "item": "minecraft:dragon_egg"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:porkchop"
+    }
+  ],
+  "output": {
+    "item": "bangers_and_mash:sosig"
+  }
+}
