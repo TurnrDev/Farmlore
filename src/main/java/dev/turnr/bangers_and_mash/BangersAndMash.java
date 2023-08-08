@@ -8,6 +8,7 @@ import dev.turnr.bangers_and_mash.items.Food;
 import dev.turnr.bangers_and_mash.items.GenericItems;
 import dev.turnr.bangers_and_mash.items.Ingredients;
 import dev.turnr.bangers_and_mash.items.ItemRegistry;
+import dev.turnr.bangers_and_mash.recipe.Recipes;
 import dev.turnr.bangers_and_mash.screen.AllMenuTypes;
 import dev.turnr.bangers_and_mash.screen.FoodProcessorScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -40,6 +41,7 @@ public class BangersAndMash {
 
     GenericBlockEntities.register(eventBus);
     AllMenuTypes.register(eventBus);
+    Recipes.register(eventBus);
 
     eventBus.addListener(this::setup);
     eventBus.addListener(this::clientSetup);

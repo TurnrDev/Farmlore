@@ -6,7 +6,9 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -29,14 +31,20 @@ public class FoodProcessorMenu extends AbstractContainerMenu {
   private final FoodProcessorEntity entity;
   private final Level level;
 
+  private final ContainerData data;
+
   public FoodProcessorMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-    this(pContainerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()));
+    this(pContainerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()),
+        new SimpleContainerData(2));
   }
-  public FoodProcessorMenu(int pContainerId, Inventory inv, BlockEntity entity) {
+
+  public FoodProcessorMenu(int pContainerId, Inventory inv, BlockEntity entity,
+      ContainerData data) {
     super(AllMenuTypes.FOOD_PROCESSOR_MENU.get(), pContainerId);
     this.entity = (FoodProcessorEntity) entity;
     checkContainerSize(inv, this.entity.getInventorySize());
     this.level = inv.player.level;
+    this.data = data;
 
     addPlayerInventory(inv);
     addPlayerHotbar(inv);
@@ -58,8 +66,22 @@ public class FoodProcessorMenu extends AbstractContainerMenu {
       }
     });
 
+    addDataSlots(data);
 
+  }
 
+  public boolean isCrafting() {
+    return this.data.get(0) > 0;
+  }
+
+  public int getScaledProgress() {
+    int craftingProgress = this.data.get(0);
+    int craftingTotalTime = this.data.get(1);
+    int progressArrowSize = 24; // The width of the arrow in pixels
+
+    return craftingTotalTime != 0 && craftingProgress != 0
+        ? craftingProgress * progressArrowSize / craftingTotalTime
+        : 0;
   }
 
   @Override

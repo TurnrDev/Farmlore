@@ -31,6 +31,10 @@ public class FoodProcessorScreen extends AbstractContainerScreen<FoodProcessorMe
 
     this.blit(pPoseStack, x, y, 0, 0, this.imageWidth, this.imageHeight);
 
+    if (this.menu.isCrafting()) {
+      this.blit(pPoseStack, x + 109, y + 37, 176, 0, this.menu.getScaledProgress(), 17);
+    }
+
   }
 
   @Override

@@ -1,0 +1,9 @@
+{
+  "type": "bangers_and_mash:food_processor",
+  "ingredients": [
+    {"item": "minecraft:porkchop"}
+  ],
+  "output": {
+    "item": "bangers_and_mash:sosig"
+  }
+}
