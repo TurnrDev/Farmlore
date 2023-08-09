@@ -4,6 +4,7 @@ import dev.turnr.bangers_and_mash.blocks.BlockRegistry;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
 public class ModBlockLootTables extends BlockLoot {
 
@@ -15,7 +16,7 @@ public class ModBlockLootTables extends BlockLoot {
   }
 
   @Override
-  protected Iterable<Block> getKnownBlocks() {
+  protected @NotNull Iterable<Block> getKnownBlocks() {
     return BlockRegistry.getEntries().map(RegistryObject::get)::iterator;
   }
 }
