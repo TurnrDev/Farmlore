@@ -1,0 +1,17 @@
+{
+  "type": "bangers_and_mash:food_processor",
+  "attachment": {
+    "item": "bangers_and_mash:food_processor_attachment_steel_blade"
+  },
+  "ingredients": [
+    {
+      "item": "bangers_and_mash:minced_pork"
+    },
+    {
+      "item": "minecraft:apple"
+    }
+  ],
+  "output": {
+    "item": "bangers_and_mash:pork_apple_sausage"
+  }
+}

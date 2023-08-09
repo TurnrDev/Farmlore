@@ -38,6 +38,9 @@ public class PlantBlocks {
   public static final RegistryObject<Block> THYME = registerBlockWithoutBlockItem("thyme",
       () -> new HerbBlock(HERB_PROPERTIES));
 
+  public static final RegistryObject<Block> SAGE = registerBlockWithoutBlockItem("sage",
+      () -> new HerbBlock(HERB_PROPERTIES));
+
   public static <T extends Block> RegistryObject<T> registerBlockWithoutBlockItem(String name,
       Supplier<T> block) {
     return BLOCKS.register(name, block);

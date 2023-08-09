@@ -85,6 +85,73 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
       addSmokingRecipe(pFinishedRecipeConsumer, rawSausage, cookedSausage, 0.0F, 200);
       addSmeltingRecipe(pFinishedRecipeConsumer, rawSausage, cookedSausage, 0.0F, 200);
     }
+
+    // Cumberland Sausage is made with chopped pork instead. Made with black pepper.
+
+    FoodProcessorRecipeBuilder.foodProcessor(Food.Items.GLOUCESTER_SAUSAGE.get(), 1)
+        .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
+        .requires(Ingredients.MINCED_PORK.get())
+        .requires(Ingredients.SAGE.get())
+        .unlockedBy("has_minced_pork", has(Ingredients.MINCED_PORK.get()))
+        .unlockedBy("has_sage", has(Ingredients.SAGE.get()))
+        .unlockedBy("has_food_processor_attachment_steel_blade",
+            has(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "food_processor/gloucester_sausage"));
+
+    FoodProcessorRecipeBuilder.foodProcessor(Food.Items.LINCOLNSHIRE_SAUSAGE.get(), 1)
+        .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
+        .requires(Ingredients.MINCED_PORK.get())
+        .requires(Ingredients.THYME.get())
+        .unlockedBy("has_minced_pork", has(Ingredients.MINCED_PORK.get()))
+        .unlockedBy("has_thyme", has(Ingredients.THYME.get()))
+        .unlockedBy("has_food_processor_attachment_steel_blade",
+            has(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "food_processor/lincolnshire_sausage"));
+
+    // Manchester Sausage has Cloves, Ginger, Nutmeg, Mace and White Pepper. TODO: Add these
+
+    // Marylebone Sausage has Mace, Sage and Ginger.
+
+    // Oxford Sausage has Sage, Marjoram(?), Lemon, Pork and Veal.
+
+    FoodProcessorRecipeBuilder.foodProcessor(Food.Items.PORK_APPLE_SAUSAGE.get(), 1)
+        .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
+        .requires(Ingredients.MINCED_PORK.get())
+        .requires(Items.APPLE)
+        .unlockedBy("has_minced_pork", has(Ingredients.MINCED_PORK.get()))
+        .unlockedBy("has_apple", has(Items.APPLE))
+        .unlockedBy("has_food_processor_attachment_steel_blade",
+            has(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "food_processor/pork_apple_sausage"));
+
+    FoodProcessorRecipeBuilder.foodProcessor(Food.Items.SQUARE_SAUSAGE.get(), 1)
+        .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
+        .requires(Ingredients.MINCED_PORK.get())
+        .requires(Ingredients.MINCED_BEEF.get())
+        .unlockedBy("has_minced_pork", has(Ingredients.MINCED_PORK.get()))
+        .unlockedBy("has_minced_beef", has(Ingredients.MINCED_BEEF.get()))
+        .unlockedBy("has_food_processor_attachment_steel_blade",
+            has(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "food_processor/square_sausage"));
+
+    FoodProcessorRecipeBuilder.foodProcessor(Food.Items.TOMATO_SAUSAGE.get(), 1)
+        .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
+        .requires(Ingredients.MINCED_PORK.get())
+        .requires(ItemTags.create(new ResourceLocation("forge", "vegetables/tomato")))
+        .unlockedBy("has_minced_pork", has(Ingredients.MINCED_PORK.get()))
+        .unlockedBy("has_tomato", has(ItemTags.create(new ResourceLocation("forge", "vegetables/tomato"))))
+        .unlockedBy("has_food_processor_attachment_steel_blade",
+            has(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(BangersAndMash.MOD_ID, "food_processor/tomato_sausage"));
+
+    // Yorkshire Sausage has Cayenne, Nutmeg, White Pepper and Mace.
+
+
   }
 
   private void buildMiscRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
@@ -223,17 +290,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         .unlockedBy("has_minced_beef", has(Ingredients.MINCED_BEEF.get()))
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(BangersAndMash.MOD_ID, "smelting/cooked_minced_beef"));
-
-    FoodProcessorRecipeBuilder.foodProcessor(Food.Items.CUMBERLAND_SAUSAGE.get(), 1)
-        .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
-        .requires(Ingredients.MINCED_PORK.get())
-        .requires(Ingredients.THYME.get())
-        .unlockedBy("has_minced_pork", has(Ingredients.MINCED_PORK.get()))
-        .unlockedBy("has_thyme", has(Ingredients.THYME.get()))
-        .unlockedBy("has_food_processor_attachment_steel_blade",
-            has(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
-        .save(pFinishedRecipeConsumer,
-            new ResourceLocation(BangersAndMash.MOD_ID, "food_processor/cumberland_sausage"));
 
   }
 

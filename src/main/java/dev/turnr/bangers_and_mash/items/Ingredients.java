@@ -30,6 +30,9 @@ public class Ingredients {
   public static final RegistryObject<Item> THYME = ITEMS.register("thyme",
       () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD)));
 
+  public static final RegistryObject<Item> SAGE = ITEMS.register("sage",
+      () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD)));
+
   public static final RegistryObject<Item> MINCED_PORK = ITEMS.register("minced_pork",
       () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD)));
 

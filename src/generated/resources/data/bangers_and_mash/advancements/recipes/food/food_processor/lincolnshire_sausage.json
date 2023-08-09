@@ -1,0 +1,60 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bangers_and_mash:food_processor/lincolnshire_sausage"
+    ]
+  },
+  "criteria": {
+    "has_minced_pork": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bangers_and_mash:minced_pork"
+            ]
+          }
+        ]
+      }
+    },
+    "has_thyme": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bangers_and_mash:thyme"
+            ]
+          }
+        ]
+      }
+    },
+    "has_food_processor_attachment_steel_blade": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bangers_and_mash:food_processor_attachment_steel_blade"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bangers_and_mash:food_processor/lincolnshire_sausage"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_minced_pork",
+      "has_thyme",
+      "has_food_processor_attachment_steel_blade",
+      "has_the_recipe"
+    ]
+  ]
+}

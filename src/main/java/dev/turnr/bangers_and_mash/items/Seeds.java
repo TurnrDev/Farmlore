@@ -38,6 +38,10 @@ public class Seeds {
       () -> new ItemNameBlockItem(PlantBlocks.THYME.get(),
           new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
 
+  public static final RegistryObject<Item> SAGE = ITEMS.register("sage_seeds",
+      () -> new ItemNameBlockItem(PlantBlocks.SAGE.get(),
+          new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
+
   public static void register() {
     ItemRegistry.register(ITEMS);
   }

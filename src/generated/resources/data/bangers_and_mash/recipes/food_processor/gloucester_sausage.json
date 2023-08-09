@@ -8,10 +8,10 @@
       "item": "bangers_and_mash:minced_pork"
     },
     {
-      "item": "bangers_and_mash:thyme"
+      "item": "bangers_and_mash:sage"
     }
   ],
   "output": {
-    "item": "bangers_and_mash:cumberland_sausage"
+    "item": "bangers_and_mash:gloucester_sausage"
   }
 }

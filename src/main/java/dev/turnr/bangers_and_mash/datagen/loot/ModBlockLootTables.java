@@ -27,6 +27,7 @@ public class ModBlockLootTables extends BlockLoot {
     this.addCrop(PlantBlocks.MINT.get(), Ingredients.MINT.get(), Seeds.MINT.get());
     this.addCrop(PlantBlocks.ROSEMARY.get(), Ingredients.ROSEMARY.get(), Seeds.ROSEMARY.get());
     this.addCrop(PlantBlocks.THYME.get(), Ingredients.THYME.get(), Seeds.THYME.get());
+    this.addCrop(PlantBlocks.SAGE.get(), Ingredients.SAGE.get(), Seeds.SAGE.get());
 
   }
 
