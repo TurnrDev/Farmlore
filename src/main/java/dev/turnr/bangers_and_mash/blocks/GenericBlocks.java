@@ -1,7 +1,6 @@
 package dev.turnr.bangers_and_mash.blocks;
 
 import dev.turnr.bangers_and_mash.BangersAndMash;
-import dev.turnr.bangers_and_mash.blocks.herbs.HerbBlock;
 import dev.turnr.bangers_and_mash.blocks.machines.FoodProcessor;
 import dev.turnr.bangers_and_mash.items.ItemRegistry;
 import java.util.function.Supplier;
@@ -25,11 +24,6 @@ public class GenericBlocks {
   public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(
       ForgeRegistries.ITEMS,
       BangersAndMash.MOD_ID);
-
-  public static final RegistryObject<Block> THYME = registerBlockWithoutBlockItem("thyme",
-      () -> new HerbBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission()
-          .randomTicks().instabreak().sound(SoundType.GRASS)));
-
   /**
    * It would be nice to make this tiered, much like the vanilla tools in game. I will need to look
    * into that. It might make sense for the food_processor to not be tiered, but infact, holds a
@@ -41,11 +35,6 @@ public class GenericBlocks {
       () -> new FoodProcessor(BlockBehaviour.Properties.of(
           Material.METAL, MaterialColor.METAL).strength(0.8F).sound(SoundType.GLASS)),
       CreativeModeTab.TAB_MISC);
-
-  public static <T extends Block> RegistryObject<T> registerBlockWithoutBlockItem(String name,
-      Supplier<T> block) {
-    return BLOCKS.register(name, block);
-  }
 
 
   private static <T extends Block> RegistryObject<T> registerBlock(String name,
