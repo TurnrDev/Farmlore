@@ -150,3 +150,7 @@ d5b4dd007435987044efcda6b248f2b3f6de955b data/bangers_and_mash/tags/items/food_p
 9e0397521d9f3d768aa891d4b0cddef131f1f7cb data/forge/tags/items/sausages.json
 dbc29b5bfbc9942d02abecfe5f68ece01ca8af5e data/forge/tags/items/sausages/cooked.json
 a30d74be8f401d2ddc2c86b16251447768352a9f data/forge/tags/items/sausages/raw.json
+74700d556ca80c7a1db5fd4efb09c3ddb26cad66 data/minecraft/tags/blocks/mineable/axe.json
+74700d556ca80c7a1db5fd4efb09c3ddb26cad66 data/minecraft/tags/blocks/mineable/hoe.json
+74700d556ca80c7a1db5fd4efb09c3ddb26cad66 data/minecraft/tags/blocks/mineable/pickaxe.json
+74700d556ca80c7a1db5fd4efb09c3ddb26cad66 data/minecraft/tags/blocks/mineable/shovel.json

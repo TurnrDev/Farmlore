@@ -8,9 +8,10 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -24,6 +25,9 @@ public class GenericBlocks {
       ForgeRegistries.ITEMS,
       BangersAndMash.MOD_ID);
 
+  private static final BlockBehaviour.Properties FOOD_PROCESSOR_PROPERTIES = BlockBehaviour.Properties.of(
+      Material.METAL, MaterialColor.METAL).strength(0.8F).sound(SoundType.GLASS);
+
   /**
    * It would be nice to make this tiered, much like the vanilla tools in game. I will need to look
    * into that. It might make sense for the food_processor to not be tiered, but infact, holds a
@@ -32,8 +36,7 @@ public class GenericBlocks {
    * this. For now, it's just this.
    */
   public static final RegistryObject<Block> FOOD_PROCESSOR = registerBlock("food_processor",
-      () -> new FoodProcessor(
-          BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()), CreativeModeTab.TAB_MISC);
+      () -> new FoodProcessor(FOOD_PROCESSOR_PROPERTIES), CreativeModeTab.TAB_MISC);
 
 
   private static <T extends Block> RegistryObject<T> registerBlock(String name,

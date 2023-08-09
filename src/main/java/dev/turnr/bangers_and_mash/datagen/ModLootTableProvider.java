@@ -3,7 +3,6 @@ package dev.turnr.bangers_and_mash.datagen;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import dev.turnr.bangers_and_mash.datagen.loot.ModBlockLootTables;
-import dev.turnr.bangers_and_mash.datagen.loot.ModChestLootTables;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
@@ -13,7 +12,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.LootTable.Builder;
 import net.minecraft.world.level.storage.loot.LootTables;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
@@ -23,8 +21,7 @@ import org.jetbrains.annotations.NotNull;
 public class ModLootTableProvider extends LootTableProvider {
   private final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>>
       loot_tables = ImmutableList.of(
-          Pair.of(ModBlockLootTables::new, LootContextParamSets.BLOCK)  // ,
-//          Pair.of(ModChestLootTables::new, LootContextParamSets.CHEST)
+          Pair.of(ModBlockLootTables::new, LootContextParamSets.BLOCK)
       );
 
   public ModLootTableProvider(DataGenerator pGenerator) {
