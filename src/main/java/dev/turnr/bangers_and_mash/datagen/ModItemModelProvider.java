@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -25,7 +26,7 @@ public class ModItemModelProvider extends ItemModelProvider {
   @Override
   protected void registerModels() {
     for (Item item : ItemRegistry.getEntries().map(RegistryObject::get).toArray(Item[]::new)) {
-      if (item instanceof BlockItem) {
+      if (item instanceof BlockItem && !(item instanceof ItemNameBlockItem)) {
         blockItem((BlockItem) item);
       } else {
         basicItem(item);

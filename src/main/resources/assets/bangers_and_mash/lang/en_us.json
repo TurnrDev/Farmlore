@@ -34,5 +34,7 @@
   "item.bangers_and_mash.coriander": "Cilantro",
   "item.bangers_and_mash.mint": "Mint",
   "item.bangers_and_mash.rosemary": "Rosemary",
-  "item.bangers_and_mash.thyme": "Thyme"
+  "item.bangers_and_mash.thyme": "Thyme",
+  "item.bangers_and_mash.thyme_seeds": "Thyme Seeds",
+  "block.bangers_and_mash.thyme": "Thyme"
 }

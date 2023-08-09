@@ -8,6 +8,7 @@ import dev.turnr.bangers_and_mash.items.Food;
 import dev.turnr.bangers_and_mash.items.GenericItems;
 import dev.turnr.bangers_and_mash.items.Ingredients;
 import dev.turnr.bangers_and_mash.items.ItemRegistry;
+import dev.turnr.bangers_and_mash.items.Seeds;
 import dev.turnr.bangers_and_mash.recipe.Recipes;
 import dev.turnr.bangers_and_mash.screen.AllMenuTypes;
 import dev.turnr.bangers_and_mash.screen.FoodProcessorScreen;
@@ -34,6 +35,7 @@ public class BangersAndMash {
     Food.Items.register();
     Ingredients.register();
     GenericItems.register();
+    Seeds.register();
     GenericBlocks.register();
 
     ItemRegistry.register(eventBus);
@@ -59,6 +61,8 @@ public class BangersAndMash {
     LOGGER.debug("HELLO FROM CLIENT SETUP");
     ItemBlockRenderTypes.setRenderLayer(GenericBlocks.FOOD_PROCESSOR.get(),
         RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(GenericBlocks.THYME.get(),
+        RenderType.cutout());
 
     MenuScreens.register(AllMenuTypes.FOOD_PROCESSOR_MENU.get(),
         FoodProcessorScreen::new);
