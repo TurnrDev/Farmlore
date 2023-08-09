@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/crop",
   "textures": {
-    "crop": "bangers_and_mash:ricky"
+    "crop": "bangers_and_mash:block/thyme_stage_1"
   }
 }

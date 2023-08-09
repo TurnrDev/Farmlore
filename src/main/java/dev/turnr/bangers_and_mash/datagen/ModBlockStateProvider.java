@@ -68,7 +68,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
   public void cropBlock(CropBlock block) {
     Function<BlockState, ConfiguredModel[]> function = state -> states(state, block,
         block.getRegistryName().getPath() + "_stage_",
-        block.getRegistryName().getPath() + "_");
+        block.getRegistryName().getPath() + "_stage_");
 
     getVariantBuilder(block).forAllStates(function);
   }
