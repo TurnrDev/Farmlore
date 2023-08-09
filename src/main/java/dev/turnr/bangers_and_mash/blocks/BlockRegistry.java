@@ -22,7 +22,7 @@ public class BlockRegistry {
     }
   }
 
-  public static Stream<RegistryObject<Block>> getItems() {
+  public static Stream<RegistryObject<Block>> getEntries() {
     return REGISTERS.stream().flatMap(registry -> registry.getEntries().stream());
   }
 

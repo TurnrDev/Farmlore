@@ -22,7 +22,7 @@ public class ItemRegistry {
     }
   }
 
-  public static Stream<RegistryObject<Item>> getItems() {
+  public static Stream<RegistryObject<Item>> getEntries() {
     return REGISTERS.stream().flatMap(registry -> registry.getEntries().stream());
   }
 

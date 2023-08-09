@@ -4,7 +4,6 @@ import com.mojang.logging.LogUtils;
 import dev.turnr.bangers_and_mash.BangersAndMash;
 import dev.turnr.bangers_and_mash.blocks.BlockRegistry;
 import dev.turnr.bangers_and_mash.blocks.custom.FoodProcessor;
-import java.util.function.Function;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
@@ -14,9 +13,7 @@ import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
@@ -43,7 +40,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
   @Override
   protected void registerStatesAndModels() {
-    for (Block block : BlockRegistry.getItems().map(RegistryObject::get).toArray(Block[]::new)) {
+    for (Block block : BlockRegistry.getEntries().map(RegistryObject::get).toArray(Block[]::new)) {
       if (block instanceof ButtonBlock) {
         buttonBlock((ButtonBlock) block, blockTexture(block));
       } else if (block instanceof PressurePlateBlock) {

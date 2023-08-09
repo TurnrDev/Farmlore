@@ -24,7 +24,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
   @Override
   protected void registerModels() {
-    for (Item item : ItemRegistry.getItems().map(RegistryObject::get).toArray(Item[]::new)) {
+    for (Item item : ItemRegistry.getEntries().map(RegistryObject::get).toArray(Item[]::new)) {
       if (item instanceof BlockItem) {
         blockItem((BlockItem) item);
       } else {
