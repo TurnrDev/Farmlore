@@ -1,7 +1,7 @@
 package dev.turnr.bangers_and_mash.blocks;
 
 import dev.turnr.bangers_and_mash.BangersAndMash;
-import dev.turnr.bangers_and_mash.blocks.custom.FoodProcessor;
+import dev.turnr.bangers_and_mash.blocks.machines.FoodProcessor;
 import dev.turnr.bangers_and_mash.items.ItemRegistry;
 import java.util.function.Supplier;
 import net.minecraft.world.item.BlockItem;

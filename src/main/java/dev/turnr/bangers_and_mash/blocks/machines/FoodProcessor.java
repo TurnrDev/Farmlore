@@ -1,4 +1,4 @@
-package dev.turnr.bangers_and_mash.blocks.custom;
+package dev.turnr.bangers_and_mash.blocks.machines;
 
 import dev.turnr.bangers_and_mash.blocks.entities.FoodProcessorEntity;
 import dev.turnr.bangers_and_mash.blocks.entities.GenericBlockEntities;

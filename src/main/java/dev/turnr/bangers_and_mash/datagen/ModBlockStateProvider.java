@@ -3,7 +3,7 @@ package dev.turnr.bangers_and_mash.datagen;
 import com.mojang.logging.LogUtils;
 import dev.turnr.bangers_and_mash.BangersAndMash;
 import dev.turnr.bangers_and_mash.blocks.BlockRegistry;
-import dev.turnr.bangers_and_mash.blocks.custom.FoodProcessor;
+import dev.turnr.bangers_and_mash.blocks.machines.FoodProcessor;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
