@@ -2,7 +2,7 @@ package dev.turnr.bangers_and_mash.datagen;
 
 import static dev.turnr.bangers_and_mash.BangersAndMash.MOD_ID;
 
-import dev.turnr.bangers_and_mash.ModTags;
+import dev.turnr.bangers_and_mash.Tags;
 import dev.turnr.bangers_and_mash.items.Food;
 import dev.turnr.bangers_and_mash.items.GenericItems;
 import java.util.concurrent.CompletableFuture;
@@ -16,9 +16,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModItemTagGenerator extends ItemTagsProvider {
+public class BAMItemTagGenerator extends ItemTagsProvider {
 
-  public ModItemTagGenerator(PackOutput output,
+  public BAMItemTagGenerator(PackOutput output,
       CompletableFuture<HolderLookup.Provider> lookupProvider,
       CompletableFuture<TagLookup<Block>> blockTagLookup, ExistingFileHelper existingFileHelper) {
     super(output, lookupProvider, blockTagLookup, MOD_ID, existingFileHelper);
@@ -29,13 +29,13 @@ public class ModItemTagGenerator extends ItemTagsProvider {
    */
   @Override
   protected void addTags(HolderLookup.Provider pProvider) {
-    TagAppender<Item> rawSausagesTagProvider = this.tag(ModTags.Items.FORGE_SAUSAGES_RAW);
+    TagAppender<Item> rawSausagesTagProvider = this.tag(Tags.Items.FORGE_SAUSAGES_RAW);
 
     for (RegistryObject<Item> item : Food.Tags.RAW_SAUSAGES) {
       rawSausagesTagProvider.add(item.getKey());
     }
 
-    TagAppender<Item> cookedSausagesTagProvider = this.tag(ModTags.Items.FORGE_SAUSAGES_COOKED);
+    TagAppender<Item> cookedSausagesTagProvider = this.tag(Tags.Items.FORGE_SAUSAGES_COOKED);
 
     for (RegistryObject<Item> item : Food.Tags.COOKED_SAUSAGES) {
       cookedSausagesTagProvider.add(item.getKey());
@@ -44,25 +44,25 @@ public class ModItemTagGenerator extends ItemTagsProvider {
     cookedSausagesTagProvider.addOptional(
         new ResourceLocation("pamhc2foodextended", "sausageitem"));
 
-    this.tag(ModTags.Items.FORGE_SAUSAGES)
-        .addTag(ModTags.Items.FORGE_SAUSAGES_RAW).addTag(ModTags.Items.FORGE_SAUSAGES_COOKED);
+    this.tag(Tags.Items.FORGE_SAUSAGES)
+        .addTag(Tags.Items.FORGE_SAUSAGES_RAW).addTag(Tags.Items.FORGE_SAUSAGES_COOKED);
 
-    this.tag(ModTags.Items.CONTAINERS).add(GenericItems.METAL_CAN.get()).add(Items.BUCKET)
+    this.tag(Tags.Items.CONTAINERS).add(GenericItems.METAL_CAN.get()).add(Items.BUCKET)
         .addOptional(
             new ResourceLocation("tconstruct", "copper_can"));
 
-    this.tag(ModTags.Items.FOOD_PROCESSOR_ATTACHMENT_WHISK)
+    this.tag(Tags.Items.FOOD_PROCESSOR_ATTACHMENT_WHISK)
         .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_WHISK.get()).addOptional(
             new ResourceLocation("create", "whisk"));
 
-    this.tag(ModTags.Items.FOOD_PROCESSOR_ATTACHMENTS)
+    this.tag(Tags.Items.FOOD_PROCESSOR_ATTACHMENTS)
         .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
         .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_DOUGH_HOOK.get())
         .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_DOUGH_BLADE.get())
         .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_SHREDDING_DISC.get())
         .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_JUICER.get())
         .add(GenericItems.FOOD_PROCESSOR_ATTACHMENT_MILL.get())
-        .addTag(ModTags.Items.FOOD_PROCESSOR_ATTACHMENT_WHISK);
+        .addTag(Tags.Items.FOOD_PROCESSOR_ATTACHMENT_WHISK);
 
 
   }
@@ -72,6 +72,6 @@ public class ModItemTagGenerator extends ItemTagsProvider {
    */
   @Override
   public String getName() {
-    return "ModItemTagGenerator";
+    return "BAMItemTagGenerator";
   }
 }

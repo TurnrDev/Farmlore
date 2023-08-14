@@ -15,11 +15,11 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
-public class ModItemModelProvider extends ItemModelProvider {
+public class BAMItemModelProvider extends ItemModelProvider {
 
   private static final Logger LOGGER = LogUtils.getLogger();
 
-  public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
+  public BAMItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
     super(output, BangersAndMash.MOD_ID, existingFileHelper);
   }
 

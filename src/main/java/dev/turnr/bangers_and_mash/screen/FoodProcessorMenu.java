@@ -40,7 +40,7 @@ public class FoodProcessorMenu extends AbstractContainerMenu {
 
   public FoodProcessorMenu(int pContainerId, Inventory inv, BlockEntity entity,
       ContainerData data) {
-    super(AllMenuTypes.FOOD_PROCESSOR_MENU.get(), pContainerId);
+    super(MenuTypeRegistry.FOOD_PROCESSOR_MENU.get(), pContainerId);
     this.entity = (FoodProcessorEntity) entity;
     checkContainerSize(inv, this.entity.getInventorySize());
     this.level = inv.player.level();

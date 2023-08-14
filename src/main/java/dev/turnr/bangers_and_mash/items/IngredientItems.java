@@ -7,11 +7,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 /**
- * Ingredients This class will hold items which serve purely as ingredients for food items. The
+ * IngredientItems This class will hold items which serve purely as ingredients for food items. The
  * items will have no nutritional value, and will not be edible on their own. They will be used in
  * recipes to create food items.
  */
-public class Ingredients {
+public class IngredientItems {
 
   public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
       BangersAndMash.MOD_ID);

@@ -3,7 +3,7 @@ package dev.turnr.bangers_and_mash.datagen;
 import com.mojang.logging.LogUtils;
 import dev.turnr.bangers_and_mash.BangersAndMash;
 import dev.turnr.bangers_and_mash.blocks.BlockRegistry;
-import dev.turnr.bangers_and_mash.blocks.machines.FoodProcessor;
+import dev.turnr.bangers_and_mash.blocks.machines.FoodProcessorBlock;
 import java.util.function.Function;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -23,12 +23,12 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
-public class ModBlockStateProvider extends BlockStateProvider {
+public class BAMBlockStateProvider extends BlockStateProvider {
 
   private static final Logger LOGGER = LogUtils.getLogger();
   private final ExistingFileHelper existingFileHelper;
 
-  public ModBlockStateProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
+  public BAMBlockStateProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
     super(output, BangersAndMash.MOD_ID, existingFileHelper);
     this.existingFileHelper = existingFileHelper;
   }
@@ -58,8 +58,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         stairsBlock((StairBlock) block, blockTexture(block));
       } else if (block instanceof CropBlock) {
         cropBlock((CropBlock) block);
-      } else if (block instanceof FoodProcessor) {
-        FoodProcessor.model(block, this);
+      } else if (block instanceof FoodProcessorBlock) {
+        FoodProcessorBlock.model(block, this);
       } else {
         simpleBlockWithItem(block, cubeAll(block));
       }

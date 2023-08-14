@@ -10,7 +10,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class AllMenuTypes {
+public class MenuTypeRegistry {
 
   public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(
       ForgeRegistries.MENU_TYPES, BangersAndMash.MOD_ID);

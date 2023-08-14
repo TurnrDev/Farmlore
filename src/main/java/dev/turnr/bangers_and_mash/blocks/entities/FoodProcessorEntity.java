@@ -1,6 +1,6 @@
 package dev.turnr.bangers_and_mash.blocks.entities;
 
-import dev.turnr.bangers_and_mash.ModTags;
+import dev.turnr.bangers_and_mash.Tags;
 import dev.turnr.bangers_and_mash.recipe.food_processor.FoodProcessorRecipe;
 import dev.turnr.bangers_and_mash.screen.FoodProcessorMenu;
 import java.util.Optional;
@@ -110,7 +110,7 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
 
   private static boolean hasAttachmentInAttachmentSlot(FoodProcessorEntity entity) {
     return entity.inventory.getStackInSlot(FoodProcessorEntity.ATTACHMENT_SLOT_ID)
-        .is(ModTags.Items.FOOD_PROCESSOR_ATTACHMENTS);
+        .is(Tags.Items.FOOD_PROCESSOR_ATTACHMENTS);
   }
 
   private static void craftItem(FoodProcessorEntity entity) {

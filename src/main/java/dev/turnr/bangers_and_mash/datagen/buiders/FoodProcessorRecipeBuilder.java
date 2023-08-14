@@ -1,4 +1,4 @@
-package dev.turnr.bangers_and_mash.datagen;
+package dev.turnr.bangers_and_mash.datagen.buiders;
 
 import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
@@ -12,7 +12,6 @@ import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
-import net.minecraft.core.Registry;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;

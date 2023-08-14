@@ -2,9 +2,10 @@ package dev.turnr.bangers_and_mash.datagen;
 
 import com.mojang.logging.LogUtils;
 import dev.turnr.bangers_and_mash.BangersAndMash;
+import dev.turnr.bangers_and_mash.datagen.buiders.FoodProcessorRecipeBuilder;
 import dev.turnr.bangers_and_mash.items.Food;
 import dev.turnr.bangers_and_mash.items.GenericItems;
-import dev.turnr.bangers_and_mash.items.Ingredients;
+import dev.turnr.bangers_and_mash.items.IngredientItems;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
@@ -26,11 +27,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
-public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
+public class BAMRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
   private static final Logger LOGGER = LogUtils.getLogger();
 
-  public ModRecipeProvider(PackOutput pOutput) {
+  public BAMRecipeProvider(PackOutput pOutput) {
     super(pOutput);
   }
 
@@ -71,7 +72,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
   }
 
   private void buildSausageRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
-    LOGGER.debug("HELLO from buildSausageRecipes in ModRecipeProvider");
+    LOGGER.debug("HELLO from buildSausageRecipes in BAMRecipeProvider");
 
     // Loop through all the items in the raw sausage tag
     for (RegistryObject<Item> pRawSausage : Food.Tags.RAW_SAUSAGES) {
@@ -91,10 +92,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     FoodProcessorRecipeBuilder.foodProcessor(Food.Items.GLOUCESTER_SAUSAGE.get(), 1)
         .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
-        .requires(Ingredients.MINCED_PORK.get())
-        .requires(Ingredients.SAGE.get())
-        .unlockedBy("has_minced_pork", has(Ingredients.MINCED_PORK.get()))
-        .unlockedBy("has_sage", has(Ingredients.SAGE.get()))
+        .requires(IngredientItems.MINCED_PORK.get())
+        .requires(IngredientItems.SAGE.get())
+        .unlockedBy("has_minced_pork", has(IngredientItems.MINCED_PORK.get()))
+        .unlockedBy("has_sage", has(IngredientItems.SAGE.get()))
         .unlockedBy("has_food_processor_attachment_steel_blade",
             has(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
         .save(pFinishedRecipeConsumer,
@@ -102,10 +103,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     FoodProcessorRecipeBuilder.foodProcessor(Food.Items.LINCOLNSHIRE_SAUSAGE.get(), 1)
         .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
-        .requires(Ingredients.MINCED_PORK.get())
-        .requires(Ingredients.THYME.get())
-        .unlockedBy("has_minced_pork", has(Ingredients.MINCED_PORK.get()))
-        .unlockedBy("has_thyme", has(Ingredients.THYME.get()))
+        .requires(IngredientItems.MINCED_PORK.get())
+        .requires(IngredientItems.THYME.get())
+        .unlockedBy("has_minced_pork", has(IngredientItems.MINCED_PORK.get()))
+        .unlockedBy("has_thyme", has(IngredientItems.THYME.get()))
         .unlockedBy("has_food_processor_attachment_steel_blade",
             has(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
         .save(pFinishedRecipeConsumer,
@@ -119,9 +120,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     FoodProcessorRecipeBuilder.foodProcessor(Food.Items.PORK_APPLE_SAUSAGE.get(), 1)
         .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
-        .requires(Ingredients.MINCED_PORK.get())
+        .requires(IngredientItems.MINCED_PORK.get())
         .requires(Items.APPLE)
-        .unlockedBy("has_minced_pork", has(Ingredients.MINCED_PORK.get()))
+        .unlockedBy("has_minced_pork", has(IngredientItems.MINCED_PORK.get()))
         .unlockedBy("has_apple", has(Items.APPLE))
         .unlockedBy("has_food_processor_attachment_steel_blade",
             has(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
@@ -130,10 +131,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     FoodProcessorRecipeBuilder.foodProcessor(Food.Items.SQUARE_SAUSAGE.get(), 1)
         .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
-        .requires(Ingredients.MINCED_PORK.get())
-        .requires(Ingredients.MINCED_BEEF.get())
-        .unlockedBy("has_minced_pork", has(Ingredients.MINCED_PORK.get()))
-        .unlockedBy("has_minced_beef", has(Ingredients.MINCED_BEEF.get()))
+        .requires(IngredientItems.MINCED_PORK.get())
+        .requires(IngredientItems.MINCED_BEEF.get())
+        .unlockedBy("has_minced_pork", has(IngredientItems.MINCED_PORK.get()))
+        .unlockedBy("has_minced_beef", has(IngredientItems.MINCED_BEEF.get()))
         .unlockedBy("has_food_processor_attachment_steel_blade",
             has(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
         .save(pFinishedRecipeConsumer,
@@ -141,9 +142,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     FoodProcessorRecipeBuilder.foodProcessor(Food.Items.TOMATO_SAUSAGE.get(), 1)
         .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
-        .requires(Ingredients.MINCED_PORK.get())
+        .requires(IngredientItems.MINCED_PORK.get())
         .requires(ItemTags.create(new ResourceLocation("forge", "vegetables/tomato")))
-        .unlockedBy("has_minced_pork", has(Ingredients.MINCED_PORK.get()))
+        .unlockedBy("has_minced_pork", has(IngredientItems.MINCED_PORK.get()))
         .unlockedBy("has_tomato", has(ItemTags.create(new ResourceLocation("forge", "vegetables/tomato"))))
         .unlockedBy("has_food_processor_attachment_steel_blade",
             has(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
@@ -156,7 +157,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
   }
 
   private void buildMiscRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
-    LOGGER.debug("HELLO from buildMiscRecipes in ModRecipeProvider");
+    LOGGER.debug("HELLO from buildMiscRecipes in BAMRecipeProvider");
 
     // Potatoes -> Potato Quarters
     ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Food.Items.POTATO_QUARTER.get(), 4)
@@ -264,7 +265,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             new ResourceLocation(BangersAndMash.MOD_ID,
                 "crafting/food_processor_attachment_whisk"));
 
-    FoodProcessorRecipeBuilder.foodProcessor(Ingredients.MINCED_PORK.get(), 1)
+    FoodProcessorRecipeBuilder.foodProcessor(IngredientItems.MINCED_PORK.get(), 1)
         .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
         .requires(Items.PORKCHOP, 1)
         .unlockedBy("has_porkchop", has(Items.PORKCHOP))
@@ -273,7 +274,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(BangersAndMash.MOD_ID, "food_processor/minced_pork"));
 
-    FoodProcessorRecipeBuilder.foodProcessor(Ingredients.MINCED_BEEF.get(), 1)
+    FoodProcessorRecipeBuilder.foodProcessor(IngredientItems.MINCED_BEEF.get(), 1)
         .setAttachment(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
         .requires(Items.BEEF, 1)
         .unlockedBy("has_beef", has(Items.BEEF))
@@ -282,17 +283,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(BangersAndMash.MOD_ID, "food_processor/minced_beef"));
 
-    SimpleCookingRecipeBuilder.smelting(Ingredient.of(Ingredients.MINCED_PORK.get()),
+    SimpleCookingRecipeBuilder.smelting(Ingredient.of(IngredientItems.MINCED_PORK.get()),
             RecipeCategory.FOOD,
-            Ingredients.COOKED_MINCED_PORK.get(), 0.0f, 200)
-        .unlockedBy("has_minced_pork", has(Ingredients.MINCED_PORK.get()))
+            IngredientItems.COOKED_MINCED_PORK.get(), 0.0f, 200)
+        .unlockedBy("has_minced_pork", has(IngredientItems.MINCED_PORK.get()))
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(BangersAndMash.MOD_ID, "smelting/cooked_minced_pork"));
 
-    SimpleCookingRecipeBuilder.smelting(Ingredient.of(Ingredients.MINCED_BEEF.get()),
+    SimpleCookingRecipeBuilder.smelting(Ingredient.of(IngredientItems.MINCED_BEEF.get()),
             RecipeCategory.FOOD,
-            Ingredients.COOKED_MINCED_BEEF.get(), 0.0f, 200)
-        .unlockedBy("has_minced_beef", has(Ingredients.MINCED_BEEF.get()))
+            IngredientItems.COOKED_MINCED_BEEF.get(), 0.0f, 200)
+        .unlockedBy("has_minced_beef", has(IngredientItems.MINCED_BEEF.get()))
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(BangersAndMash.MOD_ID, "smelting/cooked_minced_beef"));
 
@@ -301,7 +302,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
   @Override
   protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
-    LOGGER.debug("HELLO from buildCraftingRecipes in ModRecipeProvider");
+    LOGGER.debug("HELLO from buildCraftingRecipes in BAMRecipeProvider");
     buildSausageRecipes(pWriter);
     buildMiscRecipes(pWriter);
   }

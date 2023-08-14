@@ -1,7 +1,7 @@
 package dev.turnr.bangers_and_mash.blocks;
 
 import dev.turnr.bangers_and_mash.BangersAndMash;
-import dev.turnr.bangers_and_mash.blocks.machines.FoodProcessor;
+import dev.turnr.bangers_and_mash.blocks.machines.FoodProcessorBlock;
 import dev.turnr.bangers_and_mash.items.ItemRegistry;
 import java.util.function.Supplier;
 import net.minecraft.world.item.BlockItem;
@@ -30,7 +30,7 @@ public class GenericBlocks {
    * this. For now, it's just this.
    */
   public static final RegistryObject<Block> FOOD_PROCESSOR = registerBlock("food_processor",
-      () -> new FoodProcessor(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(0.8F).sound(SoundType.GLASS)));
+      () -> new FoodProcessorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(0.8F).sound(SoundType.GLASS)));
 
 
   private static <T extends Block> RegistryObject<T> registerBlock(String name,

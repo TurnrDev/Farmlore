@@ -36,16 +36,16 @@ import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
-public class FoodProcessor extends BaseEntityBlock {
+public class FoodProcessorBlock extends BaseEntityBlock {
 
   public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-  public FoodProcessor(Properties pProperties) {
+  public FoodProcessorBlock(Properties pProperties) {
     super(pProperties);
   }
 
   public static ModelFile model(Block block, BlockStateProvider pGenerator) {
-    return ((FoodProcessor) block).model(pGenerator);
+    return ((FoodProcessorBlock) block).model(pGenerator);
   }
 
   @Override

@@ -9,9 +9,9 @@ import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
-public class ModBlockTagGenerator extends BlockTagsProvider {
+public class BAMBlockTagGenerator extends BlockTagsProvider {
 
-  public ModBlockTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+  public BAMBlockTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
     super(output, lookupProvider, BangersAndMash.MOD_ID, existingFileHelper);
   }
 
