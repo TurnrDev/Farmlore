@@ -4,8 +4,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import dev.turnr.bangers_and_mash.BangersAndMash;
 import dev.turnr.bangers_and_mash.blocks.entities.FoodProcessorEntity;
-import dev.turnr.bangers_and_mash.items.GenericItems;
-import javax.annotation.Nullable;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;

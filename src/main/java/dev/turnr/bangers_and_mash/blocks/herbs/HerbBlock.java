@@ -1,6 +1,6 @@
 package dev.turnr.bangers_and_mash.blocks.herbs;
 
-import dev.turnr.bangers_and_mash.items.SeedItems;
+import dev.turnr.bangers_and_mash.items.PlantableItems;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
@@ -37,7 +37,7 @@ public class HerbBlock extends CropBlock {
     String seed_id = block_id + "_seeds";
 
     // Get the item with the id "seed_id"
-    return SeedItems.ITEMS.getEntries().stream()
+    return PlantableItems.ITEMS.getEntries().stream()
         .filter(entry -> entry.getId().getPath().equals(seed_id))
         .findFirst().get().get();
   }

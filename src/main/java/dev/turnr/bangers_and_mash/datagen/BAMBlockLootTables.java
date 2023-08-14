@@ -5,7 +5,7 @@ import dev.turnr.bangers_and_mash.blocks.GenericBlocks;
 import dev.turnr.bangers_and_mash.blocks.PlantBlocks;
 import dev.turnr.bangers_and_mash.blocks.herbs.HerbBlock;
 import dev.turnr.bangers_and_mash.items.IngredientItems;
-import dev.turnr.bangers_and_mash.items.SeedItems;
+import dev.turnr.bangers_and_mash.items.PlantableItems;
 import java.util.Set;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -26,13 +26,13 @@ public class BAMBlockLootTables extends BlockLootSubProvider {
   protected void generate() {
     this.dropSelf(GenericBlocks.FOOD_PROCESSOR.get());
 
-    this.addCrop(PlantBlocks.PARSLEY.get(), IngredientItems.PARSLEY.get(), SeedItems.PARSLEY.get());
-    this.addCrop(PlantBlocks.BASIL.get(), IngredientItems.BASIL.get(), SeedItems.BASIL.get());
-    this.addCrop(PlantBlocks.CORIANDER.get(), IngredientItems.CORIANDER.get(), SeedItems.CORIANDER.get());
-    this.addCrop(PlantBlocks.MINT.get(), IngredientItems.MINT.get(), SeedItems.MINT.get());
-    this.addCrop(PlantBlocks.ROSEMARY.get(), IngredientItems.ROSEMARY.get(), SeedItems.ROSEMARY.get());
-    this.addCrop(PlantBlocks.THYME.get(), IngredientItems.THYME.get(), SeedItems.THYME.get());
-    this.addCrop(PlantBlocks.SAGE.get(), IngredientItems.SAGE.get(), SeedItems.SAGE.get());
+    this.addCrop(PlantBlocks.PARSLEY.get(), IngredientItems.PARSLEY.get(), PlantableItems.PARSLEY.get());
+    this.addCrop(PlantBlocks.BASIL.get(), IngredientItems.BASIL.get(), PlantableItems.BASIL.get());
+    this.addCrop(PlantBlocks.CORIANDER.get(), IngredientItems.CORIANDER.get(), PlantableItems.CORIANDER.get());
+    this.addCrop(PlantBlocks.MINT.get(), IngredientItems.MINT.get(), PlantableItems.MINT.get());
+    this.addCrop(PlantBlocks.ROSEMARY.get(), IngredientItems.ROSEMARY.get(), PlantableItems.ROSEMARY.get());
+    this.addCrop(PlantBlocks.THYME.get(), IngredientItems.THYME.get(), PlantableItems.THYME.get());
+    this.addCrop(PlantBlocks.SAGE.get(), IngredientItems.SAGE.get(), PlantableItems.SAGE.get());
 
   }
 

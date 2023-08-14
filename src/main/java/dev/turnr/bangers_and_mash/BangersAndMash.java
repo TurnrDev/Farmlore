@@ -5,21 +5,24 @@ import dev.turnr.bangers_and_mash.blocks.BlockRegistry;
 import dev.turnr.bangers_and_mash.blocks.GenericBlocks;
 import dev.turnr.bangers_and_mash.blocks.PlantBlocks;
 import dev.turnr.bangers_and_mash.blocks.entities.GenericBlockEntities;
-import dev.turnr.bangers_and_mash.items.Food;
-import dev.turnr.bangers_and_mash.items.GenericItems;
+import dev.turnr.bangers_and_mash.items.EdibleItems;
+import dev.turnr.bangers_and_mash.items.ToolItems;
 import dev.turnr.bangers_and_mash.items.IngredientItems;
 import dev.turnr.bangers_and_mash.items.ItemRegistry;
-import dev.turnr.bangers_and_mash.items.SeedItems;
+import dev.turnr.bangers_and_mash.items.PlantableItems;
 import dev.turnr.bangers_and_mash.recipe.RecipeRegistry;
-import dev.turnr.bangers_and_mash.screen.MenuTypeRegistry;
 import dev.turnr.bangers_and_mash.screen.FoodProcessorScreen;
+import dev.turnr.bangers_and_mash.screen.MenuTypeRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -39,11 +42,11 @@ public class BangersAndMash {
   public BangersAndMash() {
     IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-    SeedItems.register();
+    PlantableItems.register();
     PlantBlocks.register();
     IngredientItems.register();
-    Food.Items.register();
-    GenericItems.register();
+    EdibleItems.register();
+    ToolItems.register();
     GenericBlocks.register();
 
     ItemRegistry.register(eventBus);
@@ -56,6 +59,7 @@ public class BangersAndMash {
     eventBus.addListener(this::commonSetup);
 
     MinecraftForge.EVENT_BUS.register(this);
+    eventBus.addListener(this::addCreative);
   }
 
   public static ResourceLocation getId(String path) {
@@ -65,6 +69,26 @@ public class BangersAndMash {
   private void commonSetup(final FMLCommonSetupEvent event) {
     // Some common setup code
     LOGGER.info("HELLO FROM COMMON SETUP");
+  }
+
+  private void addCreative(BuildCreativeModeTabContentsEvent event) {
+    if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+      for (RegistryObject<Item> item : EdibleItems.ITEMS.getEntries()) {
+        event.accept(item.get());
+      }
+    }
+
+    if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+      for (RegistryObject<Item> item : PlantableItems.ITEMS.getEntries()) {
+        event.accept(item.get());
+      }
+    }
+
+    if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+      for (RegistryObject<Item> item : ToolItems.ITEMS.getEntries()) {
+        event.accept(item.get());
+      }
+    }
   }
 
   // You can use SubscribeEvent and let the Event Bus discover methods to call
