@@ -59,7 +59,7 @@ public class BAMBlockStateProvider extends BlockStateProvider {
       } else if (block instanceof CropBlock) {
         cropBlock((CropBlock) block);
       } else if (block instanceof FoodProcessorBlock) {
-        FoodProcessorBlock.model(block, this);
+        horizontalBlock(block, ((FoodProcessorBlock) block).getModelFile(this));
       } else {
         simpleBlockWithItem(block, cubeAll(block));
       }
