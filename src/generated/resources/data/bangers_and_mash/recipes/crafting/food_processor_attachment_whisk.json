@@ -1,10 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " n ",
-    "sns",
-    "sss"
-  ],
+  "category": "equipment",
   "key": {
     "n": {
       "item": "minecraft:iron_nugget"
@@ -13,7 +9,13 @@
       "tag": "forge:plates/iron"
     }
   },
+  "pattern": [
+    " n ",
+    "sns",
+    "sss"
+  ],
   "result": {
     "item": "bangers_and_mash:food_processor_attachment_whisk"
-  }
+  },
+  "show_notification": true
 }

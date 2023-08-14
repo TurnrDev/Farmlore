@@ -3,13 +3,13 @@ package dev.turnr.bangers_and_mash.blocks;
 import dev.turnr.bangers_and_mash.BangersAndMash;
 import dev.turnr.bangers_and_mash.blocks.herbs.HerbBlock;
 import dev.turnr.bangers_and_mash.items.ItemRegistry;
-import dev.turnr.bangers_and_mash.items.Seeds;
 import java.util.function.Supplier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -23,8 +23,9 @@ public class PlantBlocks {
       ForgeRegistries.ITEMS,
       BangersAndMash.MOD_ID);
 
-  private static final BlockBehaviour.Properties HERB_PROPERTIES = BlockBehaviour.Properties.of(
-      Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS);
+  private static final BlockBehaviour.Properties HERB_PROPERTIES = BlockBehaviour.Properties.of().mapColor(
+      MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(
+      PushReaction.DESTROY);
   public static final RegistryObject<Block> PARSLEY = registerBlockWithoutBlockItem("parsley",
       () -> new HerbBlock(HERB_PROPERTIES));
   public static final RegistryObject<Block> BASIL = registerBlockWithoutBlockItem("basil",

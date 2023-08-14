@@ -1,8 +1,8 @@
 package dev.turnr.bangers_and_mash.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import dev.turnr.bangers_and_mash.BangersAndMash;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -22,25 +22,25 @@ public class FoodProcessorScreen extends AbstractContainerScreen<FoodProcessorMe
   }
 
   @Override
-  protected void renderBg(PoseStack pPoseStack, float pPartialTick, int pMouseX, int pMouseY) {
+  protected void renderBg(GuiGraphics graphics, float pPartialTick, int pMouseX, int pMouseY) {
     RenderSystem.setShader(GameRenderer::getPositionTexShader);
     RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
     RenderSystem.setShaderTexture(0, BACKGROUND_TEXTURE);
     int x = (this.width - this.imageWidth) / 2;
     int y = (this.height - this.imageHeight) / 2;
 
-    this.blit(pPoseStack, x, y, 0, 0, this.imageWidth, this.imageHeight);
+    graphics.blit(BACKGROUND_TEXTURE, x, y, 0, 0, this.imageWidth, this.imageHeight);
 
     if (this.menu.isCrafting()) {
-      this.blit(pPoseStack, x + 109, y + 37, 176, 0, this.menu.getScaledProgress(), 17);
+      graphics.blit(BACKGROUND_TEXTURE, x + 109, y + 37, 176, 0, this.menu.getScaledProgress(), 17);
     }
 
   }
 
   @Override
-  public void render(PoseStack pPoseStack, int mouseX, int mouseY, float delta) {
-    this.renderBackground(pPoseStack);
-    super.render(pPoseStack, mouseX, mouseY, delta);
-    this.renderTooltip(pPoseStack, mouseX, mouseY);
+  public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
+    this.renderBackground(graphics);
+    super.render(graphics, mouseX, mouseY, delta);
+    this.renderTooltip(graphics, mouseX, mouseY);
   }
 }

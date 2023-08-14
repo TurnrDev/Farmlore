@@ -1,17 +1,15 @@
 package dev.turnr.bangers_and_mash.blocks;
 
 import dev.turnr.bangers_and_mash.BangersAndMash;
-import dev.turnr.bangers_and_mash.blocks.machines.FoodProcessor;
+import dev.turnr.bangers_and_mash.blocks.machines.FoodProcessorBlock;
 import dev.turnr.bangers_and_mash.items.ItemRegistry;
 import java.util.function.Supplier;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -32,21 +30,19 @@ public class GenericBlocks {
    * this. For now, it's just this.
    */
   public static final RegistryObject<Block> FOOD_PROCESSOR = registerBlock("food_processor",
-      () -> new FoodProcessor(BlockBehaviour.Properties.of(
-          Material.METAL, MaterialColor.METAL).strength(0.8F).sound(SoundType.GLASS)),
-      CreativeModeTab.TAB_MISC);
+      () -> new FoodProcessorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(0.8F).sound(SoundType.GLASS)));
 
 
   private static <T extends Block> RegistryObject<T> registerBlock(String name,
-      Supplier<T> block, CreativeModeTab tab) {
+      Supplier<T> block) {
     RegistryObject<T> registeredBlock = BLOCKS.register(name, block);
-    registerBlockItem(name, registeredBlock, tab);
+    registerBlockItem(name, registeredBlock);
     return registeredBlock;
   }
 
   private static <T extends Block> RegistryObject<Item> registerBlockItem(String name,
-      RegistryObject<T> block, CreativeModeTab tab) {
-    return ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
+      RegistryObject<T> block) {
+    return ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
   }
 
   public static void register() {

@@ -1,9 +1,10 @@
 {
   "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.0,
   "ingredient": {
     "item": "bangers_and_mash:suffolk_sausage"
   },
-  "result": "bangers_and_mash:cooked_suffolk_sausage",
-  "experience": 0.0,
-  "cookingtime": 200
+  "result": "bangers_and_mash:cooked_suffolk_sausage"
 }

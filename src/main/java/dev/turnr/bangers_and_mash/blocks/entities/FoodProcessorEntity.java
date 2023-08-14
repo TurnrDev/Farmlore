@@ -1,16 +1,15 @@
 package dev.turnr.bangers_and_mash.blocks.entities;
 
-import dev.turnr.bangers_and_mash.ModTags;
+import dev.turnr.bangers_and_mash.Tags;
 import dev.turnr.bangers_and_mash.recipe.food_processor.FoodProcessorRecipe;
 import dev.turnr.bangers_and_mash.screen.FoodProcessorMenu;
 import java.util.Optional;
-import java.util.Random;
 import javax.annotation.Nonnull;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -23,8 +22,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.apache.commons.lang3.Range;
@@ -111,7 +110,7 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
 
   private static boolean hasAttachmentInAttachmentSlot(FoodProcessorEntity entity) {
     return entity.inventory.getStackInSlot(FoodProcessorEntity.ATTACHMENT_SLOT_ID)
-        .is(ModTags.Items.FOOD_PROCESSOR_ATTACHMENTS);
+        .is(Tags.Items.FOOD_PROCESSOR_ATTACHMENTS);
   }
 
   private static void craftItem(FoodProcessorEntity entity) {
@@ -126,7 +125,7 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
 
     if (match.isPresent()) {
       entity.inventory.getStackInSlot(FoodProcessorEntity.ATTACHMENT_SLOT_ID)
-          .hurt(1, new Random(), null);
+          .hurt(1, RandomSource.create(), null);
       int minSlot = FoodProcessorEntity.INPUT_SLOTS_ID_RANGE.getMinimum();
       int maxSlot = FoodProcessorEntity.INPUT_SLOTS_ID_RANGE.getMaximum();
 
@@ -156,11 +155,6 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
     return this.inventory.getSlots();
   }
 
-  @Override
-  public Component getDisplayName() {
-    return new TextComponent("Food Processor");
-  }
-
   @Nullable
   @Override
   public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory,
@@ -171,7 +165,7 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
   @Nonnull
   @Override
   public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-    if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+    if (cap == ForgeCapabilities.ITEM_HANDLER) {
       return lazyItemHandler.cast();
     }
     return super.getCapability(cap, side);
@@ -208,5 +202,13 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
 
   private void resetProgress() {
     this.progress = 0;
+  }
+
+  /**
+   * @return
+   */
+  @Override
+  public Component getDisplayName() {
+    return null;
   }
 }
