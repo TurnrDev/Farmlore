@@ -21,6 +21,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class FoodProcessorRecipeBuilder implements RecipeBuilder {
 
@@ -107,8 +108,7 @@ public class FoodProcessorRecipeBuilder implements RecipeBuilder {
     pFinishedRecipeConsumer.accept(
         new FoodProcessorRecipeBuilder.Result(pRecipeId, this.output, this.count, this.attachment,
             this.ingredients, this.advancement, new ResourceLocation(pRecipeId.getNamespace(),
-            "recipes/" + this.output.getItemCategory().getRecipeFolderName() + "/"
-                + pRecipeId.getPath())));
+            "recipes/" + pRecipeId.getPath())));
   }
 
   private void ensureValid(ResourceLocation pId) {
@@ -154,7 +154,7 @@ public class FoodProcessorRecipeBuilder implements RecipeBuilder {
 
       pJson.add("ingredients", ingredientsArray);
       JsonObject outputObject = new JsonObject();
-      outputObject.addProperty("item", Registry.ITEM.getKey(this.output).toString());
+      outputObject.addProperty("item", ForgeRegistries.ITEMS.getKey(this.output).toString());
       if (this.count > 1) {
         outputObject.addProperty("count", this.count);
       }

@@ -1,9 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "# #",
-    " # "
-  ],
+  "category": "misc",
   "key": {
     "#": [
       {
@@ -17,8 +14,13 @@
       }
     ]
   },
+  "pattern": [
+    "# #",
+    " # "
+  ],
   "result": {
-    "item": "bangers_and_mash:metal_can",
-    "count": 2
-  }
+    "count": 2,
+    "item": "bangers_and_mash:metal_can"
+  },
+  "show_notification": true
 }

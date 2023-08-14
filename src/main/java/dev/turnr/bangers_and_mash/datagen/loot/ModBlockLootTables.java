@@ -6,19 +6,24 @@ import dev.turnr.bangers_and_mash.blocks.PlantBlocks;
 import dev.turnr.bangers_and_mash.blocks.herbs.HerbBlock;
 import dev.turnr.bangers_and_mash.items.Ingredients;
 import dev.turnr.bangers_and_mash.items.Seeds;
+import java.util.Set;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
-public class ModBlockLootTables extends BlockLoot {
+public class ModBlockLootTables extends BlockLootSubProvider {
+
+  public ModBlockLootTables() {
+    super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+  }
 
   @Override
-  protected void addTables() {
+  protected void generate() {
     this.dropSelf(GenericBlocks.FOOD_PROCESSOR.get());
 
     this.addCrop(PlantBlocks.PARSLEY.get(), Ingredients.PARSLEY.get(), Seeds.PARSLEY.get());

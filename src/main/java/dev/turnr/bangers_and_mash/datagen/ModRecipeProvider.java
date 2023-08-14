@@ -8,8 +8,9 @@ import dev.turnr.bangers_and_mash.items.Ingredients;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
@@ -29,44 +30,44 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
   private static final Logger LOGGER = LogUtils.getLogger();
 
-  public ModRecipeProvider(DataGenerator pGenerator) {
-    super(pGenerator);
+  public ModRecipeProvider(PackOutput pOutput) {
+    super(pOutput);
   }
 
   @Nullable
-  private static Item getCookedSausage(Item rawSausage) {
-    ResourceLocation rawSausageLocation = rawSausage.getRegistryName();
+  private static Item getCookedSausage(RegistryObject<Item> rawSausage) {
+    ResourceLocation rawSausageLocation = rawSausage.getId();
     String cookedSausagePath = "cooked_" + rawSausageLocation.getPath();
     ResourceLocation cookedSausageResourcePath = new ResourceLocation(
         rawSausageLocation.getNamespace(), cookedSausagePath);
     return ForgeRegistries.ITEMS.getValue(cookedSausageResourcePath);
   }
 
-  private void addSmokingRecipe(Consumer<FinishedRecipe> finishedRecipeConsumer, Item input,
+  private void addSmokingRecipe(Consumer<FinishedRecipe> finishedRecipeConsumer, Item input, RecipeCategory pCategory,
       Item output, float pExperience, int pCookingTime) {
     Ingredient inputIngredient = Ingredient.of(input);
     ResourceLocation recipeId = new ResourceLocation(BangersAndMash.MOD_ID,
-        "smoking/" + output.getRegistryName().getPath());
-    SimpleCookingRecipeBuilder.smoking(inputIngredient, output, pExperience, pCookingTime)
+        "smoking/" + ForgeRegistries.ITEMS.getKey(output).getPath());
+    SimpleCookingRecipeBuilder.smoking(inputIngredient, pCategory, output, pExperience, pCookingTime)
         .unlockedBy("has_item", has(input)).save(finishedRecipeConsumer, recipeId);
   }
 
-  private void addCampfireRecipe(Consumer<FinishedRecipe> finishedRecipeConsumer, Item input,
+  private void addCampfireRecipe(Consumer<FinishedRecipe> pWriter, Item input, RecipeCategory pCategory,
       Item output, float pExperience, int pCookingTime) {
     Ingredient inputIngredient = Ingredient.of(input);
     ResourceLocation recipeId = new ResourceLocation(BangersAndMash.MOD_ID,
-        "campfire_cooking/" + output.getRegistryName().getPath());
-    SimpleCookingRecipeBuilder.campfireCooking(inputIngredient, output, pExperience, pCookingTime)
-        .unlockedBy("has_item", has(input)).save(finishedRecipeConsumer, recipeId);
+        "campfire_cooking/" + ForgeRegistries.ITEMS.getKey(output).getPath());
+    SimpleCookingRecipeBuilder.campfireCooking(inputIngredient, pCategory, output, pExperience, pCookingTime)
+        .unlockedBy("has_item", has(input)).save(pWriter, recipeId);
   }
 
-  private void addSmeltingRecipe(Consumer<FinishedRecipe> finishedRecipeConsumer, Item input,
+  private void addSmeltingRecipe(Consumer<FinishedRecipe> pWriter, Item input,RecipeCategory pCategory,
       Item output, float pExperience, int pCookingTime) {
     Ingredient inputIngredient = Ingredient.of(input);
     ResourceLocation recipeId = new ResourceLocation(BangersAndMash.MOD_ID,
-        "smelting/" + output.getRegistryName().getPath());
-    SimpleCookingRecipeBuilder.smelting(inputIngredient, output, pExperience, pCookingTime)
-        .unlockedBy("has_item", has(input)).save(finishedRecipeConsumer, recipeId);
+        "smelting/" + ForgeRegistries.ITEMS.getKey(output).getPath());
+    SimpleCookingRecipeBuilder.smelting(inputIngredient, pCategory, output, pExperience, pCookingTime)
+        .unlockedBy("has_item", has(input)).save(pWriter, recipeId);
   }
 
   private void buildSausageRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
@@ -75,15 +76,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     // Loop through all the items in the raw sausage tag
     for (RegistryObject<Item> pRawSausage : Food.Tags.RAW_SAUSAGES) {
       Item rawSausage = pRawSausage.get();
-      Item cookedSausage = getCookedSausage(rawSausage);
+      Item cookedSausage = getCookedSausage(pRawSausage);
       if (cookedSausage == null) {
-        LOGGER.debug("No cooked sausage found for {}", rawSausage.getRegistryName());
+        LOGGER.debug("No cooked sausage found for {}", pRawSausage.getId());
         continue;
       }
-      LOGGER.debug("Adding sausage recipes for {}", rawSausage.getRegistryName());
-      addCampfireRecipe(pFinishedRecipeConsumer, rawSausage, cookedSausage, 0.0F, 600);
-      addSmokingRecipe(pFinishedRecipeConsumer, rawSausage, cookedSausage, 0.0F, 200);
-      addSmeltingRecipe(pFinishedRecipeConsumer, rawSausage, cookedSausage, 0.0F, 200);
+      LOGGER.debug("Adding sausage recipes for {}", pRawSausage.getId());
+      addCampfireRecipe(pFinishedRecipeConsumer, rawSausage, RecipeCategory.FOOD, cookedSausage, 0.0F, 600);
+      addSmokingRecipe(pFinishedRecipeConsumer, rawSausage, RecipeCategory.FOOD, cookedSausage, 0.0F, 200);
+      addSmeltingRecipe(pFinishedRecipeConsumer, rawSausage, RecipeCategory.FOOD, cookedSausage, 0.0F, 200);
     }
 
     // Cumberland Sausage is made with chopped pork instead. Made with black pepper.
@@ -158,12 +159,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     LOGGER.debug("HELLO from buildMiscRecipes in ModRecipeProvider");
 
     // Potatoes -> Potato Quarters
-    ShapelessRecipeBuilder.shapeless(Food.Items.POTATO_QUARTER.get(), 4)
+    ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Food.Items.POTATO_QUARTER.get(), 4)
         .requires(Items.POTATO)
         .unlockedBy("has_item", has(Items.POTATO))
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(BangersAndMash.MOD_ID, "crafting/potato_quarter_x4"));
     SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.POTATO),
+            RecipeCategory.FOOD,
             Food.Items.POTATO_QUARTER.get(),
             4)
         .unlockedBy("has_item", has(Items.POTATO))
@@ -171,7 +173,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             new ResourceLocation(BangersAndMash.MOD_ID, "stonecutting/potato_quarter_x4"));
 
     // forge:plates/tin / steel / aluminum -> Tin Can
-    ShapedRecipeBuilder.shaped(GenericItems.METAL_CAN.get(), 2).pattern("# #").pattern(" # ")
+    ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
+        GenericItems.METAL_CAN.get(), 2).pattern("# #").pattern(" # ")
         .define('#', Ingredient.fromValues(Stream.of(
             new Ingredient.TagValue(ItemTags.create(new ResourceLocation("forge", "plates/tin"))),
             new Ingredient.TagValue(ItemTags.create(new ResourceLocation("forge", "plates/steel"))),
@@ -181,7 +184,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(BangersAndMash.MOD_ID, "crafting/metal_can_x2"));
 
-    ShapedRecipeBuilder.shaped(GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get(), 1)
+    ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenericItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get(), 1)
         .pattern(" n ")
         .pattern("nin")
         .pattern(" n ")
@@ -193,7 +196,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             new ResourceLocation(BangersAndMash.MOD_ID,
                 "crafting/food_processor_attachment_steel_blade"));
 
-    ShapedRecipeBuilder.shaped(GenericItems.FOOD_PROCESSOR_ATTACHMENT_DOUGH_HOOK.get(), 1)
+    ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenericItems.FOOD_PROCESSOR_ATTACHMENT_DOUGH_HOOK.get(), 1)
         .pattern(" n ")
         .pattern("n n")
         .pattern("  n")
@@ -203,7 +206,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             new ResourceLocation(BangersAndMash.MOD_ID,
                 "crafting/food_processor_attachment_dough_hook"));
 
-    ShapedRecipeBuilder.shaped(GenericItems.FOOD_PROCESSOR_ATTACHMENT_DOUGH_BLADE.get(), 1)
+    ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenericItems.FOOD_PROCESSOR_ATTACHMENT_DOUGH_BLADE.get(), 1)
         .pattern("n")
         .pattern("i")
         .pattern("n")
@@ -215,7 +218,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             new ResourceLocation(BangersAndMash.MOD_ID,
                 "crafting/food_processor_attachment_dough_blade"));
 
-    ShapedRecipeBuilder.shaped(GenericItems.FOOD_PROCESSOR_ATTACHMENT_SHREDDING_DISC.get(), 1)
+    ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenericItems.FOOD_PROCESSOR_ATTACHMENT_SHREDDING_DISC.get(), 1)
         .pattern("s")
         .pattern("n")
         .define('n', Ingredient.of(Items.IRON_NUGGET))
@@ -227,7 +230,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             new ResourceLocation(BangersAndMash.MOD_ID,
                 "crafting/food_processor_attachment_shredding_disc"));
 
-    ShapedRecipeBuilder.shaped(GenericItems.FOOD_PROCESSOR_ATTACHMENT_JUICER.get(), 1)
+    ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenericItems.FOOD_PROCESSOR_ATTACHMENT_JUICER.get(), 1)
         .pattern("n")
         .pattern("s")
         .define('n', Ingredient.of(Items.IRON_NUGGET))
@@ -239,7 +242,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             new ResourceLocation(BangersAndMash.MOD_ID,
                 "crafting/food_processor_attachment_juicer"));
 
-    ShapedRecipeBuilder.shaped(GenericItems.FOOD_PROCESSOR_ATTACHMENT_MILL.get(), 1)
+    ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenericItems.FOOD_PROCESSOR_ATTACHMENT_MILL.get(), 1)
         .pattern(" n ")
         .pattern("n n")
         .pattern(" n ")
@@ -248,7 +251,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(BangersAndMash.MOD_ID, "crafting/food_processor_attachment_mill"));
 
-    ShapedRecipeBuilder.shaped(GenericItems.FOOD_PROCESSOR_ATTACHMENT_WHISK.get(), 1)
+    ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenericItems.FOOD_PROCESSOR_ATTACHMENT_WHISK.get(), 1)
         .pattern(" n ")
         .pattern("sns")
         .pattern("sss")
@@ -280,12 +283,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             new ResourceLocation(BangersAndMash.MOD_ID, "food_processor/minced_beef"));
 
     SimpleCookingRecipeBuilder.smelting(Ingredient.of(Ingredients.MINCED_PORK.get()),
+            RecipeCategory.FOOD,
             Ingredients.COOKED_MINCED_PORK.get(), 0.0f, 200)
         .unlockedBy("has_minced_pork", has(Ingredients.MINCED_PORK.get()))
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(BangersAndMash.MOD_ID, "smelting/cooked_minced_pork"));
 
     SimpleCookingRecipeBuilder.smelting(Ingredient.of(Ingredients.MINCED_BEEF.get()),
+            RecipeCategory.FOOD,
             Ingredients.COOKED_MINCED_BEEF.get(), 0.0f, 200)
         .unlockedBy("has_minced_beef", has(Ingredients.MINCED_BEEF.get()))
         .save(pFinishedRecipeConsumer,
@@ -295,9 +300,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
   @Override
-  protected void buildCraftingRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
+  protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
     LOGGER.debug("HELLO from buildCraftingRecipes in ModRecipeProvider");
-    buildSausageRecipes(pFinishedRecipeConsumer);
-    buildMiscRecipes(pFinishedRecipeConsumer);
+    buildSausageRecipes(pWriter);
+    buildMiscRecipes(pWriter);
   }
 }

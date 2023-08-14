@@ -5,7 +5,7 @@ import dev.turnr.bangers_and_mash.BangersAndMash;
 import dev.turnr.bangers_and_mash.blocks.BlockRegistry;
 import dev.turnr.bangers_and_mash.blocks.machines.FoodProcessor;
 import java.util.function.Function;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.block.Block;
@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
@@ -27,8 +28,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
   private static final Logger LOGGER = LogUtils.getLogger();
   private final ExistingFileHelper existingFileHelper;
 
-  public ModBlockStateProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-    super(generator, BangersAndMash.MOD_ID, existingFileHelper);
+  public ModBlockStateProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
+    super(output, BangersAndMash.MOD_ID, existingFileHelper);
     this.existingFileHelper = existingFileHelper;
   }
 
@@ -60,15 +61,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
       } else if (block instanceof FoodProcessor) {
         FoodProcessor.model(block, this);
       } else {
-        simpleBlock(block);
+        simpleBlockWithItem(block, cubeAll(block));
       }
     }
   }
 
   public void cropBlock(CropBlock block) {
+    String blockID = ForgeRegistries.BLOCKS.getKey(block).getPath();
     Function<BlockState, ConfiguredModel[]> function = state -> states(state, block,
-        block.getRegistryName().getPath() + "_stage_",
-        block.getRegistryName().getPath() + "_stage_");
+        blockID + "_stage_",
+        blockID + "_stage_");
 
     getVariantBuilder(block).forAllStates(function);
   }
@@ -77,9 +79,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
       String textureName) {
     ConfiguredModel[] models = new ConfiguredModel[1];
     models[0] = new ConfiguredModel(
-        models().crop(modelName + state.getValue(block.getAgeProperty()),
+        models().crop(modelName + block.getAge(state),
             textureOrRicky(new ResourceLocation(BangersAndMash.MOD_ID,
-                "block/" + textureName + state.getValue(block.getAgeProperty())))));
+                "block/" + textureName + block.getAge(state)))));
 
     return models;
   }

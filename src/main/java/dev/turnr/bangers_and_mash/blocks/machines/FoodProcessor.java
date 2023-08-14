@@ -33,6 +33,7 @@ import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
 import net.minecraftforge.network.NetworkHooks;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 public class FoodProcessor extends BaseEntityBlock {
@@ -81,7 +82,7 @@ public class FoodProcessor extends BaseEntityBlock {
 
   public ModelFile model(BlockStateProvider pGenerator) {
     ModelFile model = pGenerator.models()
-        .getExistingFile(pGenerator.modLoc(this.getRegistryName().getPath()));
+        .getExistingFile(pGenerator.modLoc(ForgeRegistries.BLOCKS.getKey(this).getPath()));
     VariantBlockStateBuilder builder = pGenerator.getVariantBuilder(this);
 
     // Block state variant for facing=north
@@ -130,7 +131,7 @@ public class FoodProcessor extends BaseEntityBlock {
     if (!pLevel.isClientSide()) {
       BlockEntity entity = pLevel.getBlockEntity(pPos);
       if (entity instanceof FoodProcessorEntity) {
-        NetworkHooks.openGui(((ServerPlayer) pPlayer), (FoodProcessorEntity) entity, pPos);
+        NetworkHooks.openScreen(((ServerPlayer) pPlayer), (FoodProcessorEntity) entity, pPos);
       } else {
         throw new IllegalStateException("Our Container provider is missing!");
       }

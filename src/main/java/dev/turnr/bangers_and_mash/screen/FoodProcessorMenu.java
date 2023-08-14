@@ -13,7 +13,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class FoodProcessorMenu extends AbstractContainerMenu {
@@ -34,7 +34,7 @@ public class FoodProcessorMenu extends AbstractContainerMenu {
   private final ContainerData data;
 
   public FoodProcessorMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-    this(pContainerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()),
+    this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()),
         new SimpleContainerData(2));
   }
 
@@ -43,13 +43,13 @@ public class FoodProcessorMenu extends AbstractContainerMenu {
     super(AllMenuTypes.FOOD_PROCESSOR_MENU.get(), pContainerId);
     this.entity = (FoodProcessorEntity) entity;
     checkContainerSize(inv, this.entity.getInventorySize());
-    this.level = inv.player.level;
+    this.level = inv.player.level();
     this.data = data;
 
     addPlayerInventory(inv);
     addPlayerHotbar(inv);
 
-    this.entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
+    this.entity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
       this.addSlot(new SlotItemHandler(handler, FoodProcessorEntity.ATTACHMENT_SLOT_ID, 17, 37));
       this.addSlot(new ResultSlot(handler, FoodProcessorEntity.OUTPUT_SLOT_ID, 144, 36));
 

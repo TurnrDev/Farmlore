@@ -13,7 +13,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class AllMenuTypes {
 
   public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(
-      ForgeRegistries.CONTAINERS, BangersAndMash.MOD_ID);
+      ForgeRegistries.MENU_TYPES, BangersAndMash.MOD_ID);
 
   public static final RegistryObject<MenuType<FoodProcessorMenu>> FOOD_PROCESSOR_MENU =
       registerMenuType(FoodProcessorMenu::new, "food_processor_menu");

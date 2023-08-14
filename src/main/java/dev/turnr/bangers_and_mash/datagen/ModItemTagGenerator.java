@@ -1,43 +1,44 @@
-package dev.turnr.bangers_and_mash.datagen.tags;
+package dev.turnr.bangers_and_mash.datagen;
 
 import static dev.turnr.bangers_and_mash.BangersAndMash.MOD_ID;
 
 import dev.turnr.bangers_and_mash.ModTags;
 import dev.turnr.bangers_and_mash.items.Food;
 import dev.turnr.bangers_and_mash.items.GenericItems;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
+import java.util.concurrent.CompletableFuture;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
-import org.jetbrains.annotations.Nullable;
 
-public class ModItemTagsProvider extends ItemTagsProvider {
+public class ModItemTagGenerator extends ItemTagsProvider {
 
-  public ModItemTagsProvider(DataGenerator pGenerator,
-      BlockTagsProvider pBlockTagsProvider,
-      @Nullable ExistingFileHelper existingFileHelper) {
-    super(pGenerator, pBlockTagsProvider, MOD_ID, existingFileHelper);
+  public ModItemTagGenerator(PackOutput output,
+      CompletableFuture<HolderLookup.Provider> lookupProvider,
+      CompletableFuture<TagLookup<Block>> blockTagLookup, ExistingFileHelper existingFileHelper) {
+    super(output, lookupProvider, blockTagLookup, MOD_ID, existingFileHelper);
   }
 
   /**
    *
    */
   @Override
-  protected void addTags() {
+  protected void addTags(HolderLookup.Provider pProvider) {
     TagAppender<Item> rawSausagesTagProvider = this.tag(ModTags.Items.FORGE_SAUSAGES_RAW);
 
     for (RegistryObject<Item> item : Food.Tags.RAW_SAUSAGES) {
-      rawSausagesTagProvider.add(item.get());
+      rawSausagesTagProvider.add(item.getKey());
     }
 
     TagAppender<Item> cookedSausagesTagProvider = this.tag(ModTags.Items.FORGE_SAUSAGES_COOKED);
 
     for (RegistryObject<Item> item : Food.Tags.COOKED_SAUSAGES) {
-      cookedSausagesTagProvider.add(item.get());
+      cookedSausagesTagProvider.add(item.getKey());
     }
 
     cookedSausagesTagProvider.addOptional(
@@ -71,6 +72,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
    */
   @Override
   public String getName() {
-    return "ModItemTagsProvider";
+    return "ModItemTagGenerator";
   }
 }

@@ -1,10 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "n",
-    "i",
-    "n"
-  ],
+  "category": "equipment",
   "key": {
     "i": {
       "item": "minecraft:iron_ingot"
@@ -13,7 +9,13 @@
       "item": "minecraft:iron_nugget"
     }
   },
+  "pattern": [
+    "n",
+    "i",
+    "n"
+  ],
   "result": {
     "item": "bangers_and_mash:food_processor_attachment_dough_blade"
-  }
+  },
+  "show_notification": true
 }

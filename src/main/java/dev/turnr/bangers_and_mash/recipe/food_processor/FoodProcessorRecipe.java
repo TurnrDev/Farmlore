@@ -7,6 +7,7 @@ import dev.turnr.bangers_and_mash.blocks.entities.FoodProcessorEntity;
 import dev.turnr.bangers_and_mash.items.GenericItems;
 import javax.annotation.Nullable;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -57,12 +58,11 @@ public class FoodProcessorRecipe implements Recipe<SimpleContainer> {
     return true;
   }
 
-  /**
-   * Returns an Item that is the result of this recipe
-   *
-   * @param pContainer
-   */
   @Override
+  public ItemStack assemble(SimpleContainer pContainer, RegistryAccess pRegistryAccess) {
+    return assemble(pContainer);
+  }
+
   public ItemStack assemble(SimpleContainer pContainer) {
     return this.output;
   }
@@ -78,12 +78,16 @@ public class FoodProcessorRecipe implements Recipe<SimpleContainer> {
     return true;
   }
 
+  @Override
+  public ItemStack getResultItem(RegistryAccess pRegistryAccess) {
+    return getResultItem();
+  }
+
   /**
    * Get the result of this recipe, usually for display purposes (e.g. recipe book). If your recipe
    * has more than one possible result (e.g. it's dynamic and depends on its inputs), then return an
    * empty stack.
    */
-  @Override
   public ItemStack getResultItem() {
     return this.output.copy();
   }
@@ -154,27 +158,6 @@ public class FoodProcessorRecipe implements Recipe<SimpleContainer> {
       }
 
       buf.writeItemStack(recipe.output, false);
-    }
-
-    @Override
-    public RecipeSerializer<?> setRegistryName(ResourceLocation name) {
-      return INSTANCE;
-    }
-
-    @Nullable
-    @Override
-    public ResourceLocation getRegistryName() {
-      return ID;
-    }
-
-    @Override
-    public Class<RecipeSerializer<?>> getRegistryType() {
-      return Serializer.castClass(RecipeSerializer.class);
-    }
-
-    @SuppressWarnings("unchecked")
-    private static <G> Class<G> castClass(Class<?> cls) {
-      return (Class<G>)cls;
     }
 
 

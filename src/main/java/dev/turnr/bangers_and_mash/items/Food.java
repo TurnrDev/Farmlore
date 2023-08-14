@@ -132,7 +132,7 @@ public class Food {
      * The sosig is a god tier sausage. Do not mock its artwork.
      */
     public static final RegistryObject<Item> SOSIG = ITEMS.register("sosig", () -> new Item(
-        new Item.Properties().food(Foods.ENCHANTED_GOLDEN_APPLE).tab(CreativeModeTab.TAB_FOOD)
+        new Item.Properties().food(Foods.ENCHANTED_GOLDEN_APPLE)
             .rarity(Rarity.EPIC)));
 
     /* Cooked Sausages */
@@ -226,7 +226,7 @@ public class Food {
 
     public static RegistryObject<Item> createFood(String name, FoodProperties food) {
       return ITEMS.register(name,
-          () -> new Item(new Item.Properties().food(food).tab(CreativeModeTab.TAB_FOOD)));
+          () -> new Item(new Item.Properties().food(food)));
     }
 
     public static void register() {

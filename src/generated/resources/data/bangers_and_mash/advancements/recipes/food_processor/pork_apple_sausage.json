@@ -1,25 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "bangers_and_mash:food_processor/pork_apple_sausage"
-    ]
-  },
   "criteria": {
-    "has_minced_pork": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "bangers_and_mash:minced_pork"
-            ]
-          }
-        ]
-      }
-    },
     "has_apple": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -28,10 +10,10 @@
             ]
           }
         ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
     },
     "has_food_processor_attachment_steel_blade": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -40,13 +22,26 @@
             ]
           }
         ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_minced_pork": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bangers_and_mash:minced_pork"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     },
     "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "bangers_and_mash:food_processor/pork_apple_sausage"
-      }
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
@@ -56,5 +51,11 @@
       "has_food_processor_attachment_steel_blade",
       "has_the_recipe"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bangers_and_mash:food_processor/pork_apple_sausage"
+    ]
+  },
+  "sends_telemetry_event": true
 }

@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class HerbBlock extends CropBlock {
 
@@ -31,14 +32,14 @@ public class HerbBlock extends CropBlock {
   protected Item getBaseSeedId() {
     // Get the seed item from the block's item
     // Get the block's id, append "_seeds", and get the item with that id
-    String block_id = this.asBlock().getRegistryName().getPath();
+    String block_id = ForgeRegistries.BLOCKS.getKey(this).getPath();
 
     // Get the item with the id "block_id + "_seeds""
     String seed_id = block_id + "_seeds";
 
     // Get the item with the id "seed_id"
     return Seeds.ITEMS.getEntries().stream()
-        .filter(entry -> entry.get().getRegistryName().getPath().equals(seed_id))
+        .filter(entry -> entry.getId().getPath().equals(seed_id))
         .findFirst().get().get();
   }
 
