@@ -3,7 +3,7 @@ package dev.turnr.bangers_and_mash.recipe.food_processor;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import dev.turnr.bangers_and_mash.BangersAndMash;
-import dev.turnr.bangers_and_mash.blocks.entities.FoodProcessorEntity;
+import dev.turnr.bangers_and_mash.blockentities.FoodProcessorEntity;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;

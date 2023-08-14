@@ -1,6 +1,6 @@
 package dev.turnr.bangers_and_mash.screen;
 
-import dev.turnr.bangers_and_mash.blocks.entities.FoodProcessorEntity;
+import dev.turnr.bangers_and_mash.blockentities.FoodProcessorEntity;
 import dev.turnr.bangers_and_mash.screen.slot.ResultSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
+import org.jetbrains.annotations.NotNull;
 
 public class FoodProcessorMenu extends AbstractContainerMenu {
 
@@ -85,9 +86,9 @@ public class FoodProcessorMenu extends AbstractContainerMenu {
   }
 
   @Override
-  public ItemStack quickMoveStack(Player playerIn, int index) {
+  public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int index) {
     Slot sourceSlot = slots.get(index);
-    if (sourceSlot == null || !sourceSlot.hasItem()) {
+    if (!sourceSlot.hasItem()) {
       return ItemStack.EMPTY;  //EMPTY_ITEM
     }
     ItemStack sourceStack = sourceSlot.getItem();
@@ -121,7 +122,7 @@ public class FoodProcessorMenu extends AbstractContainerMenu {
   }
 
   @Override
-  public boolean stillValid(Player pPlayer) {
+  public boolean stillValid(@NotNull Player pPlayer) {
     return stillValid(ContainerLevelAccess.create(this.level, this.entity.getBlockPos()), pPlayer,
         this.entity.getBlockState().getBlock());
   }

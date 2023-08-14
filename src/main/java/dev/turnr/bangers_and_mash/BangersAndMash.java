@@ -4,7 +4,7 @@ import com.mojang.logging.LogUtils;
 import dev.turnr.bangers_and_mash.blocks.BlockRegistry;
 import dev.turnr.bangers_and_mash.blocks.GenericBlocks;
 import dev.turnr.bangers_and_mash.blocks.PlantBlocks;
-import dev.turnr.bangers_and_mash.blocks.entities.GenericBlockEntities;
+import dev.turnr.bangers_and_mash.blockentities.BlockEntityRegistry;
 import dev.turnr.bangers_and_mash.items.EdibleItems;
 import dev.turnr.bangers_and_mash.items.ToolItems;
 import dev.turnr.bangers_and_mash.items.IngredientItems;
@@ -52,7 +52,7 @@ public class BangersAndMash {
     ItemRegistry.register(eventBus);
     BlockRegistry.register(eventBus);
 
-    GenericBlockEntities.register(eventBus);
+    BlockEntityRegistry.register(eventBus);
     MenuTypeRegistry.register(eventBus);
     RecipeRegistry.register(eventBus);
 

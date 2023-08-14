@@ -1,4 +1,4 @@
-package dev.turnr.bangers_and_mash.blocks.entities;
+package dev.turnr.bangers_and_mash.blockentities;
 
 import dev.turnr.bangers_and_mash.Tags;
 import dev.turnr.bangers_and_mash.recipe.food_processor.FoodProcessorRecipe;
@@ -49,27 +49,20 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
 
   public FoodProcessorEntity(BlockPos pPos,
       BlockState pBlockState) {
-    super(GenericBlockEntities.FOOD_PROCESSOR.get(), pPos, pBlockState);
+    super(BlockEntityRegistry.FOOD_PROCESSOR.get(), pPos, pBlockState);
     this.data = new ContainerData() {
       public int get(int index) {
-        switch (index) {
-          case 0:
-            return FoodProcessorEntity.this.progress;
-          case 1:
-            return FoodProcessorEntity.this.maxProgress;
-          default:
-            return 0;
-        }
+        return switch (index) {
+          case 0 -> FoodProcessorEntity.this.progress;
+          case 1 -> FoodProcessorEntity.this.maxProgress;
+          default -> 0;
+        };
       }
 
       public void set(int index, int value) {
         switch (index) {
-          case 0:
-            FoodProcessorEntity.this.progress = value;
-            break;
-          case 1:
-            FoodProcessorEntity.this.maxProgress = value;
-            break;
+          case 0 -> FoodProcessorEntity.this.progress = value;
+          case 1 -> FoodProcessorEntity.this.maxProgress = value;
         }
       }
 
@@ -100,6 +93,7 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
       inventory.setItem(i, entity.inventory.getStackInSlot(i));
     }
 
+    assert level != null;
     Optional<FoodProcessorRecipe> match = level.getRecipeManager()
         .getRecipeFor(FoodProcessorRecipe.Type.INSTANCE, inventory, level);
 
@@ -120,6 +114,7 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
       inventory.setItem(i, entity.inventory.getStackInSlot(i));
     }
 
+    assert level != null;
     Optional<FoodProcessorRecipe> match = level.getRecipeManager()
         .getRecipeFor(FoodProcessorRecipe.Type.INSTANCE, inventory, level);
 
@@ -157,8 +152,8 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
 
   @Nullable
   @Override
-  public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory,
-      Player pPlayer) {
+  public AbstractContainerMenu createMenu(int pContainerId, @NotNull Inventory pPlayerInventory,
+      @NotNull Player pPlayer) {
     return new FoodProcessorMenu(pContainerId, pPlayerInventory, this, this.data);
   }
 
@@ -185,7 +180,7 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
   }
 
   @Override
-  public void load(CompoundTag tag) {
+  public void load(@NotNull CompoundTag tag) {
     super.load(tag);
     inventory.deserializeNBT(tag.getCompound("inventory"));
     this.progress = tag.getInt("progress");
@@ -197,6 +192,7 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
       container.setItem(i, inventory.getStackInSlot(i));
     }
 
+    assert this.level != null;
     Containers.dropContents(this.level, this.worldPosition, container);
   }
 
@@ -204,11 +200,8 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
     this.progress = 0;
   }
 
-  /**
-   * @return
-   */
   @Override
-  public Component getDisplayName() {
-    return null;
+  public @NotNull Component getDisplayName() {
+    return Component.translatableWithFallback("block.bangers_and_mash.food_processor", "Food Processor");
   }
 }

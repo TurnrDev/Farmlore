@@ -1,4 +1,4 @@
-package dev.turnr.bangers_and_mash.blocks.entities;
+package dev.turnr.bangers_and_mash.blockentities;
 
 import dev.turnr.bangers_and_mash.BangersAndMash;
 import dev.turnr.bangers_and_mash.blocks.GenericBlocks;
@@ -8,7 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class GenericBlockEntities {
+public class BlockEntityRegistry {
 
   public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(
       ForgeRegistries.BLOCK_ENTITY_TYPES, BangersAndMash.MOD_ID);
