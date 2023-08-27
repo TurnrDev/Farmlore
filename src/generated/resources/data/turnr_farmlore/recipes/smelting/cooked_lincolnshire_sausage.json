@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "turnr_farmlore:lincolnshire_sausage"
+  },
+  "result": "turnr_farmlore:cooked_lincolnshire_sausage"
+}

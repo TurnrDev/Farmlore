@@ -1,0 +1,61 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_food_processor_attachment_steel_blade": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "turnr_farmlore:food_processor_attachment_steel_blade"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_minced_pork": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "turnr_farmlore:minced_pork"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "turnr_farmlore:food_processor/lincolnshire_sausage"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_thyme": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "turnr_farmlore:thyme"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_minced_pork",
+      "has_thyme",
+      "has_food_processor_attachment_steel_blade",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "turnr_farmlore:food_processor/lincolnshire_sausage"
+    ]
+  },
+  "sends_telemetry_event": true
+}

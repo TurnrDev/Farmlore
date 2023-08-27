@@ -1,0 +1,10 @@
+{
+  "values": [
+    "turnr_farmlore:metal_can",
+    "minecraft:bucket",
+    {
+      "id": "tconstruct:copper_can",
+      "required": false
+    }
+  ]
+}

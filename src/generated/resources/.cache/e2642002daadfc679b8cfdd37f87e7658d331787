@@ -1,0 +1,7 @@
+// 1.20.1	2023-08-27T13:54:52.407239292	FarmloreItemTagsProvider
+9c3984f890958a8d7c2de2e8dac25e93da100910 data/forge/tags/items/sausages.json
+f7b6f0bcb11c4d9d6959da707c1103be787865b6 data/forge/tags/items/sausages/cooked.json
+d63e920e40813af9ece7b1c4b2db86dad4c23ede data/forge/tags/items/sausages/raw.json
+797e0693eb96d69ed755123f55743e7d9b7771e3 data/turnr_farmlore/tags/items/containers.json
+b072cce3a566a9258272e44bc96487f7b9d3c7e9 data/turnr_farmlore/tags/items/food_processor/attachments.json
+702c322e0a6355710b9ed062bde1f8844067c813 data/turnr_farmlore/tags/items/food_processor/attachments/whisk.json

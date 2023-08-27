@@ -1,15 +1,15 @@
 {
   "values": [
-    "bangers_and_mash:cumberland_sausage",
-    "bangers_and_mash:gloucester_sausage",
-    "bangers_and_mash:lincolnshire_sausage",
-    "bangers_and_mash:manchester_sausage",
-    "bangers_and_mash:marylebone_sausage",
-    "bangers_and_mash:oxford_sausage",
-    "bangers_and_mash:pork_apple_sausage",
-    "bangers_and_mash:square_sausage",
-    "bangers_and_mash:suffolk_sausage",
-    "bangers_and_mash:tomato_sausage",
-    "bangers_and_mash:yorkshire_sausage"
+    "turnr_farmlore:cumberland_sausage",
+    "turnr_farmlore:gloucester_sausage",
+    "turnr_farmlore:lincolnshire_sausage",
+    "turnr_farmlore:manchester_sausage",
+    "turnr_farmlore:marylebone_sausage",
+    "turnr_farmlore:oxford_sausage",
+    "turnr_farmlore:pork_apple_sausage",
+    "turnr_farmlore:square_sausage",
+    "turnr_farmlore:suffolk_sausage",
+    "turnr_farmlore:tomato_sausage",
+    "turnr_farmlore:yorkshire_sausage"
   ]
 }

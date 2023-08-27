@@ -1,16 +1,16 @@
 {
   "values": [
-    "bangers_and_mash:cooked_cumberland_sausage",
-    "bangers_and_mash:cooked_gloucester_sausage",
-    "bangers_and_mash:cooked_lincolnshire_sausage",
-    "bangers_and_mash:cooked_manchester_sausage",
-    "bangers_and_mash:cooked_marylebone_sausage",
-    "bangers_and_mash:cooked_oxford_sausage",
-    "bangers_and_mash:cooked_pork_apple_sausage",
-    "bangers_and_mash:cooked_square_sausage",
-    "bangers_and_mash:cooked_suffolk_sausage",
-    "bangers_and_mash:cooked_tomato_sausage",
-    "bangers_and_mash:cooked_yorkshire_sausage",
+    "turnr_farmlore:cooked_cumberland_sausage",
+    "turnr_farmlore:cooked_gloucester_sausage",
+    "turnr_farmlore:cooked_lincolnshire_sausage",
+    "turnr_farmlore:cooked_manchester_sausage",
+    "turnr_farmlore:cooked_marylebone_sausage",
+    "turnr_farmlore:cooked_oxford_sausage",
+    "turnr_farmlore:cooked_pork_apple_sausage",
+    "turnr_farmlore:cooked_square_sausage",
+    "turnr_farmlore:cooked_suffolk_sausage",
+    "turnr_farmlore:cooked_tomato_sausage",
+    "turnr_farmlore:cooked_yorkshire_sausage",
     {
       "id": "pamhc2foodextended:sausageitem",
       "required": false

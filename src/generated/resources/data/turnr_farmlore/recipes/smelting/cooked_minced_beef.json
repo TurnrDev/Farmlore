@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "turnr_farmlore:minced_beef"
+  },
+  "result": "turnr_farmlore:cooked_minced_beef"
+}

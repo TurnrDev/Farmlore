@@ -1,0 +1,14 @@
+{
+  "type": "turnr_farmlore:food_processor",
+  "attachment": {
+    "item": "turnr_farmlore:food_processor_attachment_steel_blade"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:beef"
+    }
+  ],
+  "output": {
+    "item": "turnr_farmlore:minced_beef"
+  }
+}

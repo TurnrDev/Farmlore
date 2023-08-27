@@ -1,9 +1,0 @@
-{
-  "values": [
-    "bangers_and_mash:food_processor_attachment_whisk",
-    {
-      "id": "create:whisk",
-      "required": false
-    }
-  ]
-}

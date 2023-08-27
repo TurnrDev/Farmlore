@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "turnr_farmlore:block/food_processor",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "turnr_farmlore:block/food_processor"
+    },
+    "facing=south": {
+      "model": "turnr_farmlore:block/food_processor",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "turnr_farmlore:block/food_processor",
+      "y": 270
+    }
+  }
+}

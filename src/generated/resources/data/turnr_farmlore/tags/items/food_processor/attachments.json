@@ -1,0 +1,11 @@
+{
+  "values": [
+    "turnr_farmlore:food_processor_attachment_steel_blade",
+    "turnr_farmlore:food_processor_attachment_dough_hook",
+    "turnr_farmlore:food_processor_attachment_dough_blade",
+    "turnr_farmlore:food_processor_attachment_shredding_disc",
+    "turnr_farmlore:food_processor_attachment_juicer",
+    "turnr_farmlore:food_processor_attachment_mill",
+    "#turnr_farmlore:food_processor/attachments/whisk"
+  ]
+}

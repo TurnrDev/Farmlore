@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "turnr_farmlore:block/thyme_stage_1"
+  }
+}

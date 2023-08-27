@@ -1,0 +1,17 @@
+{
+  "type": "turnr_farmlore:food_processor",
+  "attachment": {
+    "item": "turnr_farmlore:food_processor_attachment_steel_blade"
+  },
+  "ingredients": [
+    {
+      "item": "turnr_farmlore:minced_pork"
+    },
+    {
+      "item": "turnr_farmlore:minced_beef"
+    }
+  ],
+  "output": {
+    "item": "turnr_farmlore:square_sausage"
+  }
+}
