@@ -1,7 +1,9 @@
-// 1.20.1	2023-08-27T13:54:52.408737986	Item Models: turnr_farmlore
+// 1.20.1	2023-08-27T14:50:02.932015093	Item Models: turnr_farmlore
 58da9b5fc1ed2f1fb6a79b74c355394aba8b4557 assets/turnr_farmlore/models/item/basil.json
 58da9b5fc1ed2f1fb6a79b74c355394aba8b4557 assets/turnr_farmlore/models/item/basil_seeds.json
 58da9b5fc1ed2f1fb6a79b74c355394aba8b4557 assets/turnr_farmlore/models/item/boiled_potatoes.json
+62c674ec70b3df3861b1e37d8700001ece9b4adc assets/turnr_farmlore/models/item/burlap.json
+682250495c392837e47a96e2e037c80682c3e7e6 assets/turnr_farmlore/models/item/burlap_sack.json
 ac8e0418b5234543f7dd9382672525c7dba2122d assets/turnr_farmlore/models/item/canned_baked_beans.json
 58da9b5fc1ed2f1fb6a79b74c355394aba8b4557 assets/turnr_farmlore/models/item/cheesy_mash.json
 58da9b5fc1ed2f1fb6a79b74c355394aba8b4557 assets/turnr_farmlore/models/item/chips.json

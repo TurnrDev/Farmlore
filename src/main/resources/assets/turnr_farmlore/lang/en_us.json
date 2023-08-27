@@ -36,6 +36,8 @@
   "item.turnr_farmlore.rosemary": "Rosemary",
   "item.turnr_farmlore.thyme": "Thyme",
   "item.turnr_farmlore.thyme_seeds": "Thyme Seeds",
+  "item.turnr_farmlore.burlap": "Burlap",
+  "item.turnr_farmlore.burlap_sack": "Burlap Sack",
   "block.turnr_farmlore.thyme": "Thyme",
   "block.turnr_farmlore.food_processor": "Food Processor"
 }

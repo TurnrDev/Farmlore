@@ -1,15 +1,15 @@
 package dev.turnr.farmlore;
 
 import com.mojang.logging.LogUtils;
+import dev.turnr.farmlore.blockentities.BlockEntityRegistry;
 import dev.turnr.farmlore.blocks.BlockRegistry;
 import dev.turnr.farmlore.blocks.GenericBlocks;
 import dev.turnr.farmlore.blocks.PlantBlocks;
-import dev.turnr.farmlore.blockentities.BlockEntityRegistry;
 import dev.turnr.farmlore.items.EdibleItems;
-import dev.turnr.farmlore.items.ToolItems;
 import dev.turnr.farmlore.items.IngredientItems;
 import dev.turnr.farmlore.items.ItemRegistry;
 import dev.turnr.farmlore.items.PlantableItems;
+import dev.turnr.farmlore.items.ToolItems;
 import dev.turnr.farmlore.recipe.RecipeRegistry;
 import dev.turnr.farmlore.screen.FoodProcessorScreen;
 import dev.turnr.farmlore.screen.MenuTypeRegistry;
@@ -86,6 +86,12 @@ public class Farmlore {
 
     if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
       for (RegistryObject<Item> item : ToolItems.ITEMS.getEntries()) {
+        event.accept(item.get());
+      }
+    }
+
+    if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+      for (RegistryObject<Item> item : IngredientItems.ITEMS.getEntries()) {
         event.accept(item.get());
       }
     }

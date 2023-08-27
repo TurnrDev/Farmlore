@@ -7,9 +7,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 /**
- * IngredientItems This class will hold items which serve purely as ingredients for food items. The
- * items will have no nutritional value, and will not be edible on their own. They will be used in
- * recipes to create food items.
+ * This class will hold items which serve purely as ingredients for other recipes.
  */
 public class IngredientItems {
 
@@ -42,6 +40,12 @@ public class IngredientItems {
       () -> new Item(new Item.Properties()));
 
   public static final RegistryObject<Item> COOKED_MINCED_BEEF = ITEMS.register("cooked_minced_beef",
+      () -> new Item(new Item.Properties()));
+
+  public static final RegistryObject<Item> BURLAP = ITEMS.register("burlap",
+      () -> new Item(new Item.Properties()));
+
+  public static final RegistryObject<Item> BURLAP_SACK = ITEMS.register("burlap_sack",
       () -> new Item(new Item.Properties()));
 
   public static void register() {

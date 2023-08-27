@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_burlap": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "turnr_farmlore:burlap"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "turnr_farmlore:crafting/burlap_sack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_burlap",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "turnr_farmlore:crafting/burlap_sack"
+    ]
+  },
+  "sends_telemetry_event": false
+}

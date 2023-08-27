@@ -313,6 +313,24 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(Farmlore.MOD_ID, "smelting/cooked_minced_beef"));
 
+    // Wheat -> Burlap
+
+    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IngredientItems.BURLAP.get(), 3)
+        .pattern("###")
+        .define('#', Ingredient.of(Items.WHEAT))
+        .unlockedBy("has_wheat", has(Items.WHEAT))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(Farmlore.MOD_ID, "crafting/burlap"));
+
+    // Burlap -> Burlap Sack
+    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IngredientItems.BURLAP_SACK.get(), 1)
+        .pattern("# #")
+        .pattern(" # ")
+        .define('#', Ingredient.of(IngredientItems.BURLAP.get()))
+        .unlockedBy("has_burlap", has(IngredientItems.BURLAP.get()))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(Farmlore.MOD_ID, "crafting/burlap_sack"));
+
   }
 
 
