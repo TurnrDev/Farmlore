@@ -5,6 +5,7 @@ import dev.turnr.farmlore.blockentities.BlockEntityRegistry;
 import dev.turnr.farmlore.blocks.BlockRegistry;
 import dev.turnr.farmlore.blocks.GenericBlocks;
 import dev.turnr.farmlore.blocks.PlantBlocks;
+import dev.turnr.farmlore.items.ClothingItems;
 import dev.turnr.farmlore.items.EdibleItems;
 import dev.turnr.farmlore.items.IngredientItems;
 import dev.turnr.farmlore.items.ItemRegistry;
@@ -47,6 +48,7 @@ public class Farmlore {
     IngredientItems.register();
     EdibleItems.register();
     ToolItems.register();
+    ClothingItems.register();
     GenericBlocks.register();
 
     ItemRegistry.register(eventBus);

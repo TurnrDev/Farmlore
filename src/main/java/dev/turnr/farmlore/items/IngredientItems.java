@@ -45,9 +45,6 @@ public class IngredientItems {
   public static final RegistryObject<Item> BURLAP = ITEMS.register("burlap",
       () -> new Item(new Item.Properties()));
 
-  public static final RegistryObject<Item> BURLAP_SACK = ITEMS.register("burlap_sack",
-      () -> new Item(new Item.Properties()));
-
   public static void register() {
     ItemRegistry.register(ITEMS);
   }

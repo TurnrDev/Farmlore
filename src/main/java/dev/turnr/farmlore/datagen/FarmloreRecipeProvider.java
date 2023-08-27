@@ -3,6 +3,7 @@ package dev.turnr.farmlore.datagen;
 import com.mojang.logging.LogUtils;
 import dev.turnr.farmlore.Farmlore;
 import dev.turnr.farmlore.datagen.buiders.FoodProcessorRecipeBuilder;
+import dev.turnr.farmlore.items.ClothingItems;
 import dev.turnr.farmlore.items.EdibleItems;
 import dev.turnr.farmlore.items.IngredientItems;
 import dev.turnr.farmlore.items.ToolItems;
@@ -323,7 +324,7 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
             new ResourceLocation(Farmlore.MOD_ID, "crafting/burlap"));
 
     // Burlap -> Burlap Sack
-    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IngredientItems.BURLAP_SACK.get(), 1)
+    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ClothingItems.BURLAP_SACK.get(), 1)
         .pattern("# #")
         .pattern(" # ")
         .define('#', Ingredient.of(IngredientItems.BURLAP.get()))

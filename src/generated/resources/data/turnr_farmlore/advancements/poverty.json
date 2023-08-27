@@ -1,0 +1,50 @@
+{
+  "parent": "minecraft:husbandry/root",
+  "criteria": {
+    "wore_burlap_sack": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:player",
+              "equipment": {
+                "chest": {
+                  "items": [
+                    "turnr_farmlore:burlap_sack"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "fallback": "Dress in rags.",
+      "translate": "advancements.farmlore.poverty.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "turnr_farmlore:burlap_sack",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "fallback": "Poverty",
+      "translate": "advancements.farmlore.poverty.title"
+    }
+  },
+  "requirements": [
+    [
+      "wore_burlap_sack"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,11 +1,13 @@
 package dev.turnr.farmlore.datagen;
 
 import dev.turnr.farmlore.Farmlore;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.common.data.ForgeAdvancementProvider;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -23,6 +25,7 @@ public class DataGenerators {
     generator.addProvider(event.includeServer(), FarmloreLootTableProvider.create(packOutput));
     generator.addProvider(event.includeClient(), new FarmloreBlockStateProvider(packOutput, existingFileHelper));
     generator.addProvider(event.includeClient(), new FarmloreItemModelProvider(packOutput, existingFileHelper));
+    generator.addProvider(event.includeClient(), new ForgeAdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(new FarmloreAdvancementProvider())));
 
     FarmloreBlockTagProvider blockTagGenerator = generator.addProvider(event.includeServer(), new FarmloreBlockTagProvider(packOutput, lookupProvider, existingFileHelper));
     generator.addProvider(event.includeServer(), new FarmloreItemTagsProvider(packOutput, lookupProvider, blockTagGenerator.contentsGetter(), existingFileHelper));
