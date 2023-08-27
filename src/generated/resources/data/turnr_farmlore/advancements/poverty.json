@@ -30,7 +30,7 @@
       "translate": "advancements.farmlore.poverty.description"
     },
     "frame": "challenge",
-    "hidden": false,
+    "hidden": true,
     "icon": {
       "item": "turnr_farmlore:burlap_sack",
       "nbt": "{Damage:0}"

@@ -21,18 +21,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.ForgeAdvancementProvider;
-import net.minecraftforge.common.extensions.IForgeAdvancementBuilder;
 
 public class FarmloreAdvancementProvider implements ForgeAdvancementProvider.AdvancementGenerator {
 
-  /**
-   * A method used to generate advancements for a mod. Advancements should be built via
-   * {@link IForgeAdvancementBuilder#save(Consumer, ResourceLocation, ExistingFileHelper)}.
-   *
-   * @param registries         a lookup for registries and their objects
-   * @param saver              a consumer used to write advancements to a file
-   * @param existingFileHelper a helper used to find whether a file exists
-   */
   @Override
   public void generate(Provider registries, Consumer<Advancement> saver,
       ExistingFileHelper existingFileHelper) {
@@ -44,7 +35,7 @@ public class FarmloreAdvancementProvider implements ForgeAdvancementProvider.Adv
                 Component.translatableWithFallback("advancements.farmlore.poverty.description",
                     "Dress in rags."),
                 null,
-                FrameType.CHALLENGE, true, true, false))
+                FrameType.CHALLENGE, true, true, true))
         .parent(new ResourceLocation("husbandry/root"))
         .addCriterion("wore_burlap_sack", PlayerTrigger.TriggerInstance.located(
             EntityPredicate.Builder.entity().of(EntityType.PLAYER).equipment(
