@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "raw_eldorite_block",
+  "ingredients": [
+    {
+      "item": "turnr_farmlore:raw_eldorite"
+    },
+    {
+      "item": "turnr_farmlore:raw_eldorite"
+    },
+    {
+      "item": "turnr_farmlore:raw_eldorite"
+    },
+    {
+      "item": "turnr_farmlore:raw_eldorite"
+    },
+    {
+      "item": "turnr_farmlore:raw_eldorite"
+    },
+    {
+      "item": "turnr_farmlore:raw_eldorite"
+    },
+    {
+      "item": "turnr_farmlore:raw_eldorite"
+    },
+    {
+      "item": "turnr_farmlore:raw_eldorite"
+    },
+    {
+      "item": "turnr_farmlore:raw_eldorite"
+    }
+  ],
+  "result": {
+    "item": "turnr_farmlore:raw_eldorite_block"
+  }
+}

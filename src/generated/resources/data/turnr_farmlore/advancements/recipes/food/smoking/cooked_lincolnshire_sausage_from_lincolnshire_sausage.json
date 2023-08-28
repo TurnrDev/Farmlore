@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lincolnshire_sausage": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "turnr_farmlore:lincolnshire_sausage"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "turnr_farmlore:smoking/cooked_lincolnshire_sausage_from_lincolnshire_sausage"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_lincolnshire_sausage",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "turnr_farmlore:smoking/cooked_lincolnshire_sausage_from_lincolnshire_sausage"
+    ]
+  },
+  "sends_telemetry_event": false
+}

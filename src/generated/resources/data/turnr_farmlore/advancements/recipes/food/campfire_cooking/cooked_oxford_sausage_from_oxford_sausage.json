@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_oxford_sausage": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "turnr_farmlore:oxford_sausage"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "turnr_farmlore:campfire_cooking/cooked_oxford_sausage_from_oxford_sausage"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_oxford_sausage",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "turnr_farmlore:campfire_cooking/cooked_oxford_sausage_from_oxford_sausage"
+    ]
+  },
+  "sends_telemetry_event": false
+}

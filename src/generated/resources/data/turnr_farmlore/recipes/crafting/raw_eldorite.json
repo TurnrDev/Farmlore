@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "raw_eldorite",
+  "ingredients": [
+    {
+      "item": "turnr_farmlore:raw_eldorite_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "turnr_farmlore:raw_eldorite"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gloucester_sausage": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "turnr_farmlore:gloucester_sausage"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "turnr_farmlore:smoking/cooked_gloucester_sausage_from_gloucester_sausage"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_gloucester_sausage",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "turnr_farmlore:smoking/cooked_gloucester_sausage_from_gloucester_sausage"
+    ]
+  },
+  "sends_telemetry_event": false
+}

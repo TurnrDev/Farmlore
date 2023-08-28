@@ -27,6 +27,8 @@ public class FarmloreBlockLootTableProvider extends BlockLootSubProvider {
     this.dropSelf(GenericBlocks.FOOD_PROCESSOR.get());
     this.add(GenericBlocks.ELDORITE_ORE.get(), block -> createOreDrop(block, IngredientItems.RAW_ELDORITE.get()));
     this.add(GenericBlocks.DEEPSLATE_ELDORITE_ORE.get(), block -> createOreDrop(block, IngredientItems.RAW_ELDORITE.get()));
+    this.dropSelf(GenericBlocks.RAW_ELDORITE_BLOCK.get());
+    this.dropSelf(GenericBlocks.ELDORITE_BLOCK.get());
     this.addCrop(PlantBlocks.PARSLEY.get(), IngredientItems.PARSLEY.get(), PlantableItems.PARSLEY.get());
     this.addCrop(PlantBlocks.BASIL.get(), IngredientItems.BASIL.get(), PlantableItems.BASIL.get());
     this.addCrop(PlantBlocks.CORIANDER.get(), IngredientItems.CORIANDER.get(), PlantableItems.CORIANDER.get());

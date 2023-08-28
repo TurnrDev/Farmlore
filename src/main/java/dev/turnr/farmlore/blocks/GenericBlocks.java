@@ -52,6 +52,24 @@ public class GenericBlocks {
       () -> new DropExperienceBlock(
           BlockBehaviour.Properties.copy(ELDORITE_ORE.get()).strength(4.5F, 3.0F)));
 
+  public static final RegistryObject<Block> RAW_ELDORITE_BLOCK = registerBlock(
+      "raw_eldorite_block",
+      () -> new Block(
+          BlockBehaviour.Properties.of()
+              .mapColor(MapColor.GLOW_LICHEN)
+              .requiresCorrectToolForDrops()
+              .strength(5.2F, 6.0F)
+      ));
+
+  public static final RegistryObject<Block> ELDORITE_BLOCK = registerBlock(
+      "eldorite_block",
+      () -> new Block(
+          BlockBehaviour.Properties.of()
+              .mapColor(MapColor.GLOW_LICHEN)
+              .requiresCorrectToolForDrops()
+              .strength(5.2F, 6.0F)
+      ));
+
 
   private static <T extends Block> RegistryObject<T> registerBlock(String name,
       Supplier<T> block) {

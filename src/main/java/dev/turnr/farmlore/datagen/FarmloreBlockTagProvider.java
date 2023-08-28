@@ -32,12 +32,31 @@ public class FarmloreBlockTagProvider extends BlockTagsProvider {
     this.tag(FarmloreTags.Blocks.forgeTag("ores_in_ground/deepslate"))
         .add(GenericBlocks.DEEPSLATE_ELDORITE_ORE.get());
 
-    this.tag(Tags.Blocks.ORES).addTag(FarmloreTags.Blocks.forgeTag("ores/eldorite"));
+    this.tag(Tags.Blocks.ORES)
+        .addTag(FarmloreTags.Blocks.forgeTag("ores/eldorite"));
 
-    this.tag(BlockTags.NEEDS_IRON_TOOL).addTag(FarmloreTags.Blocks.forgeTag("ores/eldorite"));
-    this.tag(BlockTags.MINEABLE_WITH_PICKAXE).addTag(FarmloreTags.Blocks.forgeTag("ores/eldorite"));
+    this.tag(BlockTags.NEEDS_IRON_TOOL)
+        .addTag(FarmloreTags.Blocks.forgeTag("ores/eldorite"))
+        .addTag(FarmloreTags.Blocks.forgeTag("storage_blocks/eldorite"));
+    this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+        .addTag(FarmloreTags.Blocks.forgeTag("ores/eldorite"));
     this.tag(BlockTags.MINEABLE_WITH_AXE);
     this.tag(BlockTags.MINEABLE_WITH_HOE);
     this.tag(BlockTags.MINEABLE_WITH_SHOVEL);
+
+    this.tag(FarmloreTags.Blocks.forgeTag("storage_blocks/raw_eldorite"))
+        .add(GenericBlocks.RAW_ELDORITE_BLOCK.get());
+
+    this.tag(Tags.Blocks.STORAGE_BLOCKS)
+        .addTag(FarmloreTags.Blocks.forgeTag("storage_blocks/raw_eldorite"));
+
+    this.tag(FarmloreTags.Blocks.forgeTag("storage_blocks/eldorite"))
+        .add(GenericBlocks.ELDORITE_BLOCK.get());
+
+    this.tag(Tags.Blocks.STORAGE_BLOCKS)
+        .addTag(FarmloreTags.Blocks.forgeTag("storage_blocks/eldorite"));
+
+    this.tag(BlockTags.BEACON_BASE_BLOCKS)
+        .addTag(FarmloreTags.Blocks.forgeTag("storage_blocks/eldorite"));
   }
 }

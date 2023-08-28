@@ -93,6 +93,13 @@ public class FarmloreItemTagsProvider extends ItemTagsProvider {
         .addTag(FarmloreTags.Items.forgeTag("raw_materials/eldorite"));
     this.tag(Tags.Items.INGOTS).addTag(FarmloreTags.Items.forgeTag("ingots/eldorite"));
     this.tag(Tags.Items.NUGGETS).addTag(FarmloreTags.Items.forgeTag("nuggets/eldorite"));
+
+    this.tag(FarmloreTags.Items.forgeTag("storage_blocks/raw_eldorite"))
+        .add(Item.byBlock(GenericBlocks.ELDORITE_BLOCK.get()));
+
+    this.tag(Tags.Items.STORAGE_BLOCKS)
+        .addTag(FarmloreTags.Items.forgeTag("storage_blocks/raw_eldorite"));
+
   }
 
   /**

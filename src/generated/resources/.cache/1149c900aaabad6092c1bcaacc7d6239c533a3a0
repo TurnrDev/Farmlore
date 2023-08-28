@@ -1,4 +1,4 @@
-// 1.20.1	2023-08-28T18:21:58.415611884	Item Models: turnr_farmlore
+// 1.20.1	2023-08-28T22:02:42.181336193	Item Models: turnr_farmlore
 58da9b5fc1ed2f1fb6a79b74c355394aba8b4557 assets/turnr_farmlore/models/item/basil.json
 58da9b5fc1ed2f1fb6a79b74c355394aba8b4557 assets/turnr_farmlore/models/item/basil_seeds.json
 58da9b5fc1ed2f1fb6a79b74c355394aba8b4557 assets/turnr_farmlore/models/item/boiled_potatoes.json
@@ -24,6 +24,7 @@ e205e34069017fc4bdecc9f5eb657d2e8f79ab53 assets/turnr_farmlore/models/item/cooke
 58da9b5fc1ed2f1fb6a79b74c355394aba8b4557 assets/turnr_farmlore/models/item/coriander_seeds.json
 90bc39fb6e2fa9750b68b5c03e4d58f9adfd5902 assets/turnr_farmlore/models/item/cumberland_sausage.json
 14c0240e4f1a8c72d6373b9b2b74f4b0776690aa assets/turnr_farmlore/models/item/deepslate_eldorite_ore.json
+74ed5377d53d9b6a7e483cedc4f96b218072afdf assets/turnr_farmlore/models/item/eldorite_block.json
 7112acc16ca3787dc185e36d696f5b376f78285a assets/turnr_farmlore/models/item/eldorite_ingot.json
 55f70a422e0c31a64c38054586951073aa69aaa0 assets/turnr_farmlore/models/item/eldorite_nugget.json
 c862643fcd5206132472fbbbc22ef68e5ebb3b57 assets/turnr_farmlore/models/item/eldorite_ore.json
@@ -51,6 +52,7 @@ cd0b30eeaaa11dd278e03fa786ad44ae5bc6ea15 assets/turnr_farmlore/models/item/maryl
 c87eaedf237c44e498bc16b0ebf1b18a066f0b00 assets/turnr_farmlore/models/item/pork_apple_sausage.json
 f5b26741361372dd07e7b2dd534f95ff9ed54ade assets/turnr_farmlore/models/item/potato_quarter.json
 294dbbd2c0835343b07777be54cb3c8ebff5e06d assets/turnr_farmlore/models/item/raw_eldorite.json
+22a909a40dce0c32c6ba3bf3dc4c4ff4d7aa6889 assets/turnr_farmlore/models/item/raw_eldorite_block.json
 58da9b5fc1ed2f1fb6a79b74c355394aba8b4557 assets/turnr_farmlore/models/item/rosemary.json
 58da9b5fc1ed2f1fb6a79b74c355394aba8b4557 assets/turnr_farmlore/models/item/rosemary_seeds.json
 58da9b5fc1ed2f1fb6a79b74c355394aba8b4557 assets/turnr_farmlore/models/item/sage.json

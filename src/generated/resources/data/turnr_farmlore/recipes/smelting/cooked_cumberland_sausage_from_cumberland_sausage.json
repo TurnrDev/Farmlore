@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "group": "cooked_sausage",
+  "ingredient": {
+    "item": "turnr_farmlore:cumberland_sausage"
+  },
+  "result": "turnr_farmlore:cooked_cumberland_sausage"
+}

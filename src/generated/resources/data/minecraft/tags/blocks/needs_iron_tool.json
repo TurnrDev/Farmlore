@@ -1,5 +1,6 @@
 {
   "values": [
-    "#forge:ores/eldorite"
+    "#forge:ores/eldorite",
+    "#forge:storage_blocks/eldorite"
   ]
 }

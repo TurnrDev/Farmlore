@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "eldorite_block",
+  "ingredients": [
+    {
+      "item": "turnr_farmlore:eldorite_ingot"
+    },
+    {
+      "item": "turnr_farmlore:eldorite_ingot"
+    },
+    {
+      "item": "turnr_farmlore:eldorite_ingot"
+    },
+    {
+      "item": "turnr_farmlore:eldorite_ingot"
+    },
+    {
+      "item": "turnr_farmlore:eldorite_ingot"
+    },
+    {
+      "item": "turnr_farmlore:eldorite_ingot"
+    },
+    {
+      "item": "turnr_farmlore:eldorite_ingot"
+    },
+    {
+      "item": "turnr_farmlore:eldorite_ingot"
+    },
+    {
+      "item": "turnr_farmlore:eldorite_ingot"
+    }
+  ],
+  "result": {
+    "item": "turnr_farmlore:eldorite_block"
+  }
+}

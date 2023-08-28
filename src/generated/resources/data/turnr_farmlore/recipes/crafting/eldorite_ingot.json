@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "eldorite_ingot",
+  "ingredients": [
+    {
+      "item": "turnr_farmlore:eldorite_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "turnr_farmlore:eldorite_ingot"
+  }
+}

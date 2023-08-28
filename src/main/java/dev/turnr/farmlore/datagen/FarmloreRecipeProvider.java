@@ -33,12 +33,12 @@ import org.slf4j.Logger;
 
 public class FarmloreRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
-  private static final Logger LOGGER = LogUtils.getLogger();
   public static final ImmutableList<ItemLike> ELDORITE_SMELTABLES = ImmutableList.of(
       Item.byBlock(GenericBlocks.ELDORITE_ORE.get()),
       Item.byBlock(GenericBlocks.DEEPSLATE_ELDORITE_ORE.get()),
       IngredientItems.RAW_ELDORITE.get()
   );
+  private static final Logger LOGGER = LogUtils.getLogger();
 
   public FarmloreRecipeProvider(PackOutput pOutput) {
     super(pOutput);
@@ -53,37 +53,79 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
     return ForgeRegistries.ITEMS.getValue(cookedSausageResourcePath);
   }
 
+
+  private static void storageRecipes(
+      Consumer<FinishedRecipe> pFinishedRecipeConsumer,
+      RecipeCategory pUnpackedCategory,
+      ItemLike pUnpacked,
+      RecipeCategory pPackedCategory,
+      int pDensity,
+      ItemLike pPacked,
+      String pPackedName,
+      @Nullable String pPackedGroup,
+      String pUnpackedName,
+      @Nullable String pUnpackedGroup
+  ) {
+    ShapelessRecipeBuilder.shapeless(pUnpackedCategory, pUnpacked, pDensity).requires(pPacked)
+        .group(pUnpackedGroup).unlockedBy(getHasName(pPacked), has(pPacked))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(Farmlore.MOD_ID, "crafting/" + pUnpackedName));
+
+    ShapelessRecipeBuilder.shapeless(pPackedCategory, pPacked).requires(pUnpacked, pDensity)
+        .group(pPackedGroup).unlockedBy(getHasName(pUnpacked), has(pUnpacked))
+        .save(pFinishedRecipeConsumer,
+            new ResourceLocation(Farmlore.MOD_ID, "crafting/" + pPackedName));
+  }
+
   private void addSmokingRecipe(Consumer<FinishedRecipe> finishedRecipeConsumer, Item input,
-      RecipeCategory pCategory,
-      Item output, float pExperience, int pCookingTime) {
+      Item output, float pExperience, int pCookingTime,
+      @Nullable String pGroup) {
     Ingredient inputIngredient = Ingredient.of(input);
     ResourceLocation recipeId = new ResourceLocation(Farmlore.MOD_ID,
-        "smoking/" + ForgeRegistries.ITEMS.getKey(output).getPath());
-    SimpleCookingRecipeBuilder.smoking(inputIngredient, pCategory, output, pExperience,
-            pCookingTime)
-        .unlockedBy("has_item", has(input)).save(finishedRecipeConsumer, recipeId);
+        "smoking/" + ForgeRegistries.ITEMS.getKey(output).getPath() + "_from_"
+            + ForgeRegistries.ITEMS.getKey(input.asItem()).getPath());
+    SimpleCookingRecipeBuilder.smoking(inputIngredient, RecipeCategory.FOOD, output, pExperience,
+            pCookingTime).group(pGroup)
+        .unlockedBy(getHasName(input), has(input)).save(finishedRecipeConsumer, recipeId);
   }
 
   private void addCampfireRecipe(Consumer<FinishedRecipe> pWriter, Item input,
-      RecipeCategory pCategory,
-      Item output, float pExperience, int pCookingTime) {
+      Item output, float pExperience, int pCookingTime,
+      @Nullable String pGroup) {
     Ingredient inputIngredient = Ingredient.of(input);
     ResourceLocation recipeId = new ResourceLocation(Farmlore.MOD_ID,
-        "campfire_cooking/" + ForgeRegistries.ITEMS.getKey(output).getPath());
-    SimpleCookingRecipeBuilder.campfireCooking(inputIngredient, pCategory, output, pExperience,
-            pCookingTime)
-        .unlockedBy("has_item", has(input)).save(pWriter, recipeId);
+        "campfire_cooking/" + ForgeRegistries.ITEMS.getKey(output).getPath() + "_from_"
+            + ForgeRegistries.ITEMS.getKey(input.asItem()).getPath());
+    SimpleCookingRecipeBuilder.campfireCooking(inputIngredient, RecipeCategory.FOOD, output,
+            pExperience,
+            pCookingTime).group(pGroup)
+        .unlockedBy(getHasName(input), has(input)).save(pWriter, recipeId);
   }
 
-  private void addSmeltingRecipe(Consumer<FinishedRecipe> pWriter, Item input,
+  private void addSmeltingRecipe(Consumer<FinishedRecipe> pWriter, ItemLike input,
       RecipeCategory pCategory,
-      Item output, float pExperience, int pCookingTime) {
+      Item output, float pExperience, int pCookingTime,
+      @Nullable String pGroup) {
     Ingredient inputIngredient = Ingredient.of(input);
     ResourceLocation recipeId = new ResourceLocation(Farmlore.MOD_ID,
-        "smelting/" + ForgeRegistries.ITEMS.getKey(output).getPath());
+        "smelting/" + ForgeRegistries.ITEMS.getKey(output).getPath() + "_from_"
+            + ForgeRegistries.ITEMS.getKey(input.asItem()).getPath());
     SimpleCookingRecipeBuilder.smelting(inputIngredient, pCategory, output, pExperience,
-            pCookingTime)
-        .unlockedBy("has_item", has(input)).save(pWriter, recipeId);
+            pCookingTime).group(pGroup)
+        .unlockedBy(getHasName(input), has(input)).save(pWriter, recipeId);
+  }
+
+  private void addBlastingRecipe(Consumer<FinishedRecipe> pWriter, ItemLike input,
+      RecipeCategory pCategory,
+      Item output, float pExperience, int pCookingTime,
+      @Nullable String pGroup) {
+    Ingredient inputIngredient = Ingredient.of(input);
+    ResourceLocation recipeId = new ResourceLocation(Farmlore.MOD_ID,
+        "blasting/" + ForgeRegistries.ITEMS.getKey(output).getPath() + "_from_"
+            + ForgeRegistries.ITEMS.getKey(input.asItem()).getPath());
+    SimpleCookingRecipeBuilder.blasting(inputIngredient, pCategory, output, pExperience,
+            pCookingTime).group(pGroup)
+        .unlockedBy(getHasName(input), has(input)).save(pWriter, recipeId);
   }
 
   private void buildSausageRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
@@ -98,12 +140,12 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
         continue;
       }
       LOGGER.debug("Adding sausage recipes for {}", pRawSausage.getId());
-      addCampfireRecipe(pFinishedRecipeConsumer, rawSausage, RecipeCategory.FOOD, cookedSausage,
-          0.0F, 600);
-      addSmokingRecipe(pFinishedRecipeConsumer, rawSausage, RecipeCategory.FOOD, cookedSausage,
-          0.0F, 200);
+      addCampfireRecipe(pFinishedRecipeConsumer, rawSausage, cookedSausage,
+          0.0F, 600, "cooked_sausage");
+      addSmokingRecipe(pFinishedRecipeConsumer, rawSausage, cookedSausage,
+          0.0F, 200, "cooked_sausage");
       addSmeltingRecipe(pFinishedRecipeConsumer, rawSausage, RecipeCategory.FOOD, cookedSausage,
-          0.0F, 200);
+          0.0F, 200, "cooked_sausage");
     }
 
     // Cumberland Sausage is made with chopped pork instead. Made with black pepper.
@@ -341,10 +383,30 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
             new ResourceLocation(Farmlore.MOD_ID, "crafting/burlap_sack"));
 
     // Eldorite
-    oreSmelting(pFinishedRecipeConsumer, ELDORITE_SMELTABLES, RecipeCategory.MISC, IngredientItems.ELDORITE_INGOT.get(), 0.7F, 200, "eldorite_ingot");
-    oreBlasting(pFinishedRecipeConsumer, ELDORITE_SMELTABLES, RecipeCategory.MISC, IngredientItems.ELDORITE_INGOT.get(), 0.7F, 100, "eldorite_ingot");
-    nineBlockStorageRecipesWithCustomPacking(pFinishedRecipeConsumer, RecipeCategory.MISC,
-        IngredientItems.ELDORITE_NUGGET.get(), RecipeCategory.MISC, IngredientItems.ELDORITE_INGOT.get(), "eldorite_ingot_from_nuggets", "eldorite_ingot");
+    for (ItemLike itemlike : ELDORITE_SMELTABLES) {
+      Item item = itemlike.asItem();
+      addSmeltingRecipe(pFinishedRecipeConsumer, item, RecipeCategory.MISC,
+          IngredientItems.ELDORITE_INGOT.get(), 0.7F, 200, "eldorite_ingot");
+      addBlastingRecipe(pFinishedRecipeConsumer, item, RecipeCategory.MISC,
+          IngredientItems.ELDORITE_INGOT.get(), 0.7F, 100, "eldorite_ingot");
+    }
+
+    storageRecipes(pFinishedRecipeConsumer, RecipeCategory.MISC,
+        IngredientItems.ELDORITE_NUGGET.get(), RecipeCategory.MISC,
+        9, IngredientItems.ELDORITE_INGOT.get(), "eldorite_ingot_from_nuggets", "eldorite_ingot",
+        "eldorite_nugget", "eldorite_nugget");
+
+    storageRecipes(pFinishedRecipeConsumer, RecipeCategory.MISC,
+        IngredientItems.ELDORITE_INGOT.get(), RecipeCategory.MISC,
+        9, GenericBlocks.ELDORITE_BLOCK.get(), "eldorite_block", "eldorite_block", "eldorite_ingot",
+        "eldorite_ingot");
+
+    storageRecipes(pFinishedRecipeConsumer, RecipeCategory.MISC,
+        IngredientItems.RAW_ELDORITE.get(), RecipeCategory.MISC,
+        9, GenericBlocks.RAW_ELDORITE_BLOCK.get(), "raw_eldorite_block", "raw_eldorite_block",
+        "raw_eldorite",
+        "raw_eldorite");
+
   }
 
 
