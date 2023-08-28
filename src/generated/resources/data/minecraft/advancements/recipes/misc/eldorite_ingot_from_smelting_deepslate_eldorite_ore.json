@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_deepslate_eldorite_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "turnr_farmlore:deepslate_eldorite_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:eldorite_ingot_from_smelting_deepslate_eldorite_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_deepslate_eldorite_ore",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:eldorite_ingot_from_smelting_deepslate_eldorite_ore"
+    ]
+  },
+  "sends_telemetry_event": false
+}

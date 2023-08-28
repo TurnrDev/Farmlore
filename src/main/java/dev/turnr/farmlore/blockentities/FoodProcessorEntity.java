@@ -1,6 +1,6 @@
 package dev.turnr.farmlore.blockentities;
 
-import dev.turnr.farmlore.Tags;
+import dev.turnr.farmlore.FarmloreTags;
 import dev.turnr.farmlore.recipe.food_processor.FoodProcessorRecipe;
 import dev.turnr.farmlore.screen.FoodProcessorMenu;
 import java.util.Optional;
@@ -104,7 +104,7 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
 
   private static boolean hasAttachmentInAttachmentSlot(FoodProcessorEntity entity) {
     return entity.inventory.getStackInSlot(FoodProcessorEntity.ATTACHMENT_SLOT_ID)
-        .is(Tags.Items.FOOD_PROCESSOR_ATTACHMENTS);
+        .is(FarmloreTags.Items.FOOD_PROCESSOR_ATTACHMENTS);
   }
 
   private static void craftItem(FoodProcessorEntity entity) {

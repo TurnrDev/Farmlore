@@ -45,6 +45,15 @@ public class IngredientItems {
   public static final RegistryObject<Item> BURLAP = ITEMS.register("burlap",
       () -> new Item(new Item.Properties()));
 
+  public static final RegistryObject<Item> RAW_ELDORITE = ITEMS.register("raw_eldorite",
+      () -> new Item(new Item.Properties()));
+
+  public static final RegistryObject<Item> ELDORITE_INGOT = ITEMS.register("eldorite_ingot",
+      () -> new Item(new Item.Properties()));
+
+  public static final RegistryObject<Item> ELDORITE_NUGGET = ITEMS.register("eldorite_nugget",
+      () -> new Item(new Item.Properties()));
+
   public static void register() {
     ItemRegistry.register(ITEMS);
   }

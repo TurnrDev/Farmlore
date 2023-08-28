@@ -76,25 +76,27 @@ public class Farmlore {
   private void addCreative(BuildCreativeModeTabContentsEvent event) {
     if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
       for (RegistryObject<Item> item : EdibleItems.ITEMS.getEntries()) {
-        event.accept(item.get());
+        event.accept(item);
       }
     }
 
     if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
       for (RegistryObject<Item> item : PlantableItems.ITEMS.getEntries()) {
-        event.accept(item.get());
+        event.accept(item);
       }
+      event.accept(GenericBlocks.ELDORITE_ORE);
+      event.accept(GenericBlocks.DEEPSLATE_ELDORITE_ORE);
     }
 
     if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
       for (RegistryObject<Item> item : ToolItems.ITEMS.getEntries()) {
-        event.accept(item.get());
+        event.accept(item);
       }
     }
 
     if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
       for (RegistryObject<Item> item : IngredientItems.ITEMS.getEntries()) {
-        event.accept(item.get());
+        event.accept(item);
       }
     }
   }

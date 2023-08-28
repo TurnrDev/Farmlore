@@ -7,7 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-public class Tags {
+public class FarmloreTags {
 
   public static class Blocks {
 
@@ -15,7 +15,7 @@ public class Tags {
       return BlockTags.create(Farmlore.getId(name));
     }
 
-    private static TagKey<Block> forgeTag(String name) {
+    public static TagKey<Block> forgeTag(String name) {
       return BlockTags.create(new ResourceLocation("forge", name));
     }
   }
@@ -35,7 +35,7 @@ public class Tags {
       return ItemTags.create(Farmlore.getId(name));
     }
 
-    private static TagKey<Item> forgeTag(String name) {
+    public static TagKey<Item> forgeTag(String name) {
       return ItemTags.create(new ResourceLocation("forge", name));
     }
 

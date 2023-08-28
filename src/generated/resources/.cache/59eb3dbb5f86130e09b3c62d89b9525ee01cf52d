@@ -1,6 +1,8 @@
-// 1.20.1	2023-08-27T13:54:52.407035313	Loot Tables
+// 1.20.1	2023-08-28T18:07:53.454573363	Loot Tables
 1e5b4a8690b98872575d02b7afb18f56adbe27cb data/turnr_farmlore/loot_tables/blocks/basil.json
 b96d6320e5a2caabe34b880f723685110d5f3d08 data/turnr_farmlore/loot_tables/blocks/coriander.json
+3c28b66be04fd4d0a092761cfb55731acd460ab2 data/turnr_farmlore/loot_tables/blocks/deepslate_eldorite_ore.json
+bfaac722fb421893c51f9914fa0053cb65e8a8a9 data/turnr_farmlore/loot_tables/blocks/eldorite_ore.json
 fc03cbfb49d82ca28c7c2154a68a67225b7c39a4 data/turnr_farmlore/loot_tables/blocks/food_processor.json
 a50c95dbe09cc4dedb30591fa8138c163f828df9 data/turnr_farmlore/loot_tables/blocks/mint.json
 bee2a6b9be5ee8b623bc0d826cd20b5e988681a4 data/turnr_farmlore/loot_tables/blocks/parsley.json

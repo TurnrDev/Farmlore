@@ -1,4 +1,14 @@
-// 1.20.1	2023-08-27T13:54:52.407239292	FarmloreItemTagsProvider
+// 1.20.1	2023-08-28T18:01:50.632195046	FarmloreItemTagsProvider
+ab7383d8c3ddb12b354330f7e1199c2bbf062e87 data/forge/tags/items/ingots.json
+b8c6a42d74df54ad95c07a6a8b6fb10418b838e1 data/forge/tags/items/ingots/eldorite.json
+9f0a7b315acd976f7af443fd557e6eb4d7cd8165 data/forge/tags/items/nuggets.json
+af5dd7bf541d4e5dd27dbd25b8b387881b50e4bf data/forge/tags/items/nuggets/eldorite.json
+fba4953060141b3dd2a5699c2c657eef107f34f4 data/forge/tags/items/ores.json
+df7dd1ca2933d1efdfa9ef9f99decc8e3ca06720 data/forge/tags/items/ores/eldorite.json
+e67356e5719ae56f0a47dd224e8a21913eefff9d data/forge/tags/items/ores_in_ground/deepslate.json
+bb4261c00d9ffc1d4bb6d3ceaf10643f1ba87596 data/forge/tags/items/ores_in_ground/stone.json
+c15f71338244da159e7fb7f8e2b86f89414c45b9 data/forge/tags/items/raw_materials.json
+c5e4f1cfeb4587692a5a6f512462f2846ba584ac data/forge/tags/items/raw_materials/eldorite.json
 9c3984f890958a8d7c2de2e8dac25e93da100910 data/forge/tags/items/sausages.json
 f7b6f0bcb11c4d9d6959da707c1103be787865b6 data/forge/tags/items/sausages/cooked.json
 d63e920e40813af9ece7b1c4b2db86dad4c23ede data/forge/tags/items/sausages/raw.json

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "eldorite_ingot",
+  "ingredient": {
+    "item": "turnr_farmlore:raw_eldorite"
+  },
+  "result": "turnr_farmlore:eldorite_ingot"
+}

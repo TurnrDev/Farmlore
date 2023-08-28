@@ -7,6 +7,7 @@ import java.util.function.Supplier;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -30,7 +31,26 @@ public class GenericBlocks {
    * this. For now, it's just this.
    */
   public static final RegistryObject<Block> FOOD_PROCESSOR = registerBlock("food_processor",
-      () -> new FoodProcessorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(0.8F).sound(SoundType.GLASS)));
+      () -> new FoodProcessorBlock(
+          BlockBehaviour.Properties.of()
+              .mapColor(MapColor.METAL)
+              .strength(0.8F)
+              .sound(SoundType.GLASS)
+      ));
+
+  public static final RegistryObject<Block> ELDORITE_ORE = registerBlock("eldorite_ore",
+      () -> new DropExperienceBlock(
+          BlockBehaviour.Properties.of()
+              .mapColor(MapColor.STONE)
+              .sound(SoundType.STONE)
+              .requiresCorrectToolForDrops()
+              .strength(3.0F, 3.0F)
+      ));
+
+  public static final RegistryObject<Block> DEEPSLATE_ELDORITE_ORE = registerBlock(
+      "deepslate_eldorite_ore",
+      () -> new DropExperienceBlock(
+          BlockBehaviour.Properties.copy(ELDORITE_ORE.get()).strength(4.5F, 3.0F)));
 
 
   private static <T extends Block> RegistryObject<T> registerBlock(String name,

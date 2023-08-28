@@ -1,6 +1,8 @@
-// 1.20.1	2023-08-27T13:54:52.408425461	Block States: turnr_farmlore
+// 1.20.1	2023-08-28T17:35:06.746121744	Block States: turnr_farmlore
 cee3abb0f8680201f7f91af4a862c291341e3cb0 assets/turnr_farmlore/blockstates/basil.json
 55f7dfd91eaf6a26382f53aea1f7d3a3acb01b28 assets/turnr_farmlore/blockstates/coriander.json
+bde7ab9f0641d6da17f5f33fe016339f2ef5af24 assets/turnr_farmlore/blockstates/deepslate_eldorite_ore.json
+2250ffde9913d52b2cfc440a5f7389b685c96598 assets/turnr_farmlore/blockstates/eldorite_ore.json
 82f81860c151fb8f953933a509179cddad6f5370 assets/turnr_farmlore/blockstates/food_processor.json
 5c36c6d83b64a3a1d23722bfa9610df7ba0126c1 assets/turnr_farmlore/blockstates/mint.json
 18767837dde659c90637bcd66dd61421f068d2cf assets/turnr_farmlore/blockstates/parsley.json
@@ -15,6 +17,8 @@ afba7352ba86a2bcf8f15d0acc409c6fdbd99034 assets/turnr_farmlore/models/block/cori
 afba7352ba86a2bcf8f15d0acc409c6fdbd99034 assets/turnr_farmlore/models/block/coriander_stage_1.json
 afba7352ba86a2bcf8f15d0acc409c6fdbd99034 assets/turnr_farmlore/models/block/coriander_stage_2.json
 afba7352ba86a2bcf8f15d0acc409c6fdbd99034 assets/turnr_farmlore/models/block/coriander_stage_3.json
+8a6a44726491f6aae3854775c2b7eee66a91b478 assets/turnr_farmlore/models/block/deepslate_eldorite_ore.json
+70a87a0769790b88a6f212d230b6fbce48e03c66 assets/turnr_farmlore/models/block/eldorite_ore.json
 afba7352ba86a2bcf8f15d0acc409c6fdbd99034 assets/turnr_farmlore/models/block/mint_stage_0.json
 afba7352ba86a2bcf8f15d0acc409c6fdbd99034 assets/turnr_farmlore/models/block/mint_stage_1.json
 afba7352ba86a2bcf8f15d0acc409c6fdbd99034 assets/turnr_farmlore/models/block/mint_stage_2.json
@@ -35,3 +39,5 @@ afba7352ba86a2bcf8f15d0acc409c6fdbd99034 assets/turnr_farmlore/models/block/sage
 556b1ee46e6b5a9dae8996060fc7a45abc300d28 assets/turnr_farmlore/models/block/thyme_stage_1.json
 fc76be76110930367c1bf7327e19edd78c7ddd69 assets/turnr_farmlore/models/block/thyme_stage_2.json
 d2ff2d67287e7b64c4ddc53fe4dbed35208842a5 assets/turnr_farmlore/models/block/thyme_stage_3.json
+14c0240e4f1a8c72d6373b9b2b74f4b0776690aa assets/turnr_farmlore/models/item/deepslate_eldorite_ore.json
+c862643fcd5206132472fbbbc22ef68e5ebb3b57 assets/turnr_farmlore/models/item/eldorite_ore.json

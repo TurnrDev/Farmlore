@@ -1,7 +1,9 @@
 package dev.turnr.farmlore.datagen;
 
+import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
 import dev.turnr.farmlore.Farmlore;
+import dev.turnr.farmlore.blocks.GenericBlocks;
 import dev.turnr.farmlore.datagen.buiders.FoodProcessorRecipeBuilder;
 import dev.turnr.farmlore.items.ClothingItems;
 import dev.turnr.farmlore.items.EdibleItems;
@@ -23,6 +25,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -31,6 +34,11 @@ import org.slf4j.Logger;
 public class FarmloreRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
   private static final Logger LOGGER = LogUtils.getLogger();
+  public static final ImmutableList<ItemLike> ELDORITE_SMELTABLES = ImmutableList.of(
+      Item.byBlock(GenericBlocks.ELDORITE_ORE.get()),
+      Item.byBlock(GenericBlocks.DEEPSLATE_ELDORITE_ORE.get()),
+      IngredientItems.RAW_ELDORITE.get()
+  );
 
   public FarmloreRecipeProvider(PackOutput pOutput) {
     super(pOutput);
@@ -332,6 +340,11 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(Farmlore.MOD_ID, "crafting/burlap_sack"));
 
+    // Eldorite
+    oreSmelting(pFinishedRecipeConsumer, ELDORITE_SMELTABLES, RecipeCategory.MISC, IngredientItems.ELDORITE_INGOT.get(), 0.7F, 200, "eldorite_ingot");
+    oreBlasting(pFinishedRecipeConsumer, ELDORITE_SMELTABLES, RecipeCategory.MISC, IngredientItems.ELDORITE_INGOT.get(), 0.7F, 100, "eldorite_ingot");
+    nineBlockStorageRecipesWithCustomPacking(pFinishedRecipeConsumer, RecipeCategory.MISC,
+        IngredientItems.ELDORITE_NUGGET.get(), RecipeCategory.MISC, IngredientItems.ELDORITE_INGOT.get(), "eldorite_ingot_from_nuggets", "eldorite_ingot");
   }
 
 
