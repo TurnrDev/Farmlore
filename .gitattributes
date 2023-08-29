@@ -3,4 +3,7 @@
 # are changed when only line endings change.
 src/generated/**/.cache/cache text eol=lf
 src/generated/**/*.json text eol=lf
-src/generated/** linguist-generated=true
+src/generated/** linguist-generated
+gradle/wrapper/** linguist-vendored
+gradlew linguist-vendored
+gradlew.bat linguist-vendored
