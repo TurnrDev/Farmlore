@@ -1,14 +1,17 @@
 package dev.turnr.farmlore.datagen;
 
+import static dev.turnr.farmlore.items.EdibleItems.SAUSAGE_MAPPING;
+
 import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
+import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.turnr.farmlore.Farmlore;
-import dev.turnr.farmlore.blocks.GenericBlocks;
+import dev.turnr.farmlore.blocks.AllBlocks;
 import dev.turnr.farmlore.datagen.buiders.FoodProcessorRecipeBuilder;
-import dev.turnr.farmlore.items.ClothingItems;
 import dev.turnr.farmlore.items.EdibleItems;
-import dev.turnr.farmlore.items.IngredientItems;
+import dev.turnr.farmlore.items.OtherItems;
 import dev.turnr.farmlore.items.ToolItems;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
@@ -19,7 +22,6 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
-import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
@@ -28,29 +30,19 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
 public class FarmloreRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
   public static final ImmutableList<ItemLike> ELDORITE_SMELTABLES = ImmutableList.of(
-      Item.byBlock(GenericBlocks.ELDORITE_ORE.get()),
-      Item.byBlock(GenericBlocks.DEEPSLATE_ELDORITE_ORE.get()),
-      IngredientItems.RAW_ELDORITE.get()
+      Item.byBlock(AllBlocks.ELDORITE_ORE.get()),
+      Item.byBlock(AllBlocks.DEEPSLATE_ELDORITE_ORE.get()),
+      OtherItems.RAW_ELDORITE.get()
   );
   private static final Logger LOGGER = LogUtils.getLogger();
 
   public FarmloreRecipeProvider(PackOutput pOutput) {
     super(pOutput);
-  }
-
-  @Nullable
-  private static Item getCookedSausage(RegistryObject<Item> rawSausage) {
-    ResourceLocation rawSausageLocation = rawSausage.getId();
-    String cookedSausagePath = "cooked_" + rawSausageLocation.getPath();
-    ResourceLocation cookedSausageResourcePath = new ResourceLocation(
-        rawSausageLocation.getNamespace(), cookedSausagePath);
-    return ForgeRegistries.ITEMS.getValue(cookedSausageResourcePath);
   }
 
 
@@ -132,14 +124,9 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
     LOGGER.debug("HELLO from buildSausageRecipes in FarmloreRecipeProvider");
 
     // Loop through all the items in the raw sausage tag
-    for (RegistryObject<Item> pRawSausage : EdibleItems.Tags.RAW_SAUSAGES) {
-      Item rawSausage = pRawSausage.get();
-      Item cookedSausage = getCookedSausage(pRawSausage);
-      if (cookedSausage == null) {
-        LOGGER.debug("No cooked sausage found for {}", pRawSausage.getId());
-        continue;
-      }
-      LOGGER.debug("Adding sausage recipes for {}", pRawSausage.getId());
+    for (Map.Entry<RegistryEntry<Item>, RegistryEntry<Item>> entry : SAUSAGE_MAPPING.entrySet()) {
+      Item rawSausage = entry.getKey().get();
+      Item cookedSausage = entry.getValue().get();
       addCampfireRecipe(pFinishedRecipeConsumer, rawSausage, cookedSausage,
           0.0F, 600, "cooked_sausage");
       addSmokingRecipe(pFinishedRecipeConsumer, rawSausage, cookedSausage,
@@ -152,10 +139,10 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
 
     FoodProcessorRecipeBuilder.foodProcessor(EdibleItems.GLOUCESTER_SAUSAGE.get(), 1)
         .setAttachment(ToolItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
-        .requires(IngredientItems.MINCED_PORK.get())
-        .requires(IngredientItems.SAGE.get())
-        .unlockedBy("has_minced_pork", has(IngredientItems.MINCED_PORK.get()))
-        .unlockedBy("has_sage", has(IngredientItems.SAGE.get()))
+        .requires(OtherItems.MINCED_PORK.get())
+        .requires(OtherItems.SAGE.get())
+        .unlockedBy("has_minced_pork", has(OtherItems.MINCED_PORK.get()))
+        .unlockedBy("has_sage", has(OtherItems.SAGE.get()))
         .unlockedBy("has_food_processor_attachment_steel_blade",
             has(ToolItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
         .save(pFinishedRecipeConsumer,
@@ -163,10 +150,10 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
 
     FoodProcessorRecipeBuilder.foodProcessor(EdibleItems.LINCOLNSHIRE_SAUSAGE.get(), 1)
         .setAttachment(ToolItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
-        .requires(IngredientItems.MINCED_PORK.get())
-        .requires(IngredientItems.THYME.get())
-        .unlockedBy("has_minced_pork", has(IngredientItems.MINCED_PORK.get()))
-        .unlockedBy("has_thyme", has(IngredientItems.THYME.get()))
+        .requires(OtherItems.MINCED_PORK.get())
+        .requires(OtherItems.THYME.get())
+        .unlockedBy("has_minced_pork", has(OtherItems.MINCED_PORK.get()))
+        .unlockedBy("has_thyme", has(OtherItems.THYME.get()))
         .unlockedBy("has_food_processor_attachment_steel_blade",
             has(ToolItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
         .save(pFinishedRecipeConsumer,
@@ -180,31 +167,20 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
 
     FoodProcessorRecipeBuilder.foodProcessor(EdibleItems.PORK_APPLE_SAUSAGE.get(), 1)
         .setAttachment(ToolItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
-        .requires(IngredientItems.MINCED_PORK.get())
+        .requires(OtherItems.MINCED_PORK.get())
         .requires(Items.APPLE)
-        .unlockedBy("has_minced_pork", has(IngredientItems.MINCED_PORK.get()))
+        .unlockedBy("has_minced_pork", has(OtherItems.MINCED_PORK.get()))
         .unlockedBy("has_apple", has(Items.APPLE))
         .unlockedBy("has_food_processor_attachment_steel_blade",
             has(ToolItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(Farmlore.MOD_ID, "food_processor/pork_apple_sausage"));
 
-    FoodProcessorRecipeBuilder.foodProcessor(EdibleItems.SQUARE_SAUSAGE.get(), 1)
-        .setAttachment(ToolItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
-        .requires(IngredientItems.MINCED_PORK.get())
-        .requires(IngredientItems.MINCED_BEEF.get())
-        .unlockedBy("has_minced_pork", has(IngredientItems.MINCED_PORK.get()))
-        .unlockedBy("has_minced_beef", has(IngredientItems.MINCED_BEEF.get()))
-        .unlockedBy("has_food_processor_attachment_steel_blade",
-            has(ToolItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get()))
-        .save(pFinishedRecipeConsumer,
-            new ResourceLocation(Farmlore.MOD_ID, "food_processor/square_sausage"));
-
     FoodProcessorRecipeBuilder.foodProcessor(EdibleItems.TOMATO_SAUSAGE.get(), 1)
         .setAttachment(ToolItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
-        .requires(IngredientItems.MINCED_PORK.get())
+        .requires(OtherItems.MINCED_PORK.get())
         .requires(ItemTags.create(new ResourceLocation("forge", "vegetables/tomato")))
-        .unlockedBy("has_minced_pork", has(IngredientItems.MINCED_PORK.get()))
+        .unlockedBy("has_minced_pork", has(OtherItems.MINCED_PORK.get()))
         .unlockedBy("has_tomato",
             has(ItemTags.create(new ResourceLocation("forge", "vegetables/tomato"))))
         .unlockedBy("has_food_processor_attachment_steel_blade",
@@ -218,20 +194,6 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
 
   private void buildMiscRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
     LOGGER.debug("HELLO from buildMiscRecipes in FarmloreRecipeProvider");
-
-    // Potatoes -> Potato Quarters
-    ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, EdibleItems.POTATO_QUARTER.get(), 4)
-        .requires(Items.POTATO)
-        .unlockedBy("has_item", has(Items.POTATO))
-        .save(pFinishedRecipeConsumer,
-            new ResourceLocation(Farmlore.MOD_ID, "crafting/potato_quarter_x4"));
-    SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.POTATO),
-            RecipeCategory.FOOD,
-            EdibleItems.POTATO_QUARTER.get(),
-            4)
-        .unlockedBy("has_item", has(Items.POTATO))
-        .save(pFinishedRecipeConsumer,
-            new ResourceLocation(Farmlore.MOD_ID, "stonecutting/potato_quarter_x4"));
 
     // forge:plates/tin / steel / aluminum -> Tin Can
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
@@ -270,19 +232,6 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
                 "crafting/food_processor_attachment_dough_hook"));
 
     ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS,
-            ToolItems.FOOD_PROCESSOR_ATTACHMENT_DOUGH_BLADE.get(), 1)
-        .pattern("n")
-        .pattern("i")
-        .pattern("n")
-        .define('i', Ingredient.of(Items.IRON_INGOT))
-        .define('n', Ingredient.of(Items.IRON_NUGGET))
-        .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
-        .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
-        .save(pFinishedRecipeConsumer,
-            new ResourceLocation(Farmlore.MOD_ID,
-                "crafting/food_processor_attachment_dough_blade"));
-
-    ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS,
             ToolItems.FOOD_PROCESSOR_ATTACHMENT_SHREDDING_DISC.get(), 1)
         .pattern("s")
         .pattern("n")
@@ -295,44 +244,7 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
             new ResourceLocation(Farmlore.MOD_ID,
                 "crafting/food_processor_attachment_shredding_disc"));
 
-    ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS,
-            ToolItems.FOOD_PROCESSOR_ATTACHMENT_JUICER.get(), 1)
-        .pattern("n")
-        .pattern("s")
-        .define('n', Ingredient.of(Items.IRON_NUGGET))
-        .define('s', ItemTags.create(new ResourceLocation("forge", "plates/iron")))
-        .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
-        .unlockedBy("has_iron_plate",
-            has(ItemTags.create(new ResourceLocation("forge", "plates/iron"))))
-        .save(pFinishedRecipeConsumer,
-            new ResourceLocation(Farmlore.MOD_ID,
-                "crafting/food_processor_attachment_juicer"));
-
-    ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ToolItems.FOOD_PROCESSOR_ATTACHMENT_MILL.get(),
-            1)
-        .pattern(" n ")
-        .pattern("n n")
-        .pattern(" n ")
-        .define('n', Ingredient.of(Items.IRON_NUGGET))
-        .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
-        .save(pFinishedRecipeConsumer,
-            new ResourceLocation(Farmlore.MOD_ID, "crafting/food_processor_attachment_mill"));
-
-    ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS,
-            ToolItems.FOOD_PROCESSOR_ATTACHMENT_WHISK.get(), 1)
-        .pattern(" n ")
-        .pattern("sns")
-        .pattern("sss")
-        .define('n', Ingredient.of(Items.IRON_NUGGET))
-        .define('s', ItemTags.create(new ResourceLocation("forge", "plates/iron")))
-        .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
-        .unlockedBy("has_iron_plate",
-            has(ItemTags.create(new ResourceLocation("forge", "plates/iron"))))
-        .save(pFinishedRecipeConsumer,
-            new ResourceLocation(Farmlore.MOD_ID,
-                "crafting/food_processor_attachment_whisk"));
-
-    FoodProcessorRecipeBuilder.foodProcessor(IngredientItems.MINCED_PORK.get(), 1)
+    FoodProcessorRecipeBuilder.foodProcessor(OtherItems.MINCED_PORK.get(), 1)
         .setAttachment(ToolItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
         .requires(Items.PORKCHOP, 1)
         .unlockedBy("has_porkchop", has(Items.PORKCHOP))
@@ -341,7 +253,7 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(Farmlore.MOD_ID, "food_processor/minced_pork"));
 
-    FoodProcessorRecipeBuilder.foodProcessor(IngredientItems.MINCED_BEEF.get(), 1)
+    FoodProcessorRecipeBuilder.foodProcessor(OtherItems.MINCED_BEEF.get(), 1)
         .setAttachment(ToolItems.FOOD_PROCESSOR_ATTACHMENT_STEEL_BLADE.get())
         .requires(Items.BEEF, 1)
         .unlockedBy("has_beef", has(Items.BEEF))
@@ -350,23 +262,23 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(Farmlore.MOD_ID, "food_processor/minced_beef"));
 
-    SimpleCookingRecipeBuilder.smelting(Ingredient.of(IngredientItems.MINCED_PORK.get()),
+    SimpleCookingRecipeBuilder.smelting(Ingredient.of(OtherItems.MINCED_PORK.get()),
             RecipeCategory.FOOD,
-            IngredientItems.COOKED_MINCED_PORK.get(), 0.0f, 200)
-        .unlockedBy("has_minced_pork", has(IngredientItems.MINCED_PORK.get()))
+            OtherItems.COOKED_MINCED_PORK.get(), 0.0f, 200)
+        .unlockedBy("has_minced_pork", has(OtherItems.MINCED_PORK.get()))
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(Farmlore.MOD_ID, "smelting/cooked_minced_pork"));
 
-    SimpleCookingRecipeBuilder.smelting(Ingredient.of(IngredientItems.MINCED_BEEF.get()),
+    SimpleCookingRecipeBuilder.smelting(Ingredient.of(OtherItems.MINCED_BEEF.get()),
             RecipeCategory.FOOD,
-            IngredientItems.COOKED_MINCED_BEEF.get(), 0.0f, 200)
-        .unlockedBy("has_minced_beef", has(IngredientItems.MINCED_BEEF.get()))
+            OtherItems.COOKED_MINCED_BEEF.get(), 0.0f, 200)
+        .unlockedBy("has_minced_beef", has(OtherItems.MINCED_BEEF.get()))
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(Farmlore.MOD_ID, "smelting/cooked_minced_beef"));
 
     // Wheat -> Burlap
 
-    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IngredientItems.BURLAP.get(), 3)
+    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, OtherItems.BURLAP.get(), 3)
         .pattern("###")
         .define('#', Ingredient.of(Items.WHEAT))
         .unlockedBy("has_wheat", has(Items.WHEAT))
@@ -374,11 +286,11 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
             new ResourceLocation(Farmlore.MOD_ID, "crafting/burlap"));
 
     // Burlap -> Burlap Sack
-    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ClothingItems.BURLAP_SACK.get(), 1)
+    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, OtherItems.BURLAP_SACK.get(), 1)
         .pattern("# #")
         .pattern(" # ")
-        .define('#', Ingredient.of(IngredientItems.BURLAP.get()))
-        .unlockedBy("has_burlap", has(IngredientItems.BURLAP.get()))
+        .define('#', Ingredient.of(OtherItems.BURLAP.get()))
+        .unlockedBy("has_burlap", has(OtherItems.BURLAP.get()))
         .save(pFinishedRecipeConsumer,
             new ResourceLocation(Farmlore.MOD_ID, "crafting/burlap_sack"));
 
@@ -386,24 +298,24 @@ public class FarmloreRecipeProvider extends RecipeProvider implements ICondition
     for (ItemLike itemlike : ELDORITE_SMELTABLES) {
       Item item = itemlike.asItem();
       addSmeltingRecipe(pFinishedRecipeConsumer, item, RecipeCategory.MISC,
-          IngredientItems.ELDORITE_INGOT.get(), 0.7F, 200, "eldorite_ingot");
+          OtherItems.ELDORITE_INGOT.get(), 0.7F, 200, "eldorite_ingot");
       addBlastingRecipe(pFinishedRecipeConsumer, item, RecipeCategory.MISC,
-          IngredientItems.ELDORITE_INGOT.get(), 0.7F, 100, "eldorite_ingot");
+          OtherItems.ELDORITE_INGOT.get(), 0.7F, 100, "eldorite_ingot");
     }
 
     storageRecipes(pFinishedRecipeConsumer, RecipeCategory.MISC,
-        IngredientItems.ELDORITE_NUGGET.get(), RecipeCategory.MISC,
-        9, IngredientItems.ELDORITE_INGOT.get(), "eldorite_ingot_from_nuggets", "eldorite_ingot",
+        OtherItems.ELDORITE_NUGGET.get(), RecipeCategory.MISC,
+        9, OtherItems.ELDORITE_INGOT.get(), "eldorite_ingot_from_nuggets", "eldorite_ingot",
         "eldorite_nugget", "eldorite_nugget");
 
     storageRecipes(pFinishedRecipeConsumer, RecipeCategory.MISC,
-        IngredientItems.ELDORITE_INGOT.get(), RecipeCategory.MISC,
-        9, GenericBlocks.ELDORITE_BLOCK.get(), "eldorite_block", "eldorite_block", "eldorite_ingot",
+        OtherItems.ELDORITE_INGOT.get(), RecipeCategory.MISC,
+        9, AllBlocks.ELDORITE_BLOCK.get(), "eldorite_block", "eldorite_block", "eldorite_ingot",
         "eldorite_ingot");
 
     storageRecipes(pFinishedRecipeConsumer, RecipeCategory.MISC,
-        IngredientItems.RAW_ELDORITE.get(), RecipeCategory.MISC,
-        9, GenericBlocks.RAW_ELDORITE_BLOCK.get(), "raw_eldorite_block", "raw_eldorite_block",
+        OtherItems.RAW_ELDORITE.get(), RecipeCategory.MISC,
+        9, AllBlocks.RAW_ELDORITE_BLOCK.get(), "raw_eldorite_block", "raw_eldorite_block",
         "raw_eldorite",
         "raw_eldorite");
 

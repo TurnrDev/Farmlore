@@ -2,7 +2,7 @@ package dev.turnr.farmlore.datagen;
 
 import com.google.common.collect.ImmutableSet;
 import dev.turnr.farmlore.Farmlore;
-import dev.turnr.farmlore.items.ClothingItems;
+import dev.turnr.farmlore.items.OtherItems;
 import java.util.function.Consumer;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.DisplayInfo;
@@ -30,7 +30,7 @@ public class FarmloreAdvancementProvider implements ForgeAdvancementProvider.Adv
 
     Advancement povertyAdvancement = Advancement.Builder.advancement().display(
             new DisplayInfo(new ItemStack(
-                ClothingItems.BURLAP_SACK.get()),
+                OtherItems.BURLAP_SACK.get()),
                 Component.translatableWithFallback("advancements.farmlore.poverty.title", "Poverty"),
                 Component.translatableWithFallback("advancements.farmlore.poverty.description",
                     "Dress in rags."),
@@ -40,7 +40,7 @@ public class FarmloreAdvancementProvider implements ForgeAdvancementProvider.Adv
         .addCriterion("wore_burlap_sack", PlayerTrigger.TriggerInstance.located(
             EntityPredicate.Builder.entity().of(EntityType.PLAYER).equipment(
                 EntityEquipmentPredicate.Builder.equipment()
-                    .chest(new ItemPredicate(null, ImmutableSet.of(ClothingItems.BURLAP_SACK.get()),
+                    .chest(new ItemPredicate(null, ImmutableSet.of(OtherItems.BURLAP_SACK.get()),
                         Ints.ANY, Ints.ANY, EnchantmentPredicate.NONE, EnchantmentPredicate.NONE,
                         null, NbtPredicate.ANY)).build()).build()))
         .save(saver, new ResourceLocation(Farmlore.MOD_ID, "poverty"), existingFileHelper);

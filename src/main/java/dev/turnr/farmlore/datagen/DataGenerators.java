@@ -22,9 +22,6 @@ public class DataGenerators {
     CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
     generator.addProvider(event.includeServer(), new FarmloreRecipeProvider(packOutput));
-    generator.addProvider(event.includeServer(), FarmloreLootTableProvider.create(packOutput));
-    generator.addProvider(event.includeClient(), new FarmloreBlockStateProvider(packOutput, existingFileHelper));
-    generator.addProvider(event.includeClient(), new FarmloreItemModelProvider(packOutput, existingFileHelper));
     generator.addProvider(event.includeClient(), new ForgeAdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(new FarmloreAdvancementProvider())));
 
     FarmloreBlockTagProvider blockTagGenerator = generator.addProvider(event.includeServer(), new FarmloreBlockTagProvider(packOutput, lookupProvider, existingFileHelper));

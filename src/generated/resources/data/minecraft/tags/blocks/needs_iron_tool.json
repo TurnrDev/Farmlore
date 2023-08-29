@@ -1,6 +1,8 @@
 {
   "values": [
-    "#forge:ores/eldorite",
-    "#forge:storage_blocks/eldorite"
+    "turnr_farmlore:eldorite_ore",
+    "turnr_farmlore:deepslate_eldorite_ore",
+    "turnr_farmlore:raw_eldorite_block",
+    "turnr_farmlore:eldorite_block"
   ]
 }

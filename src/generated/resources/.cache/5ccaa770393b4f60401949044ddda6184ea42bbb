@@ -1,14 +1,1 @@
-// 1.20.1	2023-08-28T22:02:42.179593394	Tags for minecraft:block mod id turnr_farmlore
-fba4953060141b3dd2a5699c2c657eef107f34f4 data/forge/tags/blocks/ores.json
-df7dd1ca2933d1efdfa9ef9f99decc8e3ca06720 data/forge/tags/blocks/ores/eldorite.json
-e67356e5719ae56f0a47dd224e8a21913eefff9d data/forge/tags/blocks/ores_in_ground/deepslate.json
-bb4261c00d9ffc1d4bb6d3ceaf10643f1ba87596 data/forge/tags/blocks/ores_in_ground/stone.json
-6dd9078a4dcc4577a16c58a37b611d012d8e7a68 data/forge/tags/blocks/storage_blocks.json
-ba52d80e71624c5e345706d0db346d0e07a83531 data/forge/tags/blocks/storage_blocks/eldorite.json
-7ce9d9284accf548ee91d2dcac83d9275280bd4e data/forge/tags/blocks/storage_blocks/raw_eldorite.json
-9ecea65e67dd7a9ccbde781991f8e72ae5a2f407 data/minecraft/tags/blocks/beacon_base_blocks.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/mineable/axe.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/mineable/hoe.json
-fba4953060141b3dd2a5699c2c657eef107f34f4 data/minecraft/tags/blocks/mineable/pickaxe.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/mineable/shovel.json
-c3c2655fd2d0439ff3e3dd4a89b7f05e724a66dc data/minecraft/tags/blocks/needs_iron_tool.json
+// 1.20.1	2023-08-29T20:50:30.737480244	Tags for minecraft:block mod id turnr_farmlore

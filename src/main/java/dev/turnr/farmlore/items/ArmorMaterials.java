@@ -18,7 +18,7 @@ public enum ArmorMaterials implements ArmorMaterial {
     enumMap.put(ArmorItem.Type.CHESTPLATE, 1);
     enumMap.put(ArmorItem.Type.HELMET, 1);
   }), 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> {
-    return Ingredient.of(IngredientItems.BURLAP.get());
+    return Ingredient.of(OtherItems.BURLAP.get());
   });
 
   public static final StringRepresentable.EnumCodec<net.minecraft.world.item.ArmorMaterials> CODEC = StringRepresentable.fromEnum(

@@ -20,6 +20,7 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
@@ -47,9 +48,8 @@ public class FoodProcessorEntity extends BlockEntity implements MenuProvider {
   private int maxProgress = 72;
   private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
-  public FoodProcessorEntity(BlockPos pPos,
-      BlockState pBlockState) {
-    super(BlockEntityRegistry.FOOD_PROCESSOR.get(), pPos, pBlockState);
+  public FoodProcessorEntity(BlockEntityType<?> pType, BlockPos pPos, BlockState pBlockState) {
+    super(pType, pPos, pBlockState);
     this.data = new ContainerData() {
       public int get(int index) {
         return switch (index) {

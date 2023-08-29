@@ -22,13 +22,6 @@ public class FarmloreTags {
 
   public static class Items {
 
-    public static final TagKey<Item> FORGE_SAUSAGES = forgeTag("sausages");
-    public static final TagKey<Item> FORGE_SAUSAGES_RAW = forgeTag("sausages/raw");
-    public static final TagKey<Item> FORGE_SAUSAGES_COOKED = forgeTag("sausages/cooked");
-
-    public static final TagKey<Item> CONTAINERS = tag("containers");
-
-    public static final TagKey<Item> FOOD_PROCESSOR_ATTACHMENT_WHISK = tag("food_processor/attachments/whisk");
     public static final TagKey<Item> FOOD_PROCESSOR_ATTACHMENTS = tag("food_processor/attachments");
 
     private static TagKey<Item> tag(String name) {

@@ -1,6 +1,6 @@
 {
   "values": [
-    "#forge:storage_blocks/raw_eldorite",
-    "#forge:storage_blocks/eldorite"
+    "turnr_farmlore:raw_eldorite_block",
+    "turnr_farmlore:eldorite_block"
   ]
 }

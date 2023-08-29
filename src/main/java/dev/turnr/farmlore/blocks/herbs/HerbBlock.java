@@ -1,6 +1,15 @@
 package dev.turnr.farmlore.blocks.herbs;
 
+import static dev.turnr.farmlore.Farmlore.REGISTRATE;
+
+import com.tterrag.registrate.util.entry.RegistryEntry;
+import dev.turnr.farmlore.Farmlore;
 import dev.turnr.farmlore.items.PlantableItems;
+import java.util.function.Function;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
@@ -8,6 +17,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class HerbBlock extends CropBlock {
@@ -37,12 +48,34 @@ public class HerbBlock extends CropBlock {
     String seed_id = block_id + "_seeds";
 
     // Get the item with the id "seed_id"
-    return PlantableItems.ITEMS.getEntries().stream()
-        .filter(entry -> entry.getId().getPath().equals(seed_id))
-        .findFirst().get().get();
+    RegistryEntry<Item> seed = REGISTRATE.get(seed_id, ForgeRegistries.ITEMS.getRegistryKey());
+    return seed.get();
   }
 
   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
     pBuilder.add(AGE);
+  }
+
+  public void getBlockState(BlockStateProvider prov) {
+    // String blockID = ForgeRegistries.BLOCKS.getKey(this).getPath();
+
+    // TODO: Replace this when we have assets for the other herbs.
+    String blockID = "thyme";
+
+    Function<BlockState, ConfiguredModel[]> function = state -> states(prov, state, this,
+        blockID + "_stage_",
+        blockID + "_stage_");
+
+    prov.getVariantBuilder(this).forAllStates(function);
+  }
+
+  private static ConfiguredModel[] states(BlockStateProvider prov, BlockState state, CropBlock block, String modelName,
+      String textureName) {
+    ConfiguredModel[] models = new ConfiguredModel[1];
+    models[0] = new ConfiguredModel(
+        prov.models().crop(modelName + block.getAge(state), (new ResourceLocation(Farmlore.MOD_ID,
+            "block/" + textureName + block.getAge(state)))));
+
+    return models;
   }
 }

@@ -1,48 +1,48 @@
 package dev.turnr.farmlore.items;
 
-import dev.turnr.farmlore.Farmlore;
-import dev.turnr.farmlore.blocks.PlantBlocks;
-import net.minecraft.world.item.Item;
+import static dev.turnr.farmlore.Farmlore.REGISTRATE;
+
+import com.tterrag.registrate.util.entry.RegistryEntry;
+import dev.turnr.farmlore.blocks.AllBlocks;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemNameBlockItem;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.common.Tags.Items;
 
 public class PlantableItems {
 
-  public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
-      Farmlore.MOD_ID);
+  public static final RegistryEntry<ItemNameBlockItem> PARSLEY_SEEDS = REGISTRATE.item(
+          "parsley_seeds",
+          p -> new ItemNameBlockItem(AllBlocks.PARSLEY.get(), p)).tab(CreativeModeTabs.NATURAL_BLOCKS)
+      .tag(Items.SEEDS).register();
 
-  public static final RegistryObject<Item> PARSLEY = ITEMS.register("parsley_seeds",
-      () -> new ItemNameBlockItem(PlantBlocks.PARSLEY.get(),
-          new Item.Properties()));
+  public static final RegistryEntry<ItemNameBlockItem> BASIL_SEEDS = REGISTRATE.item("basil_seeds",
+      p -> new ItemNameBlockItem(AllBlocks.BASIL.get(),
+          p)).tab(CreativeModeTabs.NATURAL_BLOCKS).tag(Items.SEEDS).register();
 
-  public static final RegistryObject<Item> BASIL = ITEMS.register("basil_seeds",
-      () -> new ItemNameBlockItem(PlantBlocks.BASIL.get(),
-          new Item.Properties()));
+  public static final RegistryEntry<ItemNameBlockItem> CORIANDER_SEEDS = REGISTRATE.item(
+      "coriander_seeds",
+      p -> new ItemNameBlockItem(AllBlocks.CORIANDER.get(),
+          p)).tab(CreativeModeTabs.NATURAL_BLOCKS).tag(Items.SEEDS).register();
 
-  public static final RegistryObject<Item> CORIANDER = ITEMS.register("coriander_seeds",
-      () -> new ItemNameBlockItem(PlantBlocks.CORIANDER.get(),
-          new Item.Properties()));
+  public static final RegistryEntry<ItemNameBlockItem> MINT_SEEDS = REGISTRATE.item("mint_seeds",
+      p -> new ItemNameBlockItem(AllBlocks.MINT.get(),
+          p)).tab(CreativeModeTabs.NATURAL_BLOCKS).tag(Items.SEEDS).register();
 
-  public static final RegistryObject<Item> MINT = ITEMS.register("mint_seeds",
-      () -> new ItemNameBlockItem(PlantBlocks.MINT.get(),
-          new Item.Properties()));
+  public static final RegistryEntry<ItemNameBlockItem> ROSEMARY_SEEDS = REGISTRATE.item(
+      "rosemary_seeds",
+      p -> new ItemNameBlockItem(AllBlocks.ROSEMARY.get(),
+          p)).tab(CreativeModeTabs.NATURAL_BLOCKS).tag(Items.SEEDS).register();
 
-  public static final RegistryObject<Item> ROSEMARY = ITEMS.register("rosemary_seeds",
-      () -> new ItemNameBlockItem(PlantBlocks.ROSEMARY.get(),
-          new Item.Properties()));
+  public static final RegistryEntry<ItemNameBlockItem> THYME_SEEDS = REGISTRATE.item("thyme_seeds",
+      p -> new ItemNameBlockItem(AllBlocks.THYME.get(),
+          p)).tab(CreativeModeTabs.NATURAL_BLOCKS).tag(Items.SEEDS).register();
 
-  public static final RegistryObject<Item> THYME = ITEMS.register("thyme_seeds",
-      () -> new ItemNameBlockItem(PlantBlocks.THYME.get(),
-          new Item.Properties()));
-
-  public static final RegistryObject<Item> SAGE = ITEMS.register("sage_seeds",
-      () -> new ItemNameBlockItem(PlantBlocks.SAGE.get(),
-          new Item.Properties()));
+  public static final RegistryEntry<ItemNameBlockItem> SAGE_SEEDS = REGISTRATE.item("sage_seeds",
+      p -> new ItemNameBlockItem(AllBlocks.SAGE.get(),
+          p)).tab(CreativeModeTabs.NATURAL_BLOCKS).tag(Items.SEEDS).register();
 
   public static void register() {
-    ItemRegistry.register(ITEMS);
+
   }
 
 }

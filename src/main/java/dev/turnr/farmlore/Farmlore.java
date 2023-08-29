@@ -1,14 +1,13 @@
 package dev.turnr.farmlore;
 
 import com.mojang.logging.LogUtils;
-import dev.turnr.farmlore.blockentities.BlockEntityRegistry;
-import dev.turnr.farmlore.blocks.BlockRegistry;
-import dev.turnr.farmlore.blocks.GenericBlocks;
-import dev.turnr.farmlore.blocks.PlantBlocks;
-import dev.turnr.farmlore.items.ClothingItems;
+import com.tterrag.registrate.Registrate;
+import com.tterrag.registrate.util.entry.RegistryEntry;
+import dev.turnr.farmlore.blockentities.AllBlockEntities;
+import dev.turnr.farmlore.blocks.AllBlocks;
+import dev.turnr.farmlore.blocks.herbs.HerbBlock;
+import dev.turnr.farmlore.items.OtherItems;
 import dev.turnr.farmlore.items.EdibleItems;
-import dev.turnr.farmlore.items.IngredientItems;
-import dev.turnr.farmlore.items.ItemRegistry;
 import dev.turnr.farmlore.items.PlantableItems;
 import dev.turnr.farmlore.items.ToolItems;
 import dev.turnr.farmlore.recipe.RecipeRegistry;
@@ -18,8 +17,6 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,30 +28,26 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 @Mod(Farmlore.MOD_ID)
 public class Farmlore {
 
   public static final String MOD_ID = "turnr_farmlore";
+  public static final Registrate REGISTRATE = Registrate.create(MOD_ID);
   private static final Logger LOGGER = LogUtils.getLogger();
 
   public Farmlore() {
     IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+    OtherItems.register();
     PlantableItems.register();
-    PlantBlocks.register();
-    IngredientItems.register();
     EdibleItems.register();
     ToolItems.register();
-    ClothingItems.register();
-    GenericBlocks.register();
+    AllBlocks.register();
 
-    ItemRegistry.register(eventBus);
-    BlockRegistry.register(eventBus);
-
-    BlockEntityRegistry.register(eventBus);
+    AllBlockEntities.register();
     MenuTypeRegistry.register(eventBus);
     RecipeRegistry.register(eventBus);
 
@@ -69,43 +62,15 @@ public class Farmlore {
   }
 
   private void commonSetup(final FMLCommonSetupEvent event) {
-    // Some common setup code
-    LOGGER.info("HELLO FROM COMMON SETUP");
   }
 
   private void addCreative(BuildCreativeModeTabContentsEvent event) {
-    if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
-      for (RegistryObject<Item> item : EdibleItems.ITEMS.getEntries()) {
-        event.accept(item);
-      }
-    }
 
-    if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
-      for (RegistryObject<Item> item : PlantableItems.ITEMS.getEntries()) {
-        event.accept(item);
-      }
-      event.accept(GenericBlocks.ELDORITE_ORE);
-      event.accept(GenericBlocks.DEEPSLATE_ELDORITE_ORE);
-    }
-
-    if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-      for (RegistryObject<Item> item : ToolItems.ITEMS.getEntries()) {
-        event.accept(item);
-      }
-    }
-
-    if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-      for (RegistryObject<Item> item : IngredientItems.ITEMS.getEntries()) {
-        event.accept(item);
-      }
-    }
   }
 
   // You can use SubscribeEvent and let the Event Bus discover methods to call
   @SubscribeEvent
   public void onServerStarting(ServerStartingEvent event) {
-    // Do something when the server starts
-    LOGGER.info("HELLO from server starting");
   }
 
   // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -114,12 +79,13 @@ public class Farmlore {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
-      LOGGER.debug("HELLO FROM CLIENT SETUP");
-      ItemBlockRenderTypes.setRenderLayer(GenericBlocks.FOOD_PROCESSOR.get(),
+      ItemBlockRenderTypes.setRenderLayer(AllBlocks.FOOD_PROCESSOR.get(),
           RenderType.translucent());
 
-      for (RegistryObject<Block> block : PlantBlocks.BLOCKS.getEntries()) {
-        ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutout());
+      for (RegistryEntry<Block> block : REGISTRATE.getAll(ForgeRegistries.BLOCKS.getRegistryKey())) {
+        if (block.get() instanceof HerbBlock) {
+          ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutout());
+        }
       }
 
       MenuScreens.register(MenuTypeRegistry.FOOD_PROCESSOR_MENU.get(),

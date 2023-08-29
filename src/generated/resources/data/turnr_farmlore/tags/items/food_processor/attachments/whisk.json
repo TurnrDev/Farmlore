@@ -1,9 +1,0 @@
-{
-  "values": [
-    "turnr_farmlore:food_processor_attachment_whisk",
-    {
-      "id": "create:whisk",
-      "required": false
-    }
-  ]
-}

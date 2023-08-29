@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "turnr_farmlore:ricky"
+    "layer0": "turnr_farmlore:item/food_processor_attachment_steel_blade"
   }
 }

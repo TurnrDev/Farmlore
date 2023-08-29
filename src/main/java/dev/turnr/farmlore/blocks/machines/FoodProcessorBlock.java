@@ -1,6 +1,6 @@
 package dev.turnr.farmlore.blocks.machines;
 
-import dev.turnr.farmlore.blockentities.BlockEntityRegistry;
+import dev.turnr.farmlore.blockentities.AllBlockEntities;
 import dev.turnr.farmlore.blockentities.FoodProcessorEntity;
 import java.util.Objects;
 import javax.annotation.Nullable;
@@ -128,7 +128,7 @@ public class FoodProcessorBlock extends HorizontalDirectionalBlock implements En
   @Nullable
   @Override
   public BlockEntity newBlockEntity(@NotNull BlockPos pPos, @NotNull BlockState pState) {
-    return new FoodProcessorEntity(pPos, pState);
+    return new FoodProcessorEntity(AllBlockEntities.FOOD_PROCESSOR.get(), pPos, pState);
   }
 
   @Nullable
@@ -136,7 +136,7 @@ public class FoodProcessorBlock extends HorizontalDirectionalBlock implements En
   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(@NotNull Level pLevel,
       @NotNull BlockState pState,
       @NotNull BlockEntityType<T> pBlockEntityType) {
-    return createTickerHelper(pBlockEntityType, BlockEntityRegistry.FOOD_PROCESSOR.get(),
+    return createTickerHelper(pBlockEntityType, AllBlockEntities.FOOD_PROCESSOR.get(),
         FoodProcessorEntity::tick);
   }
 }
